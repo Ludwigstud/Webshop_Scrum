@@ -19,6 +19,9 @@ Vi använder specifika verktyg för att organisera och följa vårt arbete:
 Jira: För att hantera våra projekt, tilldela uppgifter och spåra framsteg.
 Länk till Jira: https://ludwigstridh.atlassian.net/ 
 
+Google docs: För att föra anteckningar om våra standup-möten
+https://docs.google.com/document/d/1aF7tb3rvJCXOmB9ZQxNlHs9iuPnvd16vB3ZVhbs_hDg/edit
+
 Scrumtavla: För att visualisera och hantera våra Scrum-uppgifter.
 
 Discord: Som vår primära kommunikationsplattform för snabb och direkt samarbete.
