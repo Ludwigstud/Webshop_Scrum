@@ -9,8 +9,8 @@ Varje arbetsdag börjar med en standup-möte kl 09:00. Detta är en möjlighet f
 2. Kommunikation genom Discord:
 Vid frånvaro från standup-mötet förväntas varje medlem meddela sitt frånvaro i vårt Discord-kanal. Kommunikationen genom Discord är snabb och effektiv, vilket underlättar vårt samarbete och möjliggör öppen dialog mellan teammedlemmarna.
 
-3. Obligatorisk Standup, Flexibla Arbetsdagar:
-Standup-mötet är obligatoriskt för alla medlemmar. Resten av arbetsdagen är flexibel och anpassningsbar till individuella behov och arbetsstilar. Vi tror på att låta våra medlemmar blomstra genom att erbjuda möjligheten att arbeta under tider som passar dem bäst.
+3. Flexibla Arbetsdagar:
+Arbetsdagen är flexibel och anpassningsbar till individuella behov och arbetsstilar. Vi tror på att låta våra medlemmar blomstra genom att erbjuda möjligheten att arbeta under tider som passar dem bäst.
 
 ## Användning av Arbetsverktyg: ##
 Vi använder specifika verktyg för att organisera och följa vårt arbete:
