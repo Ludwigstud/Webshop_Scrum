@@ -4,7 +4,8 @@
 Vi, som medlemmar av detta team, fastställer härmed vårt gemensamma manifest för att skapa en produktiv, samarbetsvänlig och innovativ arbetsmiljö. Genom att följa dessa principer och riktlinjer, förbinder vi oss till att göra vårt arbete meningsfullt och effektivt.
 
 1. Punktlig Standup:
-Varje arbetsdag börjar med en standup-möte kl 09:00. Detta är en möjlighet för var och en att dela sina framsteg, hinder och mål för dagen. Att vara närvarande är avgörande för att säkerställa att alla är medvetna om projektets status och kan erbjuda hjälp vid behov.
+Varje arbetsdag inleds med ett standup-möte klockan 09:00. Under detta möte har varje teammedlem möjlighet att dela med sig av sina framsteg, identifierade hinder och sina mål för dagen. Deltagande i mötet är nödvändigt för att säkerställa att alla är medvetna om projektets aktuella status och för att erbjuda hjälp och stöd vid behov.
+För att säkerställa att ingen missar viktig information dokumenteras dessa möten också. Alla deltagare kan ta del av anteckningarna i ett gemensamt dokument om de är frånvarande och behöver uppdatera sig på vad som diskuterades under mötet.
 
 2. Kommunikation genom Discord:
 Vid frånvaro från standup-mötet förväntas varje medlem meddela sitt frånvaro i vårt Discord-kanal. Kommunikationen genom Discord är snabb och effektiv, vilket underlättar vårt samarbete och möjliggör öppen dialog mellan teammedlemmarna.
