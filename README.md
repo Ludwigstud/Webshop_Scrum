@@ -1,7 +1,7 @@
 # Webshop_Scrum
 
-<h5>Manifest för vårt arbetssätt</h5>
-Vi, som medlemmar av detta team, fastställer härmed vårt gemensamma manifest för att skapa en produktiv, samarbetsvänlig och innovativ arbetsmiljö. Genom att följa dessa principer och riktlinjer, förbinder vi oss till att göra vårt arbete meningsfullt och effektivt.
+## Manifest för vårt arbetssätt ##
+
 
 1. Punktlig Standup:
 Varje arbetsdag inleds med ett standup-möte klockan 09:00. Under detta möte har varje teammedlem möjlighet att dela med sig av sina framsteg, identifierade hinder och sina mål för dagen. Deltagande i mötet är nödvändigt för att säkerställa att alla är medvetna om projektets aktuella status och för att erbjuda hjälp och stöd vid behov.
