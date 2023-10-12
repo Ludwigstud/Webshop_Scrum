@@ -15,12 +15,12 @@ Standup-mötet är obligatoriskt för alla medlemmar. Resten av arbetsdagen är 
 4. Användning av Arbetsverktyg:
 Vi använder specifika verktyg för att organisera och följa vårt arbete:
 
-Jira: För att hantera våra projekt, tilldela uppgifter och spåra framsteg.
-Länk till Jira: https://ludwigstridh.atlassian.net/
-Scrumtavla: För att visualisera och hantera våra Scrum-uppgifter.
-Discord: Som vår primära kommunikationsplattform för snabb och direkt samarbete.
-Miro: För att skapa och dela databasdiagram och andra visuella hjälpmedel.
-Länk till Miro: https://miro.com/app/board/uXjVNcI60GE=/?share_link_id=927351055439
+Jira: För att hantera våra projekt, tilldela uppgifter och spåra framsteg. <br>
+Länk till Jira: https://ludwigstridh.atlassian.net/ <br>
+Scrumtavla: För att visualisera och hantera våra Scrum-uppgifter. <br>
+Discord: Som vår primära kommunikationsplattform för snabb och direkt samarbete. <br>
+Miro: För att skapa och dela databasdiagram och andra visuella hjälpmedel. <br>
+Länk till Miro: https://miro.com/app/board/uXjVNcI60GE=/?share_link_id=927351055439 <br>
 5. Teknisk Infrastruktur:
 Vi arbetar med följande teknikstack:
 
