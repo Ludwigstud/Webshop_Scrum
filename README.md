@@ -11,7 +11,7 @@ För att säkerställa att ingen missar viktig information dokumenteras dessa m�
 Vid frånvaro från standup-mötet förväntas varje medlem meddela sitt frånvaro i vårt Discord-kanal. Kommunikationen genom Discord är snabb och effektiv, vilket underlättar vårt samarbete och möjliggör öppen dialog mellan teammedlemmarna.
 
 3. Flexibla Arbetsdagar:
-Arbetsdagen är flexibel och anpassningsbar till individuella behov och arbetsstilar. Vi tror på att låta våra medlemmar blomstra genom att erbjuda möjligheten att arbeta under tider som passar dem bäst.
+Arbetsdagen är flexibel och anpassningsbar till individuella behov och arbetsstilar.
 
 ## Användning av Arbetsverktyg: ##
 Vi använder specifika verktyg för att organisera och följa vårt arbete:
