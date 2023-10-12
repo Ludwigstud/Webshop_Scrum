@@ -45,6 +45,5 @@ Exempel: manifestForVartArbetssatt är ett exempel på Camel Case och kan vara n
 Kebab Case (HTML och CSS klassnamn):
 
 Användning: I HTML och CSS används Kebab Case för att namnge ID:n, klassnamn och i URL:er. Ord separeras med bindestreck (hyphens).
-Exempel: <div class="manifest-for-vart-arbetssatt"> är ett exempel på Kebab Case och kan vara ett klassnamn i HTML och CSS.
 
 När vi har en ny user story att jobba med, skapar vi en separat branch från master. Vi ger branchen ett tydligt namn som beskriver vad user storyn handlar om, som till exempel "userstory-login-feature". Det hjälper oss att hålla ordning på vårt arbete och förstå vad varje branch handlar om. Exempelvis: "userstory-logout"
