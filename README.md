@@ -26,6 +26,9 @@ Discord: Som vår primära kommunikationsplattform för snabb och direkt samarbe
 Miro: För att skapa och dela databasdiagram och andra visuella hjälpmedel. 
 Länk till Miro: https://miro.com/app/board/uXjVNcI60GE=/?share_link_id=927351055439
 
+Google Docs: Dokumentation för standup möten där arbete, problem, osv dokumenteras.
+https://docs.google.com/document/d/1aF7tb3rvJCXOmB9ZQxNlHs9iuPnvd16vB3ZVhbs_hDg/edit
+
 ## Teknisk Infrastruktur: ## 
 Vi arbetar med följande teknikstack:
 
