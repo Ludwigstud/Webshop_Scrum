@@ -25,6 +25,20 @@ Länk till Miro: https://miro.com/app/board/uXjVNcI60GE=/?share_link_id=92735105
 Vi arbetar med följande teknikstack:
 
 Frontend: Vi utvecklar användargränssnitt med React för en responsiv och användarvänlig upplevelse.
+
 Backend: Vår backend byggs med .NET och Swagger för att skapa robusta och säkra API:er.
+
 CSS: Vi använder .scss för att skapa dynamiska och snygga stilmallar för våra webbapplikationer.
-Genom att följa dessa riktlinjer och använda våra arbetsverktyg effektivt, tror vi att vi kommer att skapa inte bara en framgångsrik produkt, utan också en miljö där varje medlem trivs och utvecklas. Låt oss tillsammans sträva efter excellens och skapa banbrytande lösningar.
+
+Pascal Case (C#):
+
+Användning: I C# används Pascal Case för att namnge klasser, metoder, egenskaper och andra typer. Det första tecknet och varje efterföljande ord börjar med en stor bokstav utan några separatorer.
+Exempel: ManifestForVartArbetssatt är ett exempel på Pascal Case och kan vara namnet på en klass i C#.
+Camel Case (JavaScript):
+
+Användning: I JavaScript används Camel Case för att namnge variabler, funktioner och objektegenskaper. Det första tecknet börjar med en liten bokstav och varje efterföljande ord börjar med en stor bokstav utan några separatorer.
+Exempel: manifestForVartArbetssatt är ett exempel på Camel Case och kan vara namnet på en variabel eller en funktion i JavaScript.
+Kebab Case (HTML och CSS klassnamn):
+
+Användning: I HTML och CSS används Kebab Case för att namnge ID:n, klassnamn och i URL:er. Ord separeras med bindestreck (hyphens).
+Exempel: <div class="manifest-for-vart-arbetssatt"> är ett exempel på Kebab Case och kan vara ett klassnamn i HTML och CSS.
