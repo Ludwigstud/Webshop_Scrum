@@ -55,4 +55,9 @@ Exempel: manifestForVartArbetssatt är ett exempel på Camel Case och kan vara n
 
 Användning: I HTML och CSS används Kebab Case för att namnge ID:n, klassnamn och i URL:er. Ord separeras med bindestreck (hyphens).
 
+
+## Branches ##
 När vi har en ny user story att jobba med, skapar vi en separat branch från master. Vi ger branchen ett tydligt namn som beskriver vad user storyn handlar om, som till exempel "userstory-login-feature". Det hjälper oss att hålla ordning på vårt arbete och förstå vad varje branch handlar om. Exempelvis: "userstory-logout"
+
+## Merging ##
+Innan vi mergar ihop koden från en branch till master, ser vi till att den granskas ordentligt. Två personer i vårt team tittar på koden för att se till att den är bra och fungerar som den ska. De kollar efter fel och ser till att koden följer våra regler och best practise. När de är säkra på att koden är bra, merger vi koden tillsammans in i master. På det här sättet ser vi till att vår kod alltid är bra och fungerar som den ska.
