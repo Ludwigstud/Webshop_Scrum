@@ -61,3 +61,16 @@ När vi har en ny user story att jobba med, skapar vi en separat branch från ma
 
 ## Merging ##
 Innan vi mergar ihop koden från en branch till master, ser vi till att den granskas ordentligt. Två personer i vårt team tittar på koden för att se till att den är bra och fungerar som den ska. De kollar efter fel och ser till att koden följer våra regler och best practise. När de är säkra på att koden är bra, merger vi koden tillsammans in i master. På det här sättet ser vi till att vår kod alltid är bra och fungerar som den ska.
+## Mapstruktur i Frontend - React ##
+***Screens*** - Denna mapp innehåller alla Huvudsidor som t ex Home och Kategorier. Varje Screen ska ha en egen mapp där js / jsx med tillhörande scss fil.
+
+***components*** - Denna mapp innehåller alla återanvändbara komponenter som Navbar, ProductCard, etc. Varje Komponent ska ha en egen mapp där js / jsx med tillhörande scss fil.
+
+***Scss/corescss/style.scss*** - Här importeras all scss från components / screens 
+
+***Scss/corescss/_colors*** - Innehåller alla färgvariabler som används i hela Hemsidan.
+
+***Scss/corescss/_fonts*** - Fonts som behövs för hemsidan
+
+***Scss/corescss/_Mixin*** - Mediaquerievariabler som behövs om man känner att bootstrap inte är tillräckligt.
+
