@@ -74,3 +74,15 @@ Innan vi mergar ihop koden från en branch till master, ser vi till att den gran
 
 ***Scss/corescss/_Mixin*** - Mediaquerievariabler som behövs om man känner att bootstrap inte är tillräckligt.
 
+## Mapstruktur i Backend ##
+
+***Controllers:*** Denna mapp innehåller våra API-controllers, som hanterar HTTP-förfrågningar och bestämmer vad som ska returneras till klienten.
+
+***Models:*** Inom denna mapp har du två undermappar:
+
+***Models/Entities:*** Här finns våra entitetsklasser som representerar dataobjekt som lagras i din databas. Dessa klasser speglar databasens tabeller Om ändring behövs, diskutera dessa i gruppen först.
+
+***Models/Context:*** Här finnsvår datacontextklass, som kopplar upp applikationen mot databasen. Om ändring behövs, diskutera dessa i gruppen först.
+
+***Models/Repos:*** I denna mapp har vi en MainRepository, som fungerar som en bas för andra repositories. Den innehåller metoder för att utföra vanliga uppgifter som att skapa nya entiteter i databasen.
+
