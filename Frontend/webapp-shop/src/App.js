@@ -1,9 +1,14 @@
+import { BrowserRouter as Router } from 'react-router-dom';
+import BottomNavbar from './components/bottomNavbar/BottomNavbar';
+import TopNavbar from './components/topNavbar/TopNavbar';
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <Router>
+      <div className='App'>
+        <BottomNavbar />
+      </div>
+    </Router>
   );
 }
 
