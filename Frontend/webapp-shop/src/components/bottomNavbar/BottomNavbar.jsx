@@ -4,46 +4,59 @@ import { AiOutlineSearch, AiOutlineHeart, AiOutlineHome } from 'react-icons/ai';
 import { BiUserCircle } from 'react-icons/bi';
 import { BsHandbag } from 'react-icons/bs';
 import './_bottomNavbar.scss';
+
 export default class BottomNavbar extends Component {
   render() {
     return (
-      <nav>
+      <nav data-testid='bottom-navbar'>
         <ul>
-          <li>
+          <li data-testid='bottom-navbar-link'>
             <i>
-              <NavLink to='/home' className='inactive'>
+              <NavLink to='/home' className='inactive' data-testid='home-link'>
                 <AiOutlineHome />
               </NavLink>
             </i>
           </li>
 
-          <li>
+          <li data-testid='bottom-navbar-link'>
             <i>
-              <NavLink to='/search' className='inactive'>
+              <NavLink
+                to='/search'
+                className='inactive'
+                data-testid='search-link'
+              >
                 <AiOutlineSearch />
               </NavLink>
             </i>
           </li>
 
-          <li>
+          <li data-testid='bottom-navbar-link'>
             <i>
-              <NavLink to='/shop' className='inactive'>
+              <NavLink to='/shop' className='inactive' data-testid='shop-link'>
                 <BsHandbag />
               </NavLink>
             </i>
           </li>
 
-          <li>
+          <li data-testid='bottom-navbar-link'>
             <i>
-              <NavLink to='/favorites' className='inactive'>
+              <NavLink
+                to='/favorites'
+                className='inactive'
+                data-testid='favorites-link'
+              >
                 <AiOutlineHeart />
               </NavLink>
             </i>
           </li>
 
-          <li>
+          <li data-testid='bottom-navbar-link'>
             <i>
-              <NavLink to='/profile' className='inactive'>
+              <NavLink
+                to='/profile'
+                className='inactive'
+                data-testid='profile-link'
+              >
                 <BiUserCircle />
               </NavLink>
             </i>
