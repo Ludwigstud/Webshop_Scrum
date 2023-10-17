@@ -1,1 +1,82 @@
-/*# sourceMappingURL=style.css.map */
+.profile .container .navbar-placeholder {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  border-bottom: solid 1px #DBE3F5;
+}
+.profile .container .navbottom-placeholder {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 22px;
+  padding-top: 5px;
+}
+.profile .container .avatar-name-mail {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px;
+}
+.profile .container .avatar-name-mail .edit {
+  border: solid 7px #DBE3F5;
+  padding: 2px;
+  border-radius: 50%;
+  background-color: #DBE3F5;
+}
+.profile .container .avatar-name-mail .avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 52px;
+  border: solid 3px #DBE3F5;
+  padding: 30px 60px 30px 60px;
+  border-radius: 100%;
+}
+.profile .container .avatar-name-mail .name {
+  font-size: 32px;
+  font-weight: 700;
+}
+.profile .container .avatar-name-mail .email {
+  color: #626262;
+  font-weight: 500;
+}
+.profile .container .menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.profile .container .menu .left {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.profile .container .menu .left i {
+  color: #626262;
+  font-size: 20px;
+}
+.profile .container .menu .last-border {
+  border-bottom: 1px #DBE3F5 solid;
+}
+.profile .container .menu .option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px #DBE3F5 solid;
+  min-width: 100%;
+  padding-top: 5px;
+  padding-bottom: 8px;
+}
+.profile .container .menu .option i {
+  padding-right: 8px;
+}
+.profile .container .menu .option p {
+  padding-left: 30px;
+  margin-top: 10px;
+  padding-top: 15px;
+  font-size: 22px;
+  color: #111111;
+}
