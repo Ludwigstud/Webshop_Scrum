@@ -1,0 +1,16 @@
+.container {
+    .img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .product-img {
+
+            height: 375px;
+            width: 375px;
+            border: solid 1px black;
+        }
+    }
+
+
+}

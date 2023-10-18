@@ -1,4 +1,5 @@
 ﻿using Manero.Models.Contexts;
+using Manero.Models.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +20,21 @@ public class ProductsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetProducts()
     {
-        return Ok(await _context.Products.Include(x => x.Category).ToListAsync());
+        var items = await _context.Products.ToListAsync();
+        var products = new List<Product>();
+        foreach (var item in items)
+            products.Add(new Product
+            {
+                Id = item.Id,
+                ProductName = item.ProductName,
+                Price = item.Price,
+                Description = item.Description,
+                ImageUrl = item.ImageUrl
+
+            }); ;
+
+
+        return Ok(products);
     }
 
 
