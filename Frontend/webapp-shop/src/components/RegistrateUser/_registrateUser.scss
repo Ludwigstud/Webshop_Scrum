@@ -12,6 +12,13 @@
         position: relative;
         width: 100%;
 
+        .error-message {
+            color: $color-red;
+            font-size: 12px;
+            height: 30px;
+            margin-left: 10px;
+        }
+
         .registrate-user-label {
             position: absolute;
             left: 3em;
@@ -37,8 +44,6 @@
 
         .registrate-icon-input-container {
             position: relative;
-            margin-bottom: 20px;
-
             .registrate-user-icon {
                 position: absolute;
                 right: 1em;

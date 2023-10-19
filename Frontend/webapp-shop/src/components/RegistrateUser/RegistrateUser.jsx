@@ -1,19 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
     BiLogoFacebook,
     BiLogoTwitter,
     BiLogoGooglePlus,
 } from "react-icons/bi";
-import { RxCross2, RxCheck } from "react-icons/rx";
-const RegistrateUser = () => {
+import { useAuthContext } from '../../contexts/AuthContext';
+import {validateOnChange, validateOnSubmit} from './RegistrateUserValidation';
+
+
+
+const RegistrateUser = ({setSuccess}) => {
+    const {signUp} = useAuthContext();
+    const [registrateForm, setRegistrateForm] = useState({ firstName: "", lastName: "", email: "", password: "", confirmPassword: ""});
+    const [formErrorIcons, setFormErrorIcons] = useState({});
+    const [formErrors, setFormErrors] = useState({});
+
+
+    const handleOnChange = (e) => {
+        const { name, value } = e.target;
+        setRegistrateForm(previousState => {
+            return { ...previousState, [name]: value };
+        });
+        var errorIcons = validateOnChange({ ...registrateForm, [name]: value });
+        setFormErrorIcons(errorIcons);
+
+        setFormErrors(previousErrors => ({
+            ...previousErrors,
+            [name]: ""
+        }));
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const errors = validateOnSubmit(registrateForm);
+        const registrateUser  = {
+            firstName: registrateForm.firstName,
+            lastName: registrateForm.lastName,
+            email: registrateForm.email,
+            password: registrateForm.password
+        };
+        if(Object.keys(errors).length === 0)
+        {
+            await signUp(registrateUser, setSuccess);
+        }
+        else {
+            setFormErrors(errors);
+        }
+        
+    }
+
     return (
         <section className="registrate-user">
             <div className="container">
                 <div className="row d-flex flex-column align-items-center">
                     <div className="col-11 col-md-5">
                         <h1>Sign Up</h1>
-                        <form className="d-flex flex-column align-items-center">
+                        <form onSubmit={handleSubmit} className="d-flex flex-column align-items-center">
                             <div className="registrate-input-group">
                                 <label
                                     className="registrate-user-label"
@@ -23,15 +66,18 @@ const RegistrateUser = () => {
                                 </label>
                                 <div className="registrate-icon-input-container">
                                     <input
+                                        onChange={handleOnChange}
+                                        value={registrateForm.firstName}
                                         className="registrate-user-input"
                                         type="text"
                                         id="firstname"
                                         placeholder="Enter your First Name"
+                                        name="firstName"
                                     />
-                                    <RxCross2 className="registrate-user-icon cross-icon" />
+                                    {formErrorIcons.firstNameIcon}
                                 </div>
+                                <div className="error-message">{formErrors.firstName}</div>
                             </div>
-
                             <div className="registrate-input-group">
                                 <label
                                     className="registrate-user-label"
@@ -41,13 +87,17 @@ const RegistrateUser = () => {
                                 </label>
                                 <div className="registrate-icon-input-container">
                                     <input
+                                        onChange={handleOnChange}
+                                        value={registrateForm.lastName}
                                         className="registrate-user-input"
                                         type="text"
                                         id="lastname"
                                         placeholder="Enter your Last Name"
+                                        name="lastName"
                                     />
-                                    <RxCross2 className="registrate-user-icon cross-icon" />
+                                    {formErrorIcons.lastNameIcon}
                                 </div>
+                                <div className="error-message">{formErrors.lastName}</div>
                             </div>
 
                             <div className="registrate-input-group">
@@ -59,13 +109,17 @@ const RegistrateUser = () => {
                                 </label>
                                 <div className="registrate-icon-input-container">
                                     <input
+                                        onChange={handleOnChange}
+                                        value={registrateForm.email}
                                         className="registrate-user-input"
-                                        type="email"
+                                        type="text"
                                         id="email"
                                         placeholder="Johndoe@domain.com"
+                                        name="email"
                                     />
-                                    <RxCross2 className="registrate-user-icon cross-icon" />
+                                    {formErrorIcons.emailIcon}
                                 </div>
+                                <div className="error-message">{formErrors.email}</div>
                             </div>
 
                             <div className="registrate-input-group">
@@ -77,13 +131,17 @@ const RegistrateUser = () => {
                                 </label>
                                 <div className="registrate-icon-input-container">
                                     <input
+                                        onChange={handleOnChange}
+                                        value={registrateForm.password}
                                         className="registrate-user-input"
                                         type="password"
                                         id="password"
                                         placeholder="Your password"
+                                        name="password"
                                     />
-                                    <RxCheck className="registrate-user-icon check-icon" />
+                                    {formErrorIcons.passwordIcon}
                                 </div>
+                                <div className="error-message">{formErrors.password}</div>
                             </div>
 
                             <div className="registrate-input-group">
@@ -95,13 +153,17 @@ const RegistrateUser = () => {
                                 </label>
                                 <div className="registrate-icon-input-container">
                                     <input
+                                        onChange={handleOnChange}
+                                        value={registrateForm.confirmPassword}
                                         className="registrate-user-input"
                                         type="password"
                                         id="confirmpassword"
                                         placeholder="Confirm password"
+                                        name="confirmPassword"
                                     />
-                                    <RxCheck className="registrate-user-icon check-icon" />
+                                    {formErrorIcons.confirmPasswordIcon}
                                 </div>
+                                <div className="error-message">{formErrors.confirmPassword}</div>
                             </div>
                             <div className="sign-up-button"></div>
                             <button>Sign up</button>
