@@ -19,8 +19,8 @@ function Product() {
   };
 
   const clearWishlist = () => {
-    setWishlist([]); // Clear the wishlist
-    localStorage.removeItem('wishlist'); // Clear the wishlist from localStorage
+    setWishlist([]); 
+    localStorage.removeItem('wishlist'); 
   };
 
   useEffect(() => {
