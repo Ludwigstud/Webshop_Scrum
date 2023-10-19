@@ -5,7 +5,7 @@
     "\\Backend\\Manero",
     "\\Backend\\Manero\\Controllers",
     "\\Backend\\Manero\\Models",
-    "\\Backend\\Manero\\Models\\dto"
+    "\\Backend\\Manero\\Models\\Entities"
   ],
   "SelectedNode": "\\Backend\\Manero.sln",
   "PreviewInSolutionExplorer": false

@@ -14,3 +14,4 @@ public class ProductEntity
     public DiscountEntity Discount { get; set; } = null!;
     public int? DiscountId { get; set; }
 }
+
