@@ -1,18 +1,19 @@
 import React from 'react'
-import './_BestSellers.scss'
+import './_BestSallersSale.scss'
 import {FaRegHeart} from 'react-icons/fa'
 import {FaRegStar} from 'react-icons/fa'
 import {BsStarFill} from 'react-icons/bs'
-
-const BestSellers = (props) => {
+const BestSellersSale = (props) => {
   return (
-    <div className='best-sellers-container'>
+    <div className='best-sellers-sale-container'>
     <div className='content'>
       <div className='item'>
         <div className='product-image'></div>
+        <p className='sale'>sale</p>
         <div className='info'>
           <p className='title'>{props.productName}</p>
-          <p className='price'>${props.productPrice}</p>
+          <p className='price-before-sale'>${props.productPriceBeforeSale}</p>
+          <p className='price-after-sale'>${props.productPriceAfterSale}</p>
           <div className='star-rating'>
             <span className='star checked'><BsStarFill /></span>
             <span className='star checked'><BsStarFill /></span>
@@ -31,4 +32,4 @@ const BestSellers = (props) => {
   )
 }
 
-export default BestSellers
+export default BestSellersSale

@@ -1,1 +1,66 @@
-/*# sourceMappingURL=style.css.map */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,900&family=Inter:wght@300;400;500;700;900&family=Mulish:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,200&display=swap");
+.home-section .container .categories-header {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  margin-top: 40px;
+}
+.home-section .container .categories-header a {
+  text-decoration: none;
+}
+.home-section .container .showcase {
+  margin-top: 30px;
+}
+.home-section .container .featured-products {
+  margin-top: 40px;
+}
+.home-section .container .featured-products .section-header {
+  display: flex;
+  justify-content: space-between;
+}
+.home-section .container .featured-products .section-header h4 {
+  font-family: "Mulish", sans-serif;
+  font-weight: 800;
+}
+.home-section .container .featured-products .section-header a {
+  text-decoration: none;
+  color: #111111;
+  font-family: "Mulish", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+}
+.home-section .container .featured-products .section-header a span {
+  font-size: 18px;
+}
+.home-section .container .featured-products .cards {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 20px;
+  margin-top: 20px;
+}
+.home-section .container .best-sellers {
+  margin-top: 40px;
+}
+.home-section .container .best-sellers .section-header {
+  display: flex;
+  justify-content: space-between;
+}
+.home-section .container .best-sellers .section-header h4 {
+  font-family: "Mulish", sans-serif;
+  font-weight: 800;
+}
+.home-section .container .best-sellers .section-header a {
+  text-decoration: none;
+  color: #111111;
+  font-family: "Mulish", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+}
+.home-section .container .best-sellers .section-header a span {
+  font-size: 18px;
+}
+.home-section .container .best-sellers .cards {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 20px;
+}/*# sourceMappingURL=style.css.map */

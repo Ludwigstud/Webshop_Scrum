@@ -1,6 +1,85 @@
 @import '../../scss/corecss/colors';
 @import '../../scss/corecss/fonts';
 @import '../../scss/corecss/mixin';
-div{
-    background-color: $color-blue;
+
+.home-section{
+
+    .container{
+
+        .categories-header{
+            display: flex;
+            justify-content: space-around;
+            gap: 10px;
+            margin-top: 40px;
+
+            a{
+                text-decoration: none;
+            }
+        }
+        .showcase{
+            margin-top: 30px;
+        }
+        .featured-products{
+            margin-top: 40px;
+            .section-header{
+                display: flex;
+                justify-content: space-between;
+
+                h4{
+                    font-family: 'Mulish', sans-serif;
+                    font-weight: 800;
+                }
+                a{
+                    text-decoration: none;
+                    color: $color-black;
+                    font-family: 'Mulish', sans-serif;
+                    font-weight: 500;
+                    font-size: 16px;
+
+                    span{
+                        font-size: 18px;
+
+                    }
+                }
+                
+            }
+            .cards{
+                display: grid;
+                grid-template-columns: auto auto;
+                gap: 20px;
+                margin-top: 20px;
+            }
+        }
+        .best-sellers{
+            margin-top:40px;
+            .section-header{
+                display: flex;
+                justify-content: space-between;
+
+                h4{
+                    font-family: 'Mulish', sans-serif;
+                    font-weight: 800;
+                }
+                a{
+                    text-decoration: none;
+                    color: $color-black;
+                    font-family: 'Mulish', sans-serif;
+                    font-weight: 500;
+                    font-size: 16px;
+
+                    span{
+                        font-size: 18px;
+
+                    }
+                }
+                
+            }
+            .cards{
+                display: grid;
+                grid-template-columns: auto;
+                gap: 20px;
+                
+            }
+        }
+    }
 }

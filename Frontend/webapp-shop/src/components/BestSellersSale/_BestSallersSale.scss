@@ -2,7 +2,7 @@
 @import '../../scss/corecss/fonts';
 @import '../../scss/corecss/mixin';
 
-.best-sellers-container{
+.best-sellers-sale-container{
     margin-top: 10px;
     .content {
         position: relative;
@@ -14,6 +14,20 @@
                 background-color: $color-blue;
                 padding: 60px 0;
             }
+            .sale{
+                background-color: #69864D;
+                color: $color-white;
+                text-transform: uppercase;
+                width: 10%;
+                text-align: center;
+                font-size: 9px;
+                font-family: 'Mulish', sans-serif;
+                font-weight: 700;
+                padding: 3px 0;
+                margin-bottom: 0;
+                position: absolute;
+                top: 0;
+            }
             .info{
                 margin-left: 20px;
                 .title{
@@ -22,11 +36,21 @@
                     font-size: 16px;
                     margin-bottom: 5px;
                 }
-                .price{
+                .price-before-sale{
                     font-family: 'Mulish', sans-serif;
                     font-weight: 700;
                     font-size: 14px;
                     margin-bottom: 5px;
+                    display: inline;
+                    text-decoration-line: line-through; 
+                }
+                .price-after-sale{
+                    display: inline;
+                    margin-left: 8px;
+                    font-family: 'Mulish', sans-serif;
+                    font-weight: 700;
+                    font-size: 14px;
+                    color: $color-red;
                 }
                 .star-rating{
                     display: flex;
@@ -52,8 +76,5 @@
             right: 20px;
             font-size: 21px;
         }
-
-
-
     }
 }
