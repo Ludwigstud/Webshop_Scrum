@@ -1,27 +1,50 @@
 import React, { useState } from "react";
 import { RxCross2, RxCheck } from "react-icons/rx";
-import { AiFillEyeInvisible } from "react-icons/ai";
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import {
   BiLogoFacebook,
   BiLogoTwitter,
   BiLogoGooglePlus,
 } from "react-icons/bi";
 import { Link } from "react-router-dom";
-function RegistrateUser() {
+import { useAuthContext } from "../../contexts/AuthContext";
+function SignIn() {
+  const { signIn } = useAuthContext();
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
-  let signInData = {
-    data: {
-      Email: email,
-      Password: password,
-    },
+  const [rememberMe, setRememberMe] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [validEmail, setValidEmail] = useState(false);
+  const [loginChecker, setLoginChecker] = useState(null);
+  const mailformat = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+
+  const handleChange = () => {
+    const emailInput = document.getElementById("email");
+    setEmail(emailInput.value)
+    if(mailformat.test(emailInput.value)){
+      setValidEmail(true)
+    }
+    else{
+      setValidEmail(false)
+    }
+  }
+
+  const handleCheckBoxChange = (e) => {
+    setRememberMe(e.target.checked);
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const signInSchema = { email, password, rememberMe };
+    await signIn(signInSchema, setLoginChecker, loginChecker);
   };
 
-  function signInSubmit() {
-    console.log(signInData);
-    document.getElementById("password").value = "";
-    document.getElementById("email").value = "";
+  const togglePassword = () =>{
+    setShowPassword(!showPassword);
   }
+
+
   return (
     <section className="register-user">
       <div className="container">
@@ -32,15 +55,7 @@ function RegistrateUser() {
               <p>Sign in to continue</p>
             </div>
             <div className="col-12">
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  if (e.target.checkValidity()) {
-                    signInSubmit();
-                  }
-                }}
-                className="col-10 col-md-4"
-              >
+              <form onSubmit={handleSubmit} className="col-10 col-md-4">
                 <div className="registrate-input-group">
                   <label className="registrate-user-label" htmlFor="firstname">
                     Email
@@ -51,9 +66,9 @@ function RegistrateUser() {
                       type="text"
                       id="email"
                       placeholder="Enter your email"
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={() => handleChange()}
                     />
-                    <RxCross2 className="registrate-user-icon" />
+                    {!validEmail ? <RxCross2 className="registrate-user-icon text-danger"/> : <RxCheck className="registrate-user-icon text-success"/>}
                   </div>
                 </div>
                 <div className="registrate-input-group">
@@ -63,17 +78,26 @@ function RegistrateUser() {
                   <div className="registrate-icon-input-container">
                     <input
                       className="registrate-user-input"
-                      type="text"
+                      type={!showPassword ? "password" : "text"}
                       id="password"
                       placeholder="Enter your password"
                       onChange={(e) => setPassword(e.target.value)}
                     />
-                    <AiFillEyeInvisible className="registrate-user-icon" />
+                    {!showPassword ? <AiFillEyeInvisible onClick={() => togglePassword()} className="registrate-user-icon" /> : <AiFillEye onClick={() => togglePassword()} className="registrate-user-icon"/>}
                   </div>
+                </div>
+                <div className="d-flex text-center justify-content-center">
+                  {loginChecker === false ? (
+                    <p className="text-danger">Incorrect email or password</p>
+                  ) : loginChecker === true ? (
+                    <p className="text-danger">Enter your email and password</p>
+                  ) : loginChecker === null ? (
+                    <p></p>
+                  ) : null}
                 </div>
                 <div className="col-12">
                   <div className="col-5 checkbox">
-                    <input type="checkbox" />
+                    <input type="checkbox" onChange={handleCheckBoxChange}/>
                     <small>Remeber me</small>
                   </div>
                   <div className="col-5 forgot-password">
@@ -88,7 +112,7 @@ function RegistrateUser() {
               </form>
               <div className="col-12 col-md-9 register-link">
                 <div className="col-10 col-md-5">
-                  <Link to="/">
+                  <Link to="/register">
                     <small>Don't have an account yet? Sign up.</small>
                   </Link>
                 </div>
@@ -117,5 +141,4 @@ function RegistrateUser() {
     </section>
   );
 }
-
-export default RegistrateUser;
+export default SignIn;
