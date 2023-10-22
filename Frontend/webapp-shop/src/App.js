@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Profile from "./components/profile/Profile";
-import ProductPage from "./components/productPage/ProductPage";
+
+import ProductPage from "./screens/productPage/ProductPage";
 
 function App() {
   return (

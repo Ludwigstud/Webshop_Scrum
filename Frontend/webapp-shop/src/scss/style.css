@@ -1,80 +1,3 @@
-.profile .container .avatar-name-mail {
-  padding-top: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-bottom: 1px;
-}
-.profile .container .avatar-name-mail .edit {
-  border: solid 7px #DBE3F5;
-  padding: 2px;
-  border-radius: 50%;
-  background-color: #DBE3F5;
-}
-.profile .container .avatar-name-mail .avatar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 52px;
-  border: solid 3px #DBE3F5;
-  padding: 30px 60px 30px 60px;
-  border-radius: 100%;
-}
-.profile .container .avatar-name-mail .name {
-  font-size: 32px;
-  font-weight: 700;
-}
-.profile .container .avatar-name-mail .email {
-  color: #626262;
-  font-weight: 500;
-}
-.profile .container .menu {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.profile .container .menu .left {
-  display: flex;
-  justify-content: left;
-  align-items: center;
-}
-.profile .container .menu .left i {
-  color: #626262;
-  font-size: 20px;
-}
-.profile .container .menu .last-border {
-  border-bottom: 1px #DBE3F5 solid;
-}
-.profile .container .menu .option {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px #DBE3F5 solid;
-  min-width: 100%;
-  padding-top: 5px;
-  padding-bottom: 8px;
-}
-.profile .container .menu .option i {
-  padding-right: 8px;
-}
-.profile .container .menu .option p {
-  padding-left: 30px;
-  margin-top: 10px;
-  padding-top: 15px;
-  font-size: 22px;
-  color: #111111;
-}
-
-.navbar-top .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 20px;
-  border-bottom: solid 1px #DBE3F5;
-}
-
 .navbar-bottom {
   position: fixed;
   width: 100%;
@@ -91,13 +14,188 @@
   border-top: 1px solid rgba(128, 128, 128, 0.192);
 }
 
-.container .img {
+.navbar-top .container {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  border-bottom: solid 1px #DBE3F5;
+}
+
+.product-page .container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.product-page .container .information {
+  padding-top: 40px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.product-page .container .information .product-name {
+  padding-top: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.384);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.product-page .container .information .product-name .icon {
+  font-size: 25px;
+}
+.product-page .container .information .product-name h5 {
+  font-size: 25px;
+  font-weight: 700;
+}
+.product-page .container .information .rating {
+  display: flex;
+}
+.product-page .container .information .rating .star {
+  color: #FFBE00;
+}
+.product-page .container .information .total-rating {
+  padding-left: 10px;
+  padding-top: 2px;
+  color: #707070;
+  font-weight: 600;
+}
+.product-page .container .information .cost-add {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.product-page .container .information .cost-add .product-cost {
+  font-size: 24px;
+  font-weight: 450;
+}
+.product-page .container .information .cost-add .add {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
-.container .img .product-img {
-  height: 375px;
-  width: 375px;
-  border: solid 1px black;
+.product-page .container .information .cost-add .add .button {
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 20px;
+}
+.product-page .container .information .cost-add .add .minus {
+  padding-right: 15px;
+  font-size: 45px;
+}
+.product-page .container .information .cost-add .add .plus {
+  padding-left: 15px;
+  font-size: 35px;
+}
+.product-page .container .information .cost-add .add .total {
+  font-size: 30px;
+  padding-top: 5px;
+}
+.product-page .container .information .size .sizetext {
+  font-size: 22px;
+}
+.product-page .container .information .size .sizepick {
+  display: flex;
+  justify-content: space-between;
+}
+.product-page .container .information .size .sizepick .roundsize {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px rgba(128, 128, 128, 0.521);
+  border-radius: 100%;
+  padding: 10px 15px 10px 15px;
+  width: 50px;
+  height: 50px;
+}
+.product-page .container .information .size .sizepick .roundsize p {
+  padding-top: 12px;
+}
+.product-page .container .information .size .sizepick .roundsize:hover {
+  background-color: #DBE3F5;
+  border-color: #DBE3F5;
+}
+.product-page .container .information .colorpick {
+  padding-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.product-page .container .information .colorpick p {
+  font-size: 24px;
+  font-weight: 350;
+  padding-top: 7px;
+  padding-right: 10px;
+}
+.product-page .container .information .colorpick .colors {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding-right: 45px;
+}
+.product-page .container .information .colorpick .colors .color {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+}
+.product-page .container .information .colorpick .colors .red {
+  background-color: #FF6262;
+}
+.product-page .container .information .colorpick .colors .red:hover {
+  border: solid 2px #DBE3F5;
+}
+.product-page .container .information .colorpick .colors .blue {
+  background-color: #63C7FF;
+}
+.product-page .container .information .colorpick .colors .blue:hover {
+  border: solid 2px #DBE3F5;
+}
+.product-page .container .information .colorpick .colors .white {
+  background-color: #F8E7CD;
+}
+.product-page .container .information .colorpick .colors .white:hover {
+  border: solid 2px #DBE3F5;
+}
+.product-page .container .information .colorpick .colors .grey {
+  background-color: #323858;
+}
+.product-page .container .information .colorpick .colors .grey:hover {
+  border: solid 2px #DBE3F5;
+}
+.product-page .container .information .colorpick .colors .black {
+  background-color: #111111;
+}
+.product-page .container .information .colorpick .colors .black:hover {
+  border: solid 2px #DBE3F5;
+}
+.product-page .container .description {
+  padding-top: 40px;
+}
+.product-page .container .description h5 {
+  font-weight: 400;
+}
+.product-page .container .description .information {
+  color: #535353;
+  font-weight: 400;
+  font-size: 16px;
+}
+.product-page .container .add-to-cart {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.product-page .container .add-to-cart .button {
+  color: white;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-radius: 25px;
+}
+.product-page .container .add-to-cart .button:hover {
+  background-color: rgba(0, 0, 0, 0.808);
+}
+
+.paddingbottom {
+  padding-bottom: 50px;
 }

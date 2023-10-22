@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import NavTopReplace from "../dummyNavBar/NavTopReplace";
-import NavBottomReplace from "../dummyNavBar/NavBottomReplace";
+import NavTopReplace from "../../components/dummyNavBar/NavTopReplace";
+import NavBottomReplace from "../../components/dummyNavBar/NavBottomReplace";
+import ProductCard from "../../components/products/ProductCard";
+
 
 const ProductPage = () => {
   const [data, setData] = useState([]);
@@ -14,19 +16,10 @@ const ProductPage = () => {
   return (
     <>
       <NavTopReplace />
-      <div>
-        {data.length > 0 && (
-          <div>
-            <h1>{data[0].productName}</h1>
-            <p>Price: ${data[0].price}</p>
-            <img src={data[0].imageUrl} alt="API Image" />
-            
-          </div>
-        )}
-      </div>
+      
 
 
-
+          <ProductCard/>
 
 
 

@@ -1,8 +1,8 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
-import NavBottomReplace from "../dummyNavBar/NavBottomReplace";
-import NavTopReplace from "../dummyNavBar/NavTopReplace";
+import NavBottomReplace from "../../components/dummyNavBar/NavBottomReplace";
+import NavTopReplace from "../../components/dummyNavBar/NavTopReplace";
 
 const Profile = () => {
   return (

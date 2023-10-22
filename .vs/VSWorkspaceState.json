@@ -5,8 +5,11 @@
     "\\Backend\\Manero",
     "\\Backend\\Manero\\Controllers",
     "\\Backend\\Manero\\Models",
-    "\\Backend\\Manero\\Models\\Entities"
+    "\\Backend\\Manero\\Models\\dto",
+    "\\Backend\\Manero\\Models\\Entities",
+    "\\Backend\\Manero\\Properties",
+    "\\Backend\\Manero\\Repos"
   ],
-  "SelectedNode": "\\Backend\\Manero.sln",
+  "SelectedNode": "\\Backend\\Manero\\Repos\\MainRepository.cs",
   "PreviewInSolutionExplorer": false
 }
