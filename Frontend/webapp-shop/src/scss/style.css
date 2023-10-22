@@ -195,7 +195,52 @@
 .product-page .container .add-to-cart .button:hover {
   background-color: rgba(0, 0, 0, 0.808);
 }
+.product-page .container .reviews {
+  display: flex;
+  justify-content: space-between;
+}
+.product-page .container .reviews h6 {
+  font-weight: 700;
+  font-size: 22px;
+}
 
-.paddingbottom {
+.review-card {
   padding-bottom: 50px;
+}
+.review-card .container {
+  display: flex;
+  border-bottom: 1px solid #DBE3F5;
+}
+.review-card .container .profile-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #DBE3F5;
+  min-width: 50px;
+  min-height: 50px;
+}
+.review-card .container .text-info {
+  padding-left: 20px;
+}
+.review-card .container .text-info .name-rating {
+  display: flex;
+  justify-content: space-between;
+  min-width: 280px;
+}
+.review-card .container .text-info .name-rating p {
+  font-size: 20px;
+  color: black;
+  font-weight: 350;
+}
+.review-card .container .text-info .name-rating .stars {
+  color: #FFBE00;
+}
+.review-card .container .text-info .name-date .date {
+  font-size: 12px;
+  color: black;
+}
+.review-card .container .text-info .comment {
+  padding-top: 10px;
+  color: #626262;
+  padding-bottom: 20px;
 }

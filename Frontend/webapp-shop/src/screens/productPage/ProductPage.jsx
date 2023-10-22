@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import NavTopReplace from "../../components/dummyNavBar/NavTopReplace";
 import NavBottomReplace from "../../components/dummyNavBar/NavBottomReplace";
 import ProductCard from "../../components/products/ProductCard";
-
+import ProductReview from "../../components/products/ProductReview";
 
 const ProductPage = () => {
   const [data, setData] = useState([]);
@@ -16,14 +16,10 @@ const ProductPage = () => {
   return (
     <>
       <NavTopReplace />
-      
 
-
-          <ProductCard/>
-
-
-
-      
+      <ProductCard />
+      <ProductReview />
+      <ProductReview />
 
       <NavBottomReplace />
     </>

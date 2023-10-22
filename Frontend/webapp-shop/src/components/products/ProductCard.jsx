@@ -83,11 +83,17 @@ const ProductCard = () => {
               </p>
             </div>
 
-            <div className="add-to-cart"><p className="button">+ ADD TO CART</p></div>
+            <div className="add-to-cart">
+              <p className="button">+ ADD TO CART</p>
+            </div>
+
+            <div className="reviews">
+              <h6>Reviews (23)</h6>
+              <p>View all</p>
+            </div>
           </div>
         </div>
       </div>
-      <div className="paddingbottom"></div>
     </>
   );
 };

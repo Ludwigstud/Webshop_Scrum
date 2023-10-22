@@ -233,34 +233,39 @@
 
         }
 
-.add-to-cart{
-    padding-top: 10px;
-    padding-bottom: 10px;
+        .add-to-cart {
+            padding-top: 10px;
+            padding-bottom: 10px;
 
-.button{
-    color: white;
-    background-color: black;
+            .button {
+                color: white;
+                background-color: black;
+                display: flex;
+                justify-content: center;
+                padding-top: 15px;
+                padding-bottom: 15px;
+                border-radius: 25px;
+
+                &:hover {
+                    background-color: rgba(0, 0, 0, 0.808);
+                }
+            }
+
+
+        }
+
+
+.reviews{
     display: flex;
-    justify-content: center;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    border-radius: 25px;
-    &:hover{
-        background-color: rgba(0, 0, 0, 0.808);
+    justify-content: space-between;
+    h6{
+        font-weight: 700;
+        font-size: 22px;
     }
 }
-
-
-}
-
-
-
 
 
     }
 
 }
 
-.paddingbottom {
-    padding-bottom: 50px;
-}
