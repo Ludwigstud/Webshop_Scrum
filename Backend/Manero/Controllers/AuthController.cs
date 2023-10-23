@@ -27,15 +27,15 @@ public class AuthController : ControllerBase
         if(ModelState.IsValid)
         {
 
-            bool result = await _authService.SignUpAsync(schema);
+            bool signUpSuccess = await _authService.SignUpAsync(schema);
 
-            if (result)
+            if (signUpSuccess)
             {
                 return Created("", null!);
             }
             else
             {
-                return Problem();
+                return Conflict();
             }
         }
 
