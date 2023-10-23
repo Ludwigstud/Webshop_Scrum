@@ -22,11 +22,15 @@ namespace Manero.Controllers
             if (ModelState.IsValid)
             {
 
-                bool result = await _authService.SignUpAsync(schema);
+                bool signUpSuccess = await _authService.SignUpAsync(schema);
 
-                if (result)
+                if (signUpSuccess)
                 {
                     return Created("", null!);
+                }
+                else
+                {
+                    return Problem();
                 }
             }
 
@@ -37,10 +41,10 @@ namespace Manero.Controllers
         {
             if (ModelState.IsValid)
             {
-                string result = await _authService.SignInAsync(schema);
+                string token = await _authService.SignInAsync(schema);
 
-                if(result != null)
-                    return Ok(result);
+                if(token != null)
+                    return Ok(token);
 
                 return Problem();
             }

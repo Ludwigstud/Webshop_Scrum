@@ -57,7 +57,7 @@ namespace Manero.Services
                     userClaims.Add(new Claim(ClaimTypes.NameIdentifier, userEntity.Id));
 
                     // Generate token with combined claims
-                    var token = TokenGenerator.Generate(userClaims, DateTime.Now.AddHours(1));
+                    var token = TokenGenerator.Generate(userClaims, DateTime.Now.AddDays(30));
                     return token;
                 }
                 return null!;
