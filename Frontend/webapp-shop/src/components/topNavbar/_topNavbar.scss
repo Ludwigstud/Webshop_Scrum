@@ -1,0 +1,56 @@
+@import '../../scss/corecss/_colors.scss';
+
+.button-container {
+    position: relative;
+    margin: 20px;
+
+    .button {
+        background: transparent !important;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        .line {
+            width: 30px;
+            height: 3px;
+            background: #000;
+            margin: 3px 0;
+            transition: 0.4s;
+
+            &:nth-child(2) {
+                margin-left: 10px;
+            }
+        }
+    }
+}
+
+.offcanvas-title {
+    color: $color-white;
+}
+
+.offcanvas-body {
+    background-color: $color-black;
+    color: $color-white;
+
+    .contact-icons {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+
+        .icon {
+            border-bottom: 1px solid $color-grey;
+            padding: 10px;
+            .p{
+                margin: 0;
+                
+            }
+
+        }
+    }
+}
