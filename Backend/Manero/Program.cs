@@ -17,11 +17,14 @@ builder.Services.AddScoped<CustomerRepo>();
 
 // Services
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+    );
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Identity")));
 builder.Services.AddScoped<AuthService>();
+
 
 
 
@@ -70,7 +73,7 @@ builder.Services.AddAuthentication(x =>
 
 
 var app = builder.Build();
-
+app.UseStaticFiles();
 app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
 if (app.Environment.IsDevelopment())
