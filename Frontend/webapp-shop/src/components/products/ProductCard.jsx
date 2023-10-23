@@ -3,14 +3,35 @@ import { FaRegHeart, FaStar } from "react-icons/fa6";
 
 const ProductCard = () => {
   const [products, setProducts] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('https://localhost:7042/api/Products')
-      .then((response) => response.json())
-      .then((data) => setProducts(data))
-      .catch((error) => console.error('Error fetching data:', error));
+    try {
+      fetch('https://localhost:7042/api/Products')
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then((data) => setProducts(data))
+        .catch((error) => {
+          setError(error);
+          console.error('Error fetching data:', error);
+        });
+    } catch (error) {
+      setError(error);
+      console.error('Error fetching data:', error);
+    }
   }, []);
 
+  if (error) {
+    return (
+      <div className="error-message">
+        <p>Error: {error.message}</p>
+      </div>
+    );
+  }
   return (
     <>
       <div className="product-page">
