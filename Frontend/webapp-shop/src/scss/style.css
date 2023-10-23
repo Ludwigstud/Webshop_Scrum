@@ -1,3 +1,4 @@
+
 .navbar-bottom {
   position: fixed;
   width: 100%;
@@ -243,4 +244,269 @@
   padding-top: 10px;
   color: #626262;
   padding-bottom: 20px;
+=======
+.registrate-user {
+  margin-top: 50px;
+}
+.registrate-user h1 {
+  text-align: center;
+  margin-bottom: 2em;
+  font-weight: 700;
+}
+.registrate-user .registrate-input-group {
+  position: relative;
+  width: 100%;
+}
+.registrate-user .registrate-input-group .error-message {
+  color: #F4303C;
+  font-size: 12px;
+  height: 30px;
+  margin-left: 10px;
+}
+.registrate-user .registrate-input-group .registrate-user-label {
+  position: absolute;
+  left: 3em;
+  top: -0.4em;
+  padding: 0 0.5em;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  background-color: white;
+  z-index: 99;
+}
+.registrate-user .registrate-input-group .registrate-user-input {
+  color: #111111;
+  font-size: 0.9rem;
+  line-height: 1;
+  height: 3.6em;
+  width: 100%;
+  padding: 0.8em 1em;
+  border: 1.5px solid #DBE3F5;
+  border-radius: 1.8em;
+}
+.registrate-user .registrate-input-group .registrate-icon-input-container {
+  position: relative;
+}
+.registrate-user .registrate-input-group .registrate-icon-input-container .registrate-user-icon {
+  position: absolute;
+  right: 1em;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.registrate-user .registrate-input-group .registrate-icon-input-container .cross-icon {
+  color: #F4303C;
+}
+.registrate-user .registrate-input-group .registrate-icon-input-container .check-icon {
+  color: #00824B;
+}
+.registrate-user button {
+  color: #FFFFFF;
+  background-color: #111111;
+  width: 100%;
+  display: block;
+  border-radius: 1.8em;
+  padding: 10px;
+  border: 0px;
+  margin: 1em 0;
+}
+.registrate-user button:hover {
+  opacity: 0.7;
+}
+.registrate-user a {
+  text-decoration: none;
+  color: #626262;
+}
+.registrate-user a:hover {
+  opacity: 0.7;
+}
+.registrate-user .social-media-icons {
+  font-size: 35px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.registrate-user .social-media-icons > * {
+  width: 75px;
+  height: 75px;
+  border: 1px solid #DBE3F5;
+  border-radius: 50%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.registrate-user .social-media-icons > *:hover {
+  opacity: 0.7;
+}
+.registrate-user .social-media-icons #facebook-icon {
+  color: #3b5999;
+}
+.registrate-user .social-media-icons #twitter-icon {
+  color: #55acee;
+}
+.registrate-user .social-media-icons #google-icon {
+  color: #de4f3d;
+}
+
+.account-created-section .container .row .col-12 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+.account-created-section .container .row .col-12 p {
+  color: #626262;
+}
+.account-created-section .container .row .col-12 a {
+  text-decoration: none;
+}
+.account-created-section .container .row .col-12 button {
+  color: #FFFFFF;
+  background-color: #111111;
+  width: 100%;
+  display: block;
+  border-radius: 1.8em;
+  padding: 10px;
+  border: 0px;
+  margin: 1em 0;
+}
+.account-created-section .container .row .col-12 button:hover {
+  opacity: 0.7;
+}
+.account-created-section .container .row .col-12 .icon {
+  border: 1px solid #DBE3F5;
+  border-radius: 50%;
+  padding: 50px;
+  background-color: #DBE3F5;
+}
+@media (min-width: 992px) {
+  .account-created-section .container .row .col-12 .icon {
+    padding: 140px;
+  }
+}
+.account-created-section .container .row .col-12 .icon .success-icon {
+  width: 100px;
+  height: 100px;
+}
+@media (min-width: 992px) {
+  .account-created-section .container .row .col-12 .icon .success-icon {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.register-user .container .row .col-12 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.register-user .container .row .col-12 .sign-in-title {
+  text-align: center;
+  margin: 30px 0;
+}
+.register-user .container .row .col-12 .col-12 form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.register-user .container .row .col-12 .col-12 form .sign-in-input {
+  margin: 20px 0;
+}
+.register-user .container .row .col-12 .col-12 form .col-12 {
+  flex-direction: row;
+  justify-content: space-between;
+}
+.register-user .container .row .col-12 .col-12 form .col-12 .checkbox {
+  display: flex;
+}
+.register-user .container .row .col-12 .col-12 form .col-12 .checkbox input {
+  margin-right: 5px;
+  border: 2px solid red;
+}
+.register-user .container .row .col-12 .col-12 form .col-12 .forgot-password {
+  display: flex;
+  justify-content: flex-end;
+}
+.register-user .container .row .col-12 .col-12 form .col-12 .forgot-password a {
+  color: black;
+  text-decoration: none;
+}
+.register-user .container .row .col-12 .col-12 form .sign-in-button {
+  background-color: #111111;
+  color: #FFFFFF;
+  border-radius: 20px;
+  margin: 20px 0;
+}
+.register-user .container .row .col-12 .col-12 .register-link {
+  display: flex;
+  justify-content: flex-start;
+}
+.register-user .container .row .col-12 .col-12 .register-link a {
+  color: black;
+  text-decoration: none;
+}
+.register-user .container .row .col-12 .social-media-icons {
+  font-size: 35px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.register-user .container .row .col-12 .social-media-icons > * {
+  width: 75px;
+  height: 75px;
+  border: 1px solid #DBE3F5;
+  border-radius: 50%;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.register-user .container .row .col-12 .social-media-icons > *:hover {
+  opacity: 0.7;
+}
+.register-user .container .row .col-12 .social-media-icons #facebook-icon {
+  color: #3b5999;
+}
+.register-user .container .row .col-12 .social-media-icons #twitter-icon {
+  color: #55acee;
+}
+.register-user .container .row .col-12 .social-media-icons #google-icon {
+  color: #de4f3d;
+}
+.register-user .registrate-input-group {
+  position: relative;
+}
+.register-user .registrate-input-group .registrate-user-label {
+  position: absolute;
+  left: 3em;
+  top: -0.4em;
+  padding: 0 0.5em;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  background-color: white;
+  z-index: 99;
+}
+.register-user .registrate-input-group .registrate-user-input {
+  color: #111111;
+  font-size: 0.9rem;
+  line-height: 1;
+  height: 3.6em;
+  width: 100%;
+  padding: 0.8em 1em;
+  border: 1.5px solid #DBE3F5;
+  border-radius: 1.8em;
+}
+.register-user .registrate-input-group .registrate-icon-input-container {
+  position: relative;
+  margin-bottom: 20px;
+}
+.register-user .registrate-input-group .registrate-icon-input-container .registrate-user-icon {
+  position: absolute;
+  right: 1em;
+  top: 50%;
+  transform: translateY(-50%);
 }
