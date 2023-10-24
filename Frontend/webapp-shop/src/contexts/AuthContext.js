@@ -36,11 +36,12 @@ export const AuthProvider = ({children}) => {
     
         if (res.status === 200) {
           const data = await res.text();
+          const jsonData = JSON.parse(data)
           if(signInSchema.rememberMe === true){
-            localStorage.setItem("accessToken", data);
+            localStorage.setItem("accessToken", jsonData.content.token);
           }
           else{
-            sessionStorage.setItem("accessToken", data);
+            sessionStorage.setItem("accessToken", jsonData.content.token);
           }
           setLoginChecker(null);
           return loginChecker;

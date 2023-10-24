@@ -49,11 +49,15 @@ public class AuthService : IAuthService
 
                         // Generate token with combined claims
                         var token = TokenGenerator.Generate(userClaims, DateTime.Now.AddDays(30));
-                        response.Content!.Token = token;
+                        response.Content = token;
                         response.StatusCode = StatusCode.Ok;
                     }
-                    response.StatusCode = StatusCode.Conflict;
-                    response.Content = null;
+                    else
+                    {
+                        response.StatusCode = StatusCode.Conflict;
+                        response.Content = null;
+                    }
+
                 }
                 else
                 {
@@ -75,47 +79,47 @@ public class AuthService : IAuthService
         }
         return response;
     }
-    public async Task<bool> SignUpAsync(SignUpSchema schema)
+    public async Task<ServiceResponse<bool>> SignUpAsync(ServiceRequest<SignUpSchema> request)
     {
-        IdentityUser identityUser = schema;
-
-        var result = await _userManager.CreateAsync(identityUser, schema.Password);
-
-        if (result.Succeeded)
+        var response = new ServiceResponse<bool>();
+        try
         {
-            CustomerEntity customerEntity = schema;
-            customerEntity.Id = identityUser.Id;
-
-            await _dataContext.AddAsync(customerEntity);
-            await _dataContext.SaveChangesAsync();
-
-            return true;
-        }
-        return false;
-    }
-
-    public async Task<string> SignInAsync(SignInSchema schema)
-    {
-        var result = await _signInManager.PasswordSignInAsync(schema.Email, schema.Password, schema.RememberMe, false);
-        if (result.Succeeded)
-        {
-            var userEntity = await _userManager.Users.FirstOrDefaultAsync(x => x.Email == schema.Email);
-            if (userEntity != null)
+            if (request.Content != null)
             {
-                // Get user claims (including custom claims) to include in the token
-                var userClaims = await _userManager.GetClaimsAsync(userEntity);
 
-                // Add user's ID as a claim
-                userClaims.Add(new Claim(ClaimTypes.NameIdentifier, userEntity.Id));
+                IdentityUser identityUser = request.Content;
 
-                // Generate token with combined claims
-                var token = TokenGenerator.Generate(userClaims, DateTime.Now.AddDays(30));
-                return token;
+                var result = await _userManager.CreateAsync(identityUser, request.Content.Password);
+
+                if (result.Succeeded)
+                {
+                    CustomerEntity customerEntity = request.Content;
+                    customerEntity.Id = identityUser.Id;
+
+                    await _dataContext.AddAsync(customerEntity);
+                    await _dataContext.SaveChangesAsync();
+
+                    response.Content = true;
+                    response.StatusCode = StatusCode.Created;
+                }
+                else
+                {
+                    response.Content = false;
+                    response.StatusCode = StatusCode.Conflict;
+                }
+
             }
-            return null!;
+            else
+            {
+                response.Content = false;
+                response.StatusCode = StatusCode.BadRequest;
+            }
         }
-        return null!;
+        catch
+        {
+            response.StatusCode = StatusCode.InternalServerError;
+            response.Content = false;
+        }
+        return response;
     }
-
-    
 }
