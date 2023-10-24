@@ -1,4 +1,6 @@
 ﻿using Manero.Helpers;
+using Manero.Interfaces;
+using Manero.Models;
 using Manero.Models.Contexts;
 using Manero.Models.Schemas;
 using Manero.Services;
@@ -13,12 +15,12 @@ namespace Manero.Controllers;
 public class AuthController : ControllerBase
 {
     private readonly AuthService _authService;
-
-    public AuthController(AuthService authService)
+    private readonly IAuthService _iAuthService;
+    public AuthController(AuthService authService, IAuthService iAuthService)
     {
 
         _authService = authService;
-
+        _iAuthService = iAuthService;
     }
 
     [HttpPost("SignUp")]
@@ -53,6 +55,24 @@ public class AuthController : ControllerBase
                 return Ok(token);
             }
             return Problem();
+        }
+        return BadRequest();
+    }
+
+
+    [HttpPost("SignInNew")]
+    public async Task<IActionResult> SignInNew(SignInSchema schema)
+    {
+        if (ModelState.IsValid)
+        {
+            var request = new ServiceRequest<SignInSchema> { Content = schema };
+            var response = await _iAuthService.SignInAsync(request);
+            if (response != null)
+            {
+                return StatusCode((int)response.StatusCode, response);
+            }
+            return Problem();
+           
         }
         return BadRequest();
     }
