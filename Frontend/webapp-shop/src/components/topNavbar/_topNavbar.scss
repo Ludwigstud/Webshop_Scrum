@@ -28,29 +28,92 @@
     }
 }
 
-.offcanvas-title {
-    color: $color-white;
-}
+
+
+
 
 .offcanvas-body {
+    h3 {
+        padding-bottom: 2rem;
+        padding-left: 2rem;
+        font-size: 2rem;
+    }
+
     background-color: $color-black;
     color: $color-white;
+    padding-top: 6rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     .contact-icons {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(3, 1fr);
-        grid-column-gap: 0px;
-        grid-row-gap: 0px;
+        
 
-        .icon {
-            border-bottom: 1px solid $color-grey;
-            padding: 10px;
-            .p{
-                margin: 0;
-                
+        .contactinfo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            border-bottom: 1px solid gray;
+            padding-left: 2rem;
+            padding-bottom: 2rem;
+
+            .icon {
+                border-radius: 50%;
+                outline: 2px solid var(--color-text-faded);
+                outline-offset: 0.5rem;
+                display: inline-flex;
+                justify-content: center;
+                color: $color-greytext;
             }
 
+            p {
+                padding-left: 0.5rem;
+                margin: 0px;
+            }
+        }
+    }
+}
+
+
+.order-tracker {
+    padding-bottom: 4rem;
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: left; // Center elements vertically
+
+    .input-container {
+        position: relative;
+        display: flex; // Use flex for input container
+        align-items: center; // Center elements vertically
+        gap: 10px; // Spacing between input and button
+
+        input {
+            all: unset;
+            height: 3rem;
+            border-radius: 2.5rem;
+            padding-left: 1rem;
+        }
+
+        button {
+            position: absolute;
+            top: 50%;
+            right: 2.4rem;
+            transform: translateY(-50%);
+            border: 0;
+            padding: 0;
+            background: transparent;
+            color: var(--color-greytext);
+            border-radius: 50%;
+            width: 2.6rem;
+            height: 2.6rem;
+
+            .container-arrow {
+                display: flex;
+                justify-content: center;
+            }
         }
     }
 }
