@@ -2,8 +2,15 @@
 @import "../components/dummyNavBar/navBottomReplace";
 @import "../components/dummyNavBar/navTopReplace";
 @import "../components/products/productCard";
-@import "../components/products/productReview"
+@import "../components/products/productReview";
 @import '../components/RegistrateUser/registrateUser';
 @import '../components/AccountCreated/accountCreated';
 @import '../screens/SignIn/SignIn';
-
+@import '../screens/Home/Home';
+@import '../components/BestSellers/BestSellers';
+@import '../components/BestSellersSale/BestSallersSale';
+@import '../components/CategoriesHeader/CategoriesHeader';
+@import '../components/FeaturedProducts/FeaturedProducts';
+@import '../components/SaleProducts/SaleProducts';
+@import '../components/Showcase/Showcase';
+@import '../components/topNavbar/topNavbar';

@@ -1,4 +1,5 @@
 import { useContext, createContext } from "react";
+import { json } from "react-router-dom";
 
 
 
@@ -36,11 +37,12 @@ export const AuthProvider = ({children}) => {
     
         if (res.status === 200) {
           const data = await res.text();
+          const JsonData = JSON.parse(data)
           if(signInSchema.rememberMe === true){
-            localStorage.setItem("accessToken", data);
+            localStorage.setItem("accessToken", JsonData.content.token);
           }
           else{
-            sessionStorage.setItem("accessToken", data);
+            sessionStorage.setItem("accessToken", JsonData.content.token);
           }
           setLoginChecker(null);
           return loginChecker;
