@@ -4,15 +4,18 @@
 
 .best-sellers-container{
     margin-top: 10px;
+    display: grid;
+    grid-template-columns: auto;
+    gap: 20px;
     .content {
         position: relative;
 
         .item{
             display: grid;
-            grid-template-columns: auto auto;
+            grid-template-columns: 150px auto;
             .product-image{
-                background-color: $color-blue;
-                padding: 60px 0;
+                width: 150px;
+                height: 150px;
             }
             .info{
                 margin-left: 20px;

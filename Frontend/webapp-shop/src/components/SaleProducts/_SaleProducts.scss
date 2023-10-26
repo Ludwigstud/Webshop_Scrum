@@ -8,9 +8,10 @@
         position: relative;
 
         .product-image{
-            background-color: $color-blue;
-            padding: 120px 40px;
+            width: 170px;
+            height: 200px;
             position: relative;
+            padding-right: 15px;
         }
         .sale{
             background-color: #69864D;

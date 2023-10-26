@@ -39,7 +39,7 @@ Vi arbetar med följande teknikstack:
 
 ***Backend: Vår backend byggs med .NET och Swagger för att skapa säkra API:er.***
 
-***CSS: Vi använder .scss för att skapa dynamiska och snygga stilmallar för våra webbapplikationer.***
+***CSS: Vi använder .scss för att skapa dynamiska och snygga stilmallar för våra webbapplikationer. För att alla ska använda sig av samma savepath så går man in i File > Preferences > Settings > sök på SASS FORMATS > Edit in settings.json > "savePath": "/src/scss".***
 
 ### Pascal Case (C#): ###
 
@@ -85,4 +85,8 @@ Innan vi mergar ihop koden från en branch till master, ser vi till att den gran
 ***Models/Context:*** Här finnsvår datacontextklass, som kopplar upp applikationen mot databasen. Om ändring behövs, diskutera dessa i gruppen först.
 
 ***Models/Repos:*** I denna mapp har vi en MainRepository, som fungerar som en bas för andra repositories. Den innehåller metoder för att utföra vanliga uppgifter som att skapa nya entiteter i databasen.
+
+## Icons ##
+https://react-icons.github.io/react-icons
+
 

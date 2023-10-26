@@ -7,8 +7,10 @@ public class ProductEntity
     public int Price { get; set; }
     public string Description { get; set; } = null!;
 
+    public string? ImageUrl { get; set; }
+
     public CategoryEntity Category { get; set; } = null!;
     public int CategoryId { get; set; }
     public DiscountEntity Discount { get; set; } = null!;
-    public int DiscountId { get; set; }
+    public int? DiscountId { get; set; }
 }

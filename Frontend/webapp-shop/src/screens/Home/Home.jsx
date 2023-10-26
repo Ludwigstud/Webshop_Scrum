@@ -1,16 +1,45 @@
-
+import React, { useEffect, useState } from "react";
 import './_Home.scss'
 import {Link} from "react-router-dom"
 import CategoriesHeader from '../../components/CategoriesHeader/CategoriesHeader'
 import Showcase from '../../components/Showcase/Showcase'
 import FeaturedProducts from '../../components/FeaturedProducts/FeaturedProducts'
-import SaleProducts from '../../components/SaleProducts/SaleProducts'
 import BestSellers from '../../components/BestSellers/BestSellers'
-import BestSellersSale from '../../components/BestSellersSale/BestSellersSale'
 import {BiSolidChevronRight} from 'react-icons/bi'
 const Home = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
+  useEffect(() => {
+    fetch("https://localhost:7042/api/Products")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setData(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err);
+        setLoading(false);
+      });
+  }, []);
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  if (data.length === 0) {
+    return <div>No data available.</div>;
+  }
   return (
     <>
     <section className='home-section'>
@@ -31,17 +60,10 @@ const Home = () => {
           </div>
           <div className='cards'>
           <div className='card-item'>
-            < FeaturedProducts productName="Summer pants" productPrice="31.78"/>
+            < FeaturedProducts />
             </div>
-            <div className='card-item'>
-            < SaleProducts productName="Shoulder bag" productPriceBeforeSale="38.00" productPriceAfterSale="31.78"/>
-            </div>
-            <div className='card-item'>
-            < FeaturedProducts productName="Black sneakers" productPrice="29.95"/>
-            </div>
-            <div className='card-item'>
-            < FeaturedProducts productName="Warm hat" productPrice="6.93"/>
-            </div>
+   
+
           </div>
         </div>
         <hr />
@@ -51,14 +73,8 @@ const Home = () => {
             <Link to="/Products">view all <span><BiSolidChevronRight /></span></Link>
           </div>
           <div className='cards'>
-          <div className='card-item'>
-            < BestSellers productName="Hand bag" productPrice="24.95"/>
-            </div>
             <div className='card-item'>
-            < BestSellers productName="T-shirt" productPrice="12.95"/>
-            </div>
-            <div className='card-item'>
-            < BestSellersSale productName="Summer dress" productPriceBeforeSale="36.00" productPriceAfterSale="32.78"/>
+              < BestSellers/>
             </div>
           </div>
         </div>

@@ -32,12 +32,6 @@
 .home-section .container .featured-products .section-header a span {
   font-size: 18px;
 }
-.home-section .container .featured-products .cards {
-  display: grid;
-  grid-template-columns: auto auto;
-  gap: 20px;
-  margin-top: 20px;
-}
 .home-section .container .best-sellers {
   margin-top: 40px;
 }
@@ -58,9 +52,4 @@
 }
 .home-section .container .best-sellers .section-header a span {
   font-size: 18px;
-}
-.home-section .container .best-sellers .cards {
-  display: grid;
-  grid-template-columns: auto;
-  gap: 20px;
 }/*# sourceMappingURL=style.css.map */

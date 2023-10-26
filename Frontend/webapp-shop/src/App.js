@@ -3,11 +3,14 @@ import Home from './screens/Home/Home'
 import './scss/style.scss'
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
+    <>
+      <BrowserRouter>
+        <Routes>
         <Route path="/Home" element={<Home />} />
-      </Routes>
-    </BrowserRouter>
+
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
