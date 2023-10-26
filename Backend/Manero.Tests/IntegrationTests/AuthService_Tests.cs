@@ -15,6 +15,8 @@ public class AuthService_Tests
         _injectFixture = new InjectFixture();
     }
 
+
+
     
 
     [Fact]
@@ -64,6 +66,54 @@ public class AuthService_Tests
     }
 
 
+    [Fact]
+    public async Task SignUpAsync_Should_ReturnBadRequest_And_False_WhenAnyInputIsEmpty()
+    {
+        //Arrange
+        var signUpSchema = new SignUpSchema() { FirstName = "", LastName = "", Email = "", Password = "" };
+        var request = new ServiceRequest<SignUpSchema>
+        {
+            Content = signUpSchema
+        };
+
+
+        //Act
+        var result = await _injectFixture._authService.SignUpAsync(request);
+
+
+        //Assert
+        Assert.False(result.Content);
+        Assert.Equal(StatusCode.BadRequest, result.StatusCode);
+
+
+        _injectFixture.Dispose();
+    }
+
+
+    [Fact]
+    public async Task SignUpAsync_Should_ReturnBadRequest_And_False_WhenEmailDoesntMeetTheRequirements()
+    {
+        //Arrange
+        var signUpSchema = new SignUpSchema() { FirstName = "Test", LastName = "Test", Email = "Dennisdomain.com", Password = "BytMig123!" };
+        var request = new ServiceRequest<SignUpSchema>
+        {
+            Content = signUpSchema
+        };
+
+
+        //Act
+        var result = await _injectFixture._authService.SignUpAsync(request);
+
+
+        //Assert
+        Assert.False(result.Content);
+        Assert.Equal(StatusCode.BadRequest, result.StatusCode);
+
+
+        _injectFixture.Dispose();
+    }
+
+
 
     [Fact]
     public async Task SignInAsync_Should_ReturnAToken_And_Response200_WhenSuccessfullySignedIn()
@@ -87,6 +137,35 @@ public class AuthService_Tests
 
         //Assert
         Assert.Equal(200, (int)result.StatusCode);
+
+        _injectFixture.Dispose();
+    }
+
+
+    [Fact]
+    public async Task SignInAsync_Should_ReturnBadRequest_And_False_WhenAnyInputIsEmpty()
+    {
+               //Arrange
+        var signUpSchema = new SignUpSchema() { FirstName = "Test", LastName = "Test", Email = "Dennis@domain.com", Password = "BytMig123!" };
+        var dummyData = new ServiceRequest<SignUpSchema>
+        {
+            Content = signUpSchema
+        };
+        await _injectFixture._authService.SignUpAsync(dummyData);
+
+        var signInschema = new SignInSchema() { Email = "", Password = "", RememberMe = false };
+        var request = new ServiceRequest<SignInSchema>
+        {
+            Content = signInschema
+        };
+        //Act
+        var result = await _injectFixture._authService.SignInAsync(request);
+
+
+        //Assert
+        Assert.Null(result.Content);
+        Assert.Equal(StatusCode.BadRequest, result.StatusCode);
+
 
         _injectFixture.Dispose();
     }

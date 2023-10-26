@@ -37,7 +37,7 @@ public class AuthService : IAuthService
         var response = new ServiceResponse<UserToken>();
         try
         {
-            if (request.Content != null)
+            if (request.Content != null && !string.IsNullOrEmpty(request.Content.Password) && !string.IsNullOrEmpty(request.Content.Email))
             {
                 var result = await _signInManager.PasswordSignInAsync(request.Content.Email, request.Content.Password, request.Content.RememberMe, false);
                 if (result.Succeeded)
@@ -89,7 +89,7 @@ public class AuthService : IAuthService
         var response = new ServiceResponse<bool>();
         try
         {
-            if (request.Content != null)
+            if (request.Content != null && !string.IsNullOrEmpty(request.Content.Password) && !string.IsNullOrEmpty(request.Content.Email) && !string.IsNullOrEmpty(request.Content.FirstName) && !string.IsNullOrEmpty(request.Content.LastName))
             {
 
                 IdentityUser identityUser = request.Content;

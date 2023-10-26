@@ -1,12 +1,10 @@
 ﻿using Manero.Interfaces;
 using Manero.Models.Contexts;
-using Manero.Repos;
 using Manero.Services;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.V4.Pages.Account.Manage.Internal;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using Moq;
+using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 
 namespace Manero.Tests.Fakes
@@ -50,7 +48,11 @@ namespace Manero.Tests.Fakes
                 var passwordValidator = new PasswordValidator<IdentityUser>();
                 var validationResult = passwordValidator.ValidateAsync(fakeUserManager.Object, user, password).Result;
 
-                if (validationResult.Succeeded)
+                var emailValidator = new EmailAddressAttribute();
+                var validationEmailResult = emailValidator.IsValid(user.Email);
+
+
+                if (validationResult.Succeeded && validationEmailResult)
                 {
                     var passwordHasher = new PasswordHasher<IdentityUser>();
                     user.PasswordHash = passwordHasher.HashPassword(user, password);
@@ -108,9 +110,14 @@ namespace Manero.Tests.Fakes
 
 
 
-        public void Dispose()
+        public async void Dispose()
         {
+            if (SignInManager != null)
+            {
+                await SignInManager.SignOutAsync();
+            }
             UserManager?.Dispose();
+            await DbContext.Database.EnsureDeletedAsync();
             DbContext?.Dispose();
         }
     }

@@ -28,7 +28,12 @@ namespace Manero.Tests.Fakes
                     RequireLowercase = true,
                     RequireUppercase = true,
                     RequireNonAlphanumeric = true
+                },
+                User = new UserOptions
+                {
+                    RequireUniqueEmail = true,
                 }
+                
             };
         }
     }
