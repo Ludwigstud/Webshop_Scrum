@@ -1,4 +1,3 @@
-
 import { AuthProvider } from "./contexts/AuthContext";
 import RegistrateUserScreen from "./screens/RegistrateUserScreen/RegistrateUserScreen";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
