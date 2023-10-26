@@ -7,9 +7,8 @@ import {
   AiOutlinePhone,
   AiOutlineArrowRight,
 } from 'react-icons/ai';
-import './_topNavbar.scss';
 
-function Example() {
+function TopNavbar() {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -64,4 +63,4 @@ function Example() {
   );
 }
 
-export default Example;
+export default TopNavbar;
