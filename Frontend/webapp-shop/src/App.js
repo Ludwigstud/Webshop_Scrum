@@ -3,6 +3,8 @@ import RegistrateUserScreen from "./screens/RegistrateUserScreen/RegistrateUserS
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignIn from "./screens/SignIn/SignIn";
 import ProductPage from "./screens/productPage/ProductPage";
+import Home from './screens/Home/Home'
+import TopNavbar from "./components/topNavbar/TopNavbar";
 function App() {
 
 
@@ -10,8 +12,10 @@ function App() {
     return (
         <>
             <AuthProvider>
+                <TopNavbar/>
                 <Router>
                     <Routes>
+                    <Route path="/" element={<Home />} />
                         <Route
                             exact
                             path="/Register"
@@ -23,7 +27,8 @@ function App() {
                             element={<SignIn/>}
 
                         />
-                                <Route path="/" element={<ProductPage />} />
+                                <Route path="/product" element={<ProductPage />} />
+
                     </Routes>
                 </Router>
             </AuthProvider>
