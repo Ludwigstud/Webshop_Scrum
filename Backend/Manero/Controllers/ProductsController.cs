@@ -46,12 +46,12 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet("GetproductsHadi")]
-
     public async Task<IActionResult> GetProductsHadi()
     {
         var items = await _context.Products.ToListAsync();
         var products = new List<ProductEntity>();
         foreach (var item in items)
+        {
             products.Add(new ProductEntity
             {
                 Id = item.Id,
@@ -60,14 +60,17 @@ public class ProductsController : ControllerBase
                 Description = item.Description,
                 ImageUrl = item.ImageUrl,
                 CategoryId = item.CategoryId
+            });
+        }
 
-            }); ;
-
-
-        if (products == null)
+        if (products.Count == 0)
+        {
+            return BadRequest();
+        }
+        else
         {
             return Ok(products);
         }
-        else return BadRequest();
     }
+
 }
