@@ -7,7 +7,7 @@ const ProductCard = () => {
 
   useEffect(() => {
     try {
-      fetch('https://localhost:7042/api/Products')
+      fetch('https://localhost:7042/api/Products/GetProduct')
         .then((response) => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
