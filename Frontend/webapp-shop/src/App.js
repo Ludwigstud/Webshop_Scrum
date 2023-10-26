@@ -3,57 +3,26 @@ import RegistrateUserScreen from "./screens/RegistrateUserScreen/RegistrateUserS
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignIn from "./screens/SignIn/SignIn";
 import ProductPage from "./screens/productPage/ProductPage";
-<<<<<<< HEAD
-import ProfileTest from "./screens/profileTest/ProfileTest"
-
+import Home from "./screens/Home/Home";
+import TopNavbar from "./components/topNavbar/TopNavbar";
+import Profile from "./screens/profile/Profile"
 function App() {
   return (
     <>
       <AuthProvider>
+        <TopNavbar />
         <Router>
           <Routes>
+            <Route path="/" element={<Home />} />
             <Route exact path="/Register" element={<RegistrateUserScreen />} />
             <Route exact path="/signin" element={<SignIn />} />
-            <Route path="/" element={<ProductPage />} />
-            <Route exact path="/profiletest" element={<ProfileTest />} />
+            <Route path="/product" element={<ProductPage />} />
+            <Route path="/Profile" element={<Profile />} />
           </Routes>
         </Router>
       </AuthProvider>
     </>
   );
-=======
-import Home from './screens/Home/Home'
-import TopNavbar from "./components/topNavbar/TopNavbar";
-function App() {
-
-
-
-    return (
-        <>
-            <AuthProvider>
-                <TopNavbar/>
-                <Router>
-                    <Routes>
-                    <Route path="/" element={<Home />} />
-                        <Route
-                            exact
-                            path="/Register"
-                            element={<RegistrateUserScreen/>}
-                        />
-                            <Route
-                            exact
-                            path="/signin"
-                            element={<SignIn/>}
-
-                        />
-                                <Route path="/product" element={<ProductPage />} />
-
-                    </Routes>
-                </Router>
-            </AuthProvider>
-        </>
-    );
->>>>>>> 41ac7a5e984fa7f5ab8f706c4ddec199cd5d1d4a
 }
 
 export default App;
