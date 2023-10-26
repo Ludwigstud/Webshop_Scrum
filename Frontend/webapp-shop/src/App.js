@@ -4,7 +4,6 @@ import RegistrateUserScreen from "./screens/RegistrateUserScreen/RegistrateUserS
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignIn from "./screens/SignIn/SignIn";
 import ProductPage from "./screens/productPage/ProductPage";
-
 function App() {
 
 

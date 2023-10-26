@@ -14,26 +14,27 @@ namespace Manero.Controllers;
 [ApiController]
 public class AuthController : ControllerBase
 {
-    private readonly AuthService _authService;
-    private readonly IAuthService _iAuthService;
-    public AuthController(AuthService authService, IAuthService iAuthService)
-    {
 
-        _authService = authService;
+    private readonly IAuthService _iAuthService;
+    public AuthController(IAuthService iAuthService)
+    {
         _iAuthService = iAuthService;
     }
 
+    
+
+
     [HttpPost("SignUp")]
-    public async Task<IActionResult> SignUp(SignUpSchema schema)
+    public async Task<IActionResult> SignUpNew(SignUpSchema schema)
     {
-        if(ModelState.IsValid)
+        if (ModelState.IsValid)
         {
+            var request = new ServiceRequest<SignUpSchema> { Content = schema };
+            var response = await _iAuthService.SignUpAsync(request);
 
-            bool signUpSuccess = await _authService.SignUpAsync(schema);
-
-            if (signUpSuccess)
+            if (response.Content)
             {
-                return Created("", null!);
+                return StatusCode((int)response.StatusCode, response);
             }
             else
             {
@@ -44,23 +45,8 @@ public class AuthController : ControllerBase
         return BadRequest();
     }
 
+
     [HttpPost("SignIn")]
-    public async Task<IActionResult> SignIn(SignInSchema schema)
-    {
-        if (ModelState.IsValid)
-        {
-            var token = await _authService.SignInAsync(schema);
-            if(token != null)
-            {
-                return Ok(token);
-            }
-            return Problem();
-        }
-        return BadRequest();
-    }
-
-
-    [HttpPost("SignInNew")]
     public async Task<IActionResult> SignInNew(SignInSchema schema)
     {
         if (ModelState.IsValid)

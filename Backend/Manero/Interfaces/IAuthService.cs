@@ -7,5 +7,6 @@ namespace Manero.Interfaces
     public interface IAuthService
     {
         Task<ServiceResponse<UserToken>> SignInAsync(ServiceRequest<SignInSchema> request);
+        Task<ServiceResponse<bool>> SignUpAsync(ServiceRequest<SignUpSchema> request);
     }
 }
