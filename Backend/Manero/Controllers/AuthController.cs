@@ -1,4 +1,6 @@
 ﻿using Manero.Helpers;
+using Manero.Interfaces;
+using Manero.Models;
 using Manero.Models.Contexts;
 using Manero.Models.Schemas;
 using Manero.Services;
@@ -12,26 +14,27 @@ namespace Manero.Controllers;
 [ApiController]
 public class AuthController : ControllerBase
 {
-    private readonly AuthService _authService;
 
-    public AuthController(AuthService authService)
+    private readonly IAuthService _iAuthService;
+    public AuthController(IAuthService iAuthService)
     {
-
-        _authService = authService;
-
+        _iAuthService = iAuthService;
     }
 
+    
+
+
     [HttpPost("SignUp")]
-    public async Task<IActionResult> SignUp(SignUpSchema schema)
+    public async Task<IActionResult> SignUpNew(SignUpSchema schema)
     {
-        if(ModelState.IsValid)
+        if (ModelState.IsValid)
         {
+            var request = new ServiceRequest<SignUpSchema> { Content = schema };
+            var response = await _iAuthService.SignUpAsync(request);
 
-            bool signUpSuccess = await _authService.SignUpAsync(schema);
-
-            if (signUpSuccess)
+            if (response.Content)
             {
-                return Created("", null!);
+                return StatusCode((int)response.StatusCode, response);
             }
             else
             {
@@ -42,17 +45,20 @@ public class AuthController : ControllerBase
         return BadRequest();
     }
 
+
     [HttpPost("SignIn")]
-    public async Task<IActionResult> SignIn(SignInSchema schema)
+    public async Task<IActionResult> SignInNew(SignInSchema schema)
     {
         if (ModelState.IsValid)
         {
-            var token = await _authService.SignInAsync(schema);
-            if(token != null)
+            var request = new ServiceRequest<SignInSchema> { Content = schema };
+            var response = await _iAuthService.SignInAsync(request);
+            if (response != null)
             {
-                return Ok(token);
+                return StatusCode((int)response.StatusCode, response);
             }
             return Problem();
+           
         }
         return BadRequest();
     }
