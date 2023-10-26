@@ -4,44 +4,45 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace Manero.Controllers
+namespace Manero.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+public class ProductsController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ProductsController : ControllerBase
+    private readonly DataContext _context;
+
+    public ProductsController(DataContext dataContext)
     {
-        private readonly DataContext _context;
+        _context = dataContext;
+    }
 
-        public ProductsController(DataContext dataContext)
+
+
+    [HttpGet("GetProduct")]
+    public async Task<IActionResult> GetProducts()
+    {
+        try
         {
-            _context = dataContext;
+            var items = await _context.Products.ToListAsync();
+            var products = new List<Product>();
+            foreach (var item in items)
+                products.Add(new Product
+                {
+                    Id = item.Id,
+                    ProductName = item.ProductName,
+                    Price = item.Price,
+                    Description = item.Description,
+                    ImageUrl = item.ImageUrl
+                });
+
+            return Ok(products);
         }
-
-        [HttpGet]
-        public async Task<IActionResult> GetProducts()
+        catch
         {
-            try
-            {
-                var items = await _context.Products.ToListAsync();
-                var products = new List<Product>();
-                foreach (var item in items)
-                    products.Add(new Product
-                    {
-                        Id = item.Id,
-                        ProductName = item.ProductName,
-                        Price = item.Price,
-                        Description = item.Description,
-                        ImageUrl = item.ImageUrl
-                    });
+           
 
-                return Ok(products);
-            }
-            catch
-            {
-               
-
-                return StatusCode(StatusCodes.Status500InternalServerError, "A database error occurred while fetching products.");
-            }
+            return StatusCode(StatusCodes.Status500InternalServerError, "A database error occurred while fetching products.");
         }
     }
 }
