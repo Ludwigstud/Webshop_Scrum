@@ -1,0 +1,42 @@
+[
+  {
+    "Id": 1,
+    "ProductName": "Red T-Shirt",
+    "Price": 19.99,
+    "Description": "A comfortable red T-shirt for casual wear.",
+    "Category": null,
+    "CategoryId": 1,
+    "Discount": null,
+    "DiscountId": 1
+  },
+  {
+    "Id": 2,
+    "ProductName": "Blue Jeans",
+    "Price": 39.99,
+    "Description": "Stylish blue jeans for all occasions.",
+    "Category": null,
+    "CategoryId": 2,
+    "Discount": null,
+    "DiscountId": 2
+  },
+  {
+    "Id": 3,
+    "ProductName": "Running Shoes",
+    "Price": 79.99,
+    "Description": "High-performance running shoes for athletes.",
+    "Category": null,
+    "CategoryId": 1,
+    "Discount": null,
+    "DiscountId": 1
+  },
+  {
+    "Id": 4,
+    "ProductName": "Leather Jacket",
+    "Price": 129.99,
+    "Description": "A classic leather jacket for a bold look.",
+    "Category": null,
+    "CategoryId": 2,
+    "Discount": null,
+    "DiscountId": 2
+  }
+]
