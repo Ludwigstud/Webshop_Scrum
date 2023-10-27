@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
@@ -42,48 +43,51 @@ const Profile = () => {
           <p>Loading...</p> 
         )}
       </div>
-
-        <div className="menu">
-          <div className="option">
-            <div className="left">
-              <i className="fa-regular fa-calendar"></i>
+        <div className='menu'>
+          <div className='option'>
+            <div className='left'>
+              <i className='fa-regular fa-calendar'></i>
               <p>Order history</p>
             </div>
-            <i className="fa-solid fa-chevron-right"></i>
+            <i className='fa-solid fa-chevron-right'></i>
           </div>
-          <div className="option">
-            <div className="left">
-              <i className="fa-regular fa-credit-card"></i>
+          <div className='option'>
+            <div className='left'>
+              <i className='fa-regular fa-credit-card'></i>
               <p>Payment method</p>
             </div>
-            <i className="fa-solid fa-chevron-right"></i>
+            <i className='fa-solid fa-chevron-right'></i>
           </div>
-          <div className="option">
-            <div className="left">
-              <i className="fa-solid fa-location-dot"></i>
+          <div className='option'>
+            <div className='left'>
+              <i className='fa-solid fa-location-dot'></i>
               <p>My address</p>
             </div>
-            <i className="fa-solid fa-chevron-right"></i>
+            <i className='fa-solid fa-chevron-right'></i>
           </div>
-          <div className="option">
-            <div className="left">
-              <i className="fa-solid fa-gift"></i>
+          <div className='option'>
+            <div className='left'>
+              <i className='fa-solid fa-gift'></i>
               <p>My promocodes</p>
             </div>
-            <i className="fa-solid fa-chevron-right"></i>
+            <i className='fa-solid fa-chevron-right'></i>
           </div>
+
           <div className="option last-border" id="signOut" onClick={signout}>
             <div className="left">
               <i className="fa-solid fa-arrow-right-from-bracket"></i>
+
               <p>Sign out</p>
             </div>
-            <i className="fa-solid fa-chevron-right"></i>
+            <i className='fa-solid fa-chevron-right'></i>
           </div>
         </div>
+
 
          
 
         
+
       </div>
       
     </div>
