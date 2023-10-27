@@ -1,0 +1,94 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.body {
+  background-color: #DBE3F5;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.box {
+  display: flex;
+  height: 100vh;
+  align-items: end;
+  justify-content: center;
+}
+
+.carousel-button:link,
+.carousel-button:visited {
+  color: black;
+  z-index: 1;
+  width: 7px;
+  height: 7px;
+  margin: 0 7px;
+  background-color: #111111;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.carousel-button:hover,
+.carousel-button:active {
+  background-color: white;
+  width: 17px;
+  height: 6px;
+  border-radius: 12px;
+  border: 1px solid black;
+}
+
+.circel-box::after,
+.circel-box::before {
+  content: "";
+  display: block;
+  border-radius: 50%;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.circel-box::before {
+  width: 490px;
+  padding-bottom: 490px;
+  border: 4px solid white;
+}
+
+.circel-box::after {
+  width: 435px;
+  padding-bottom: 435px;
+  background-color: white;
+  z-index: 0;
+}
+
+.carousel-button-box {
+  margin-bottom: 17%;
+}
+
+.title {
+  align-self: center;
+  text-align: center;
+  z-index: 1;
+}
+
+.boarding-text {
+  margin: 10px;
+  align-self: center;
+  text-align: center;
+  z-index: 1;
+}
+
+.start-button {
+  align-self: center;
+  width: 180px;
+  height: 40px;
+  border-radius: 16px;
+  background-color: black;
+  color: white;
+  font-size: 11px;
+  z-index: 1;
+  border: none;
+  margin-bottom: 15px;
+}/*# sourceMappingURL=style.css.map */
