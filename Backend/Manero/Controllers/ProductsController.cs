@@ -18,13 +18,10 @@ public class ProductsController : ControllerBase
         _context = dataContext;
     }
 
-<<<<<<< HEAD
+
 
 
     [HttpGet("GetProduct")]
-=======
-    [HttpGet]
->>>>>>> 41ac7a5e984fa7f5ab8f706c4ddec199cd5d1d4a
     public async Task<IActionResult> GetProducts()
     {
         try
