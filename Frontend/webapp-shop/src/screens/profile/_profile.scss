@@ -1,7 +1,7 @@
 .profile {
     .container {
        
-
+padding-bottom: 40px;
         
 
 
@@ -69,6 +69,10 @@
             }
             .last-border{
                 border-bottom: 1px #DBE3F5 solid;
+                &:hover{
+                    cursor: pointer;
+                }
+              
             }
             .option {
 
