@@ -1,0 +1,57 @@
+.body {
+  background-color: #DBE3F5;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.box {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.on-page-button {
+  width: 7px;
+  height: 3px;
+  border-radius: 25%;
+  border: 1px solid black;
+  align-self: center;
+  z-index: 1;
+}
+
+.circel-box::after,
+.circel-box::before {
+  content: "";
+  display: block;
+  /* height: 60%; */
+  /* 60 % of parent width */
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.circel-box::before {
+  width: 112px;
+  padding-bottom: 112px;
+  border: 3px solid white;
+}
+
+.circel-box::after {
+  width: 80px;
+  /* height: 60%; */
+  /* 60 % of parent width */
+  padding-bottom: 80px;
+  background-color: white;
+  z-index: 0;
+}
+
+h1 {
+  text-align: center;
+  z-index: 1;
+  font-weight: bold;
+}/*# sourceMappingURL=style.css.map */
