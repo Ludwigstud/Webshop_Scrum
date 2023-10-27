@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Manero.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20231026124620_Hallo")]
-    partial class Hallo
+    [Migration("20231027191543_testdb")]
+    partial class testdb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -59,11 +59,61 @@ namespace Manero.Migrations
 
                     b.Property<string>("CategoryName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryName")
+                        .IsUnique();
+
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryName = "Shirts"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryName = "Jackets"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryName = "Pants"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CategoryName = "Footwear"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CategoryName = "Headwear"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CategoryName = "Accessories"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CategoryName = "Dresses"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CategoryName = "Underwear"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CategoryName = "Suits"
+                        });
                 });
 
             modelBuilder.Entity("Manero.Models.Entities.CustomerAddressEntity", b =>
@@ -283,6 +333,44 @@ namespace Manero.Migrations
                     b.HasIndex("DiscountId");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryId = 1,
+                            Description = "A comfortable red T-shirt for casual wear.",
+                            DiscountId = 1,
+                            Price = 20,
+                            ProductName = "Red T-Shirt"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryId = 2,
+                            Description = "Stylish blue jeans for all occasions.",
+                            DiscountId = 2,
+                            Price = 40,
+                            ProductName = "Blue Jeans"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryId = 1,
+                            Description = "High-performance running shoes for athletes.",
+                            DiscountId = 1,
+                            Price = 80,
+                            ProductName = "Running Shoes"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CategoryId = 2,
+                            Description = "A classic leather jacket for a bold look.",
+                            DiscountId = 2,
+                            Price = 130,
+                            ProductName = "Leather Jacket"
+                        });
                 });
 
             modelBuilder.Entity("Manero.Models.Entities.ReviewEntity", b =>

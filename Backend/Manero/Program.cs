@@ -1,6 +1,8 @@
 using Manero.Interfaces;
 using Manero.Models.Contexts;
+using Microsoft.Extensions.DependencyInjection;
 using Manero.Repos;
+using Manero.Repos.DataSeeder;
 using Manero.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -10,8 +12,12 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+builder.Services.AddControllers();
 //Repos 
 builder.Services.AddScoped<CustomerRepo>();
+builder.Services.AddScoped<ProductRepo>();
+
 
 
 
@@ -25,6 +31,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Identity")));
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<CustomerRepo>();
+
 
 
 
@@ -76,6 +83,14 @@ builder.Services.AddAuthentication(x =>
 var app = builder.Build();
 app.UseStaticFiles();
 app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<DataContext>();
+    Seeder.SeedAll(context);
+}
 
 if (app.Environment.IsDevelopment())
 {

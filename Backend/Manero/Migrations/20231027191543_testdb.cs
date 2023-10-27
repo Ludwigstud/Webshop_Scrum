@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace Manero.Migrations
 {
     /// <inheritdoc />
-    public partial class NoIdentity : Migration
+    public partial class testdb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -71,7 +73,7 @@ namespace Manero.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    CategoryName = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -245,8 +247,9 @@ namespace Manero.Migrations
                     ProductName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
-                    DiscountId = table.Column<int>(type: "int", nullable: false)
+                    DiscountId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -261,8 +264,7 @@ namespace Manero.Migrations
                         name: "FK_Products_Discount_DiscountId",
                         column: x => x.DiscountId,
                         principalTable: "Discount",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -397,6 +399,33 @@ namespace Manero.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "CategoryName" },
+                values: new object[,]
+                {
+                    { 1, "Shirts" },
+                    { 2, "Jackets" },
+                    { 3, "Pants" },
+                    { 4, "Footwear" },
+                    { 5, "Headwear" },
+                    { 6, "Accessories" },
+                    { 7, "Dresses" },
+                    { 8, "Underwear" },
+                    { 9, "Suits" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "Id", "CategoryId", "Description", "DiscountId", "ImageUrl", "Price", "ProductName" },
+                values: new object[,]
+                {
+                    { 1, 1, "A comfortable red T-shirt for casual wear.", 1, null, 20, "Red T-Shirt" },
+                    { 2, 2, "Stylish blue jeans for all occasions.", 2, null, 40, "Blue Jeans" },
+                    { 3, 1, "High-performance running shoes for athletes.", 1, null, 80, "Running Shoes" },
+                    { 4, 2, "A classic leather jacket for a bold look.", 2, null, 130, "Leather Jacket" }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -435,6 +464,12 @@ namespace Manero.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Categories_CategoryName",
+                table: "Categories",
+                column: "CategoryName",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_CustomerAdress_AddressId",

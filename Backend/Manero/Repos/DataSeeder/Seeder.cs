@@ -1,100 +1,62 @@
 ﻿using Manero.Models.Contexts;
 using Manero.Models.Entities;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting.Internal;
-using System;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.IO;
-using System.Text.Json;
 
-public class DatabaseSeeder
+namespace Manero.Repos.DataSeeder
 {
-    private readonly DataContext _context;
-    private readonly IWebHostEnvironment _hostingEnvironment; // Add this field
-
-
-    public DatabaseSeeder(DataContext context, IWebHostEnvironment hostingEnvironment)
+    public static class Seeder
     {
-        _context = context;
-        _hostingEnvironment = hostingEnvironment;
-    }
-
-    public void SeedData()
-    {
-        SeedCategories();
-        SeedDiscounts();
-        SeedProducts();
-    }
-
-    private void SeedCategories()
-    {
-        var categories = new List<CategoryEntity>
+        public static void SeedAll(DataContext context)
         {
-            new CategoryEntity { CategoryName = "Category 1" },
-            new CategoryEntity { CategoryName = "Category 2" },
-            // Add more categories as needed
-        };
-
-        // Add more categories to reach your desired number
-        for (int i = 3; i <= 1000; i++)
-        {
-            categories.Add(new CategoryEntity { CategoryName = $"Category {i}" });
+            SeedCategories(context);
+            SeedProducts(context);
         }
 
-        _context.Categories.AddRange(categories);
-        _context.SaveChanges(); // Save changes for categories
-    }
-
-    private void SeedDiscounts()
-    {
-        var discounts = new List<DiscountEntity>
+        private static void SeedCategories(DataContext context)
         {
-            new DiscountEntity { DiscountName = "Discount 1", Discount = 10 },
-            new DiscountEntity { DiscountName = "Discount 2", Discount = 20 },
-            // Add more discounts as needed
-        };
+            context.Categories.AddRange(
+                new CategoryEntity {  CategoryName = "Shirts" },
+                new CategoryEntity { CategoryName = "Jackets" },
+                new CategoryEntity { CategoryName = "Pants" },
+                new CategoryEntity { CategoryName = "Footwear" },
+                new CategoryEntity { CategoryName = "Headwear" },
+                new CategoryEntity { CategoryName = "Accessories" },
+                new CategoryEntity { CategoryName = "Dresses" },
+                new CategoryEntity { CategoryName = "Underwear" },
+                new CategoryEntity { CategoryName = "Suits" }
+            );
 
-        // Add more discounts to reach your desired number
-        for (int i = 3; i <= 1000; i++)
-        {
-            discounts.Add(new DiscountEntity { DiscountName = $"Discount {i}", Discount = i * 10 });
+            context.SaveChanges();
         }
 
-        _context.Discount.AddRange(discounts);
-        _context.SaveChanges(); // Save changes for discounts
-    }
-
-    private void SeedProducts()
-    {
-        try
+        private static void SeedProducts(DataContext context)
         {
-            string contentRootPath = _hostingEnvironment.ContentRootPath;
-            string jsonFilePath = Path.Combine(contentRootPath, "MockData.json");
-            Console.WriteLine("Reading JSON file...");
-            var json = File.ReadAllText("MockData.json");
-            Console.WriteLine("JSON file read successfully.");
-            var products = JsonSerializer.Deserialize<List<ProductEntity>>(json);
 
-            // Get existing category and discount IDs from the database
-            var categoryIds = _context.Categories.Select(c => c.Id).ToList();
-            var discountIds = _context.Discount.Select(d => d.Id).ToList();
+            var seedData = JArray.Parse(File.ReadAllText(@"./Repos/DataSeeder/ProductData.json"));
+            var products = new List<ProductEntity>();
 
-            var random = new Random();
+            var imageFiles = Directory.GetFiles(@"wwwroot/Images/ProductsImages");
+            var imageCount = imageFiles.Length;
 
-            foreach (var product in products)
+            for (var i = 0; i < seedData.Count; i++)
             {
-                // Assign random category and discount IDs from the existing ones
-                product.CategoryId = categoryIds[random.Next(categoryIds.Count)];
-                product.DiscountId = discountIds[random.Next(discountIds.Count)];
-                _context.Products.Add(product);
+                var product = seedData[i].ToObject<ProductEntity>();
+
+                if (product != null)
+                {
+                    var random = new Random();
+                    var imageIndex = random.Next(0, imageFiles.Length);
+                    product.ImageUrl = Path.Combine("ProductsImages", Path.GetFileName(imageFiles[imageIndex]));
+
+                    products.Add(product);
+                }
             }
 
-
-            _context.SaveChanges();
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex);
+            context.Products.AddRange(products);
+            context.SaveChanges();
         }
     }
 }

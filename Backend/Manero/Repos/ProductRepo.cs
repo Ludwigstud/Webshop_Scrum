@@ -6,7 +6,7 @@ namespace Manero.Repos
 {
     public class ProductRepo: MainRepository<ProductEntity>
     {
-        private readonly DataContext _context;
+        private new readonly DataContext _context;
         public ProductRepo(DataContext context) : base(context)
         {
             _context = context;
