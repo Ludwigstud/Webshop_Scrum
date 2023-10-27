@@ -1,0 +1,20 @@
+@import '../../scss/corecss/colors';
+@import '../../scss/corecss/fonts';
+@import '../../scss/corecss/mixin';
+
+.categories-header-container{
+
+    .categorie-image{
+        background-color: $color-blue;
+        border-radius: 100%;
+        padding: 40px;
+    }
+    .title{
+        text-align: center;
+        margin-top: 10px;
+        font-size: 14px;
+        font-family: 'Mulish', sans-serif;
+        font-weight: 600;
+        color: $color-black;
+    }
+}
