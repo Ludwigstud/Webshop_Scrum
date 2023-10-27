@@ -32,7 +32,11 @@ export default class BottomNavbar extends Component {
 
           <li data-testid='bottom-navbar-link'>
             <i>
-              <NavLink to='/shop' className='inactive' data-testid='shop-link'>
+              <NavLink
+                to='/products'
+                className='inactive'
+                data-testid='shop-link'
+              >
                 <BsHandbag />
               </NavLink>
             </i>
