@@ -34,7 +34,7 @@ https://docs.google.com/document/d/1aF7tb3rvJCXOmB9ZQxNlHs9iuPnvd16vB3ZVhbs_hDg/
 
 ## Parprogrammering ## 
 
-Parprogrammering sker 2 och 2. Den ena personen kodar och den andra övervakar för att tillsammans skriva renare och effektivare kod. Det är viktigt att man som par turas om vem som kodar och vem som övervakar, om den ena kodar förmiddagen så kan den andra kodar eftermiddagen. Parprogrammering kan underlätta när vi tacklar problem eller userstories som vi inte har så stor erfarenhet utav, då vi kan bolla idéer och tankar med varandra. 
+Parprogrammering sker 2 och 2. Den ena personen kodar och den andra övervakar för att tillsammans skriva renare och effektivare kod. Det är viktigt att man som par turas om vem som kodar och vem som övervakar, om den ena kodar förmiddagen så kan den andra koda eftermiddagen. Parprogrammering kan underlätta när vi tacklar problem eller userstories som vi inte har så stor erfarenhet utav, då vi kan bolla idéer och tankar med varandra. 
 
 ## Teknisk Infrastruktur: ## 
 Vi arbetar med följande teknikstack:
