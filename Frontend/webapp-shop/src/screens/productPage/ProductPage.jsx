@@ -11,13 +11,11 @@ const ProductPage = () => {
 
   return (
     <>
-      <NavTopReplace />
 
       <ProductCard />
       <ProductReview />
       <ProductReview />
 
-      <NavBottomReplace />
     </>
   );
 };
