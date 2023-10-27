@@ -18,15 +18,15 @@ namespace Manero.Repos.DataSeeder
         private static void SeedCategories(DataContext context)
         {
             context.Categories.AddRange(
-                new CategoryEntity {  CategoryName = "Shirts" },
-                new CategoryEntity { CategoryName = "Jackets" },
-                new CategoryEntity { CategoryName = "Pants" },
-                new CategoryEntity { CategoryName = "Footwear" },
-                new CategoryEntity { CategoryName = "Headwear" },
-                new CategoryEntity { CategoryName = "Accessories" },
-                new CategoryEntity { CategoryName = "Dresses" },
-                new CategoryEntity { CategoryName = "Underwear" },
-                new CategoryEntity { CategoryName = "Suits" }
+                new CategoryEntity { CategoryName = "Electronics" },
+                new CategoryEntity { CategoryName = "Books" },
+                    new CategoryEntity { CategoryName = "Home Decor" },
+                    new CategoryEntity { CategoryName = "Toys" },
+                    new CategoryEntity { CategoryName = "Kitchen Appliances" },
+                    new CategoryEntity { CategoryName = "Sporting Goods" },
+                    new CategoryEntity { CategoryName = "Beauty Products" },
+                    new CategoryEntity { CategoryName = "Furniture" },
+                    new CategoryEntity { CategoryName = "Jewelry" }
             );
 
             context.SaveChanges();
