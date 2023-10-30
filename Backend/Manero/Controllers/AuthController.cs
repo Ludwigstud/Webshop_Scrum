@@ -27,22 +27,35 @@ public class AuthController : ControllerBase
     [HttpPost("SignUp")]
     public async Task<IActionResult> SignUpNew(SignUpSchema schema)
     {
-        if (ModelState.IsValid)
+        try
         {
-            var request = new ServiceRequest<SignUpSchema> { Content = schema };
-            var response = await _iAuthService.SignUpAsync(request);
-
-            if (response.Content)
+            if (ModelState.IsValid)
             {
-                return StatusCode((int)response.StatusCode, response);
+                var request = new ServiceRequest<SignUpSchema> { Content = schema };
+                var response = await _iAuthService.SignUpAsync(request);
+
+                if (response.Content)
+                {
+                    return StatusCode((int)response.StatusCode, response);
+                }
+                else
+                {
+                    return Conflict();
+                }
             }
             else
             {
-                return Conflict();
+                return BadRequest();
             }
         }
+        catch
+        {
 
-        return BadRequest();
+            return Problem();
+
+        }
+
+        
     }
 
 
