@@ -876,102 +876,8 @@
   font-size: 14px;
 }
 
-.button-container {
-  position: relative;
-  margin: 20px;
-}
-.button-container .button {
-  background: transparent !important;
-  border: none;
-  cursor: pointer;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-.button-container .button .line {
-  width: 30px;
-  height: 3px;
-  background: #000;
-  margin: 3px 0;
-  transition: 0.4s;
-}
-.button-container .button .line:nth-child(2) {
-  margin-left: 10px;
-}
-
-.offcanvas-body {
-  background-color: #111111;
-  color: #FFFFFF;
-  padding-top: 6rem;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.offcanvas-body h3 {
-  padding-bottom: 2rem;
-  padding-left: 2rem;
-  font-size: 2rem;
-}
-.offcanvas-body .contact-icons .contactinfo {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-  border-bottom: 1px solid gray;
-  padding-left: 2rem;
-  padding-bottom: 2rem;
-}
-.offcanvas-body .contact-icons .contactinfo .icon {
-  border-radius: 50%;
-  outline: 2px solid var(--color-text-faded);
-  outline-offset: 0.5rem;
-  display: inline-flex;
-  justify-content: center;
-  color: #626262;
-}
-.offcanvas-body .contact-icons .contactinfo p {
-  padding-left: 0.5rem;
-  margin: 0px;
-}
-
-.order-tracker {
-  padding-bottom: 4rem;
-  padding-left: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-}
-.order-tracker .input-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.order-tracker .input-container input {
-  all: unset;
-  height: 3rem;
-  border-radius: 2.5rem;
-  padding-left: 1rem;
-}
-.order-tracker .input-container button {
-  position: absolute;
-  top: 50%;
-  right: 2.4rem;
-  transform: translateY(-50%);
-  border: 0;
-  padding: 0;
-  background: transparent;
-  color: var(--color-greytext);
-  border-radius: 50%;
-  width: 2.6rem;
-  height: 2.6rem;
-}
-.order-tracker .input-container button .container-arrow {
-  display: flex;
-  justify-content: center;
+nav a {
+  font-size: large;
 }
 
 .profile .container {
@@ -1048,3 +954,149 @@
   font-size: 22px;
   color: #111111;
 }
+
+.MyAddresses .container .row .top-nav {
+  margin: 10px 0;
+}
+.MyAddresses .container .row .top-nav .navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+.MyAddresses .container .row .top-nav .navContainer p {
+  margin-bottom: 0;
+}
+.MyAddresses .container .row .top-nav .navContainer div {
+  padding: 8px;
+}
+.MyAddresses .container .row .top-nav .navContainer div a {
+  color: #111111;
+}
+.MyAddresses .container .row .top-nav .navContainer div a .go-back-arrow {
+  font-size: large;
+}
+.MyAddresses .container .address-list-items {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+.MyAddresses .container .address-list-items .address-category-icon {
+  font-size: 1.6rem;
+}
+.MyAddresses .container .address-list-items .address p {
+  margin-bottom: 0;
+  color: #626262;
+}
+.MyAddresses .container .address-list-items .address small {
+  color: #626262;
+}
+.MyAddresses .container .address-list-items a {
+  color: #111111;
+}
+.MyAddresses .container .address-list-items a .edit-adress {
+  font-size: 1rem;
+}
+.MyAddresses .container .add-address {
+  display: flex;
+  justify-content: center;
+  margin: 25px 0;
+}
+.MyAddresses .container .add-address div {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+.MyAddresses .container .add-address div .add-address-icon {
+  font-size: 1.4rem;
+  margin: 10px 0;
+  color: #111111;
+}
+.MyAddresses .container .add-address div p {
+  color: #626262;
+}
+
+.add-address .container .row .top-nav {
+  margin: 10px 0;
+}
+.add-address .container .row .top-nav .navContainer {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+.add-address .container .row .top-nav .navContainer p {
+  margin-bottom: 0;
+}
+.add-address .container .row .top-nav .navContainer div {
+  padding: 8px;
+}
+.add-address .container .row .top-nav .navContainer div a {
+  color: #111111;
+}
+.add-address .container .row .top-nav .navContainer div a .go-back-arrow {
+  font-size: large;
+}
+.add-address .container .row .add-address-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+.add-address .container .row .add-address-container .registrate-input-group {
+  position: relative;
+}
+.add-address .container .row .add-address-container .registrate-input-group .registrate-user-label {
+  position: absolute;
+  left: 5em;
+  top: -0.4em;
+  padding: 0 0.5em;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  background-color: white;
+  z-index: 99;
+}
+.add-address .container .row .add-address-container .registrate-input-group .registrate-user-input {
+  color: #111111;
+  font-size: 0.9rem;
+  line-height: 1;
+  height: 3.6em;
+  width: 100%;
+  padding: 0.8em 1em;
+  border: 1.5px solid #DBE3F5;
+  border-radius: 1.8em;
+}
+.add-address .container .row .add-address-container .registrate-input-group .registrate-icon-input-container {
+  position: relative;
+  margin-bottom: 20px;
+}
+.add-address .container .row .add-address-container .registrate-input-group .registrate-icon-input-container .registrate-user-icon {
+  position: absolute;
+  right: 1em;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.add-address .container .row .add-address-container .col-12 {
+  display: flex;
+  justify-content: space-evenly;
+}
+.add-address .container .row .add-address-container .col-12 .checkboxContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 10px;
+}
+.add-address .container .row .add-address-container .col-12 .checkboxContainer label {
+  color: #626262;
+}
+.add-address .container .row .add-address-container .sign-in-button {
+  background-color: #111111;
+  color: #FFFFFF;
+  border-radius: 20px;
+  margin: 20px 0;
+  width: 100%;
+}/*# sourceMappingURL=style.css.map */

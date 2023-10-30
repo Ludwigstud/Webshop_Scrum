@@ -1,0 +1,76 @@
+@import "../../../scss/corecss/colors";
+@import "../../../scss/corecss/mixin";
+.MyAddresses{
+    .container{
+        .row{
+            .top-nav{
+                margin: 10px 0;
+                .navContainer{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    text-align: center;
+                    p{
+                        margin-bottom: 0;
+                    }
+                    div{
+                        padding: 8px;
+                        a{
+                            color: $color-black;
+                            .go-back-arrow{
+                                font-size: large;
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+        .address-list-items{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-bottom: 1px solid lightgray;
+            padding-bottom: 10px;
+            margin-top: 10px;
+          .address-category-icon{
+            font-size: 1.6rem;
+          }  
+          .address{
+            p{
+                margin-bottom: 0;
+                color: $color-greytext;
+            }
+            small{
+                color: $color-greytext;
+            }
+          }
+          a{
+            color: $color-black;
+            .edit-adress{
+                font-size: 1rem;
+              }
+          }
+
+        }
+        .add-address{
+            display: flex;
+            justify-content: center;
+            margin: 25px 0;
+            div{
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+                .add-address-icon{
+                    font-size: 1.4rem;
+                    margin: 10px 0;
+                    color: $color-black;
+                }
+                p{
+                    color: $color-greytext;
+                }
+            }
+        }
+    }
+}
