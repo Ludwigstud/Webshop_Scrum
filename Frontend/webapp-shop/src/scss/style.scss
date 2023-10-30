@@ -14,4 +14,7 @@
 @import '../components/SaleProducts/SaleProducts';
 @import '../components/Showcase/Showcase';
 @import '../components/topNavbar/topNavbar';
-@import "../screens/profile/profile"
+@import "../screens/profile/profile";
+@import '../screens/profile/paymentMethods/paymentMethodsScreen/paymentMethodsScreen.scss';
+@import '../screens/profile/paymentMethods/CreateCreditCardScreen/AddCreditCardScreen.scss';
+@import '../components/CreditCard/CreditCard';
