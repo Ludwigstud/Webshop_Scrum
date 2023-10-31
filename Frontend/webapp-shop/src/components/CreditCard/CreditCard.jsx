@@ -2,16 +2,17 @@ import React from "react";
 
 const CreditCard = ({creditCard}) => {
     return (
-        <div class="credit-card">
-            <div class="front-card">
+        <div className="credit-card">
+            <div className="front-card">
                 <h3 id="main-title">
-                        <span>{creditCard.provider}</span>
+                <span>{creditCard.provider ? creditCard.provider : "Provider"}</span>
+
                 </h3>
-                <i id="globe" class="fa fa-globe"></i>
+                <i id="globe" className="fa fa-globe"></i>
                 <div id="chip"></div>
-                <div class="card-info">
+                <div className="card-info">
                     <p id="no">{creditCard.number}</p>
-                    <p id="name">{creditCard.name}</p>
+                    <p id="name">{creditCard.fullName}</p>
                     <p id="exp-date">
                         <span>Expiry Date</span>: {creditCard.expiryDate}
                     </p>
