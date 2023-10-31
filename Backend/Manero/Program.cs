@@ -14,7 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<CustomerRepo>();
 builder.Services.AddScoped<AddressRepo>();
 builder.Services.AddScoped<CustomerAddressRepo>();
-
+builder.Services.AddScoped<AddressTagRepo>();
 
 
 

@@ -4,6 +4,7 @@ using Manero.Models.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Manero.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20231031102034_addresstagNew")]
+    partial class addresstagNew
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,7 +33,11 @@ namespace Manero.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AddressTagId")
+                    b.Property<string>("AddressTagId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("AddressTagId1")
                         .HasColumnType("int");
 
                     b.Property<string>("City")
@@ -46,7 +53,7 @@ namespace Manero.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AddressTagId");
+                    b.HasIndex("AddressTagId1");
 
                     b.ToTable("Address");
                 });
@@ -540,7 +547,7 @@ namespace Manero.Migrations
                 {
                     b.HasOne("Manero.Models.Entities.AddressTagEntity", "AddressTag")
                         .WithMany()
-                        .HasForeignKey("AddressTagId")
+                        .HasForeignKey("AddressTagId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -10,6 +10,10 @@ public class AddressEntity
     public string City { get; set; } = null!;
     public ICollection<CustomerAddressEntity> Customers { get; set; } = new HashSet<CustomerAddressEntity>();
 
+    public int AddressTagId { get; set; }
+
+    public AddressTagEntity AddressTag { get; set; } = null!;
+
     public static implicit operator Address(AddressEntity entity)
     {
         return new Address

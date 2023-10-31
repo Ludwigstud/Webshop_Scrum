@@ -8,6 +8,8 @@ namespace Manero.Models.dto
         public int PostalCode { get; set; }
         public string City { get; set; } = null!;
 
+        public string AddressTag { get; set; } = null!;
+
         public static implicit operator AddressEntity(Address address)
         {
             return new AddressEntity

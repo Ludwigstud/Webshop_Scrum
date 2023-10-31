@@ -8,23 +8,27 @@ import SignIn from "./screens/SignIn/SignIn";
 import RegistrateUserScreen from "./screens/RegistrateUserScreen/RegistrateUserScreen";
 import MyAddresses from './screens/profile/Address/MyAddresses';
 import AddAddress from './screens/profile/Address/AddAddress';
+import { ProfileProvider } from './contexts/ProfileContext';
 function App() {
   return (
     <AuthProvider>
-    <Router>
-      <div className='App'>
-        <Routes>
-          <Route path='/home' element={<Home />} />
-          <Route path='/product' element={<ProductPage />} />
-          <Route path='/profile' element={<Profile />} />
-          <Route path='/profile/address' element={<MyAddresses/>}/>
-          <Route path='/profile/address/add' element={<AddAddress/>}/>
-          <Route path="/Register" element={<RegistrateUserScreen/>}/>
-          <Route path="/signin" element={<SignIn/>}/>
-        </Routes>
-        <BottomNavbar />
-      </div>
-    </Router>
+      <ProfileProvider>
+      <Router>
+        <div className='App'>
+          <Routes>
+            <Route path='/home' element={<Home />} />
+            <Route path='/product' element={<ProductPage />} />
+            
+              <Route path='/profile' element={<Profile />} />
+              <Route path='/profile/address' element={<MyAddresses/>}/>
+              <Route path='/profile/address/add' element={<AddAddress/>}/>
+            <Route path="/Register" element={<RegistrateUserScreen/>}/>
+            <Route path="/signin" element={<SignIn/>}/>
+          </Routes>
+          <BottomNavbar />
+        </div>
+      </Router>
+      </ProfileProvider>
     </AuthProvider>
   );
 }
