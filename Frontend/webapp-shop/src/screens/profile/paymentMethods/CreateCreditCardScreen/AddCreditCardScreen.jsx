@@ -33,7 +33,7 @@ const AddCreditCardScreen = () => {
         const errors = validateOnSubmit(creditCard);
         const registrateCard  = {
             fullName: creditCard.fullName,
-            number: parseInt(creditCard.number),
+            number: creditCard.number,
             expiryDate: creditCard.expiryDate,
             provider: creditCard.provider,
             paymentType: "Creditcard",

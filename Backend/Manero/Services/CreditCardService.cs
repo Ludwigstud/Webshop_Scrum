@@ -11,12 +11,10 @@ using System.Globalization;
 namespace Manero.Services;
 public class CreditCardService : ICreditCardService
 {
-    private readonly DataContext _context;
     private readonly CustomerCardRepo _customerCardRepo;
 
-    public CreditCardService(DataContext context, CustomerCardRepo customerCardRepo)
+    public CreditCardService( CustomerCardRepo customerCardRepo)
     {
-        _context = context;
         _customerCardRepo = customerCardRepo;
     }
 

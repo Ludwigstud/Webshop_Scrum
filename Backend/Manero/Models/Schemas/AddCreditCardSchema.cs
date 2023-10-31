@@ -9,7 +9,7 @@ public class AddCreditCardSchema
 
     public string? Provider { get; set; }
     public string FullName { get; set; } = null!;
-    public int Number { get; set; }
+    public string Number { get; set; } = null!;
     public int CVV { get; set; }
     public string ExpiryDate { get; set; } = null!;
 
