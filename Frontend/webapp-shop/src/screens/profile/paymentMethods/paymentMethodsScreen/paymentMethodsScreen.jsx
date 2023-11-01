@@ -1,23 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import { BsChevronLeft, BsPlusLg, BsPencil } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import CreditCardCarousel from "../../../../components/Carousels/CreditCardCarousel/CreditCardCarousel";
+import GetAllCreditCards from "./GetAllCreditCards";
 const PaymentMethodsScreen = () => {
-    const creditCards = [
-        {
-          provider: "Visa",
-          number: "4567 3214 5667 1234",
-          fullName: "Dennis Frölander",
-          expiryDate: "12/24"
-        },
-        {
-          provider: "Mastercard",
-          number: "1234 1234 1324 5678",
-          fullName: "Hannes Nilsson Tengnäs",
-          expiryDate: "10/23"
-        },
-      ];
-      const emptyCreditCards = [];
+
+    const [creditCards, setCreditCards] = useState(null);
+      useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const UserCreditCards = await GetAllCreditCards(); 
+                setCreditCards(UserCreditCards.content);
+            } catch (error) {
+                console.error('Error fetching user Credit Cards', error);
+            }
+        };
+        fetchData();
+    }, []); 
 
     return (
         <section className="payment-methods-section my-3">
@@ -46,7 +45,7 @@ const PaymentMethodsScreen = () => {
                         </div>
                     </div>
                     <div className="col-12 col-md-6">
-                        <CreditCardCarousel creditCards={creditCards}/>
+                        {creditCards ? <CreditCardCarousel creditCards={creditCards}/> : <p>Loading</p>}
                     </div>
                     <div className="col-12 col-md-7 d-flex align-items-center justify-content-between py-3 payment-methods-column">
                         <div className="d-flex align-items-center">

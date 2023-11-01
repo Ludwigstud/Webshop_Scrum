@@ -2,6 +2,7 @@
 
 public class CreditCardDto
 {
+    public int Id { get; set; }
     public string? PaymentType { get; set; }
     public string? Provider { get; set; }
     public string FullName { get; set; } = null!;

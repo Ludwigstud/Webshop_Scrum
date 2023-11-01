@@ -7,7 +7,7 @@ import PostCreditCardSchemaAsync from "./PostCreditCardSchemaAsync";
 import {formatCVV, formatCreditCard, formatExpiryDate} from './FormatStrings'
 import { validateOnChange, validateOnSubmit } from "./AddCreditCardValidations"; 
 const AddCreditCardScreen = () => {
-    const [creditCard, SetCreditCard] = useState({fullName: "", number: "", expiryDate: "", provider: "", cvv: ""});
+    const [creditCard, SetCreditCard] = useState({fullName: "", number: "", expiryDate: "", provider: "Choose a card", cvv: ""});
     const [formErrorIcons, setFormErrorIcons] = useState({});
     const [formErrors, setFormErrors] = useState({});
 
@@ -39,11 +39,9 @@ const AddCreditCardScreen = () => {
             paymentType: "Creditcard",
             cvv: parseInt(creditCard.cvv)
         };
-
         if(Object.keys(errors).length === 0)
         {
             await PostCreditCardSchemaAsync(registrateCard);
-            console.log(registrateCard)
         }
         else {
             setFormErrors(errors);

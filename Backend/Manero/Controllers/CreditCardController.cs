@@ -45,4 +45,25 @@ public class CreditCardController : ControllerBase
         else { return Conflict(); }
     }
 
+    
+    [HttpGet("GetAllCreditCard")]
+    [Authorize]
+    public async Task<IActionResult> GetAll()
+    {
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if(userId == null)
+            return NotFound();
+
+        var request = new ServiceRequest<string> { Content = userId };
+        var response = await _creditCardService.GetAllAsync(request);
+        if (response.Content != null)
+        {
+            return StatusCode((int)response.StatusCode, response);
+        }
+       else
+        {
+            return NotFound();
+        }
+    }
+
 }

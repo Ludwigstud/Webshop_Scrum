@@ -20,6 +20,7 @@ public class CustomerCardEntity
     {
         return new CreditCardDto
         {
+            Id = entity.Id,
             PaymentType = entity.PaymentType,
             Provider = entity.Provider,
             FullName = entity.FullName,
