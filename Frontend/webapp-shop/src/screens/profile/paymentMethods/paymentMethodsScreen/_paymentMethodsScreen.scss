@@ -1,0 +1,36 @@
+
+@import "../../../../scss/corecss/colors";
+
+
+
+.payment-methods-section {
+    i {
+        font-size: 30px;
+    }
+    h2 {
+        margin: 0;
+        text-align: center;
+        color: $color-greytext;
+    }
+
+    h3 {
+        margin: 0;
+        font-size: 20px;
+        color: $color-greytext;
+    }
+
+    a {
+        text-decoration: none;
+        margin: 0;
+        color: $color-greytext;
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
+    .payment-methods-column {
+        .col-12 {
+            border-bottom: 1px solid $color-blue;
+        }
+    }
+}

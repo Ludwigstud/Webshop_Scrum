@@ -12,6 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 //Repos 
 builder.Services.AddScoped<CustomerRepo>();
+builder.Services.AddScoped<CustomerCardRepo>();
 
 
 
@@ -25,6 +26,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Identity")));
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<CustomerRepo>();
+builder.Services.AddScoped<ICreditCardService, CreditCardService>();
 
 
 
