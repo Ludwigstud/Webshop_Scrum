@@ -976,7 +976,7 @@ nav a {
 .payment-methods-section a:hover {
   opacity: 0.7;
 }
-.payment-methods-section .payment-methods-column .col-12 {
+.payment-methods-section .payment-methods-container .payment-methods-column {
   border-bottom: 1px solid #DBE3F5;
 }
 
