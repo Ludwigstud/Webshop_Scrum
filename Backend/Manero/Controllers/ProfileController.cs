@@ -1,7 +1,9 @@
 ﻿using Manero.Models.Contexts;
 using Manero.Models.dto;
+using Manero.Models.Entities;
 using Manero.Repos;
 using Manero.Services;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +21,8 @@ public class ProfileController : ControllerBase
     private readonly ProfileService _profileService;
     private readonly AddressRepo _addressRepo;
     private readonly AddressTagRepo _addressTagRepo;
-    public ProfileController(UserManager<IdentityUser> userManager, DataContext context, CustomerAddressRepo customerAddressRepo, ProfileService profileService, AddressRepo addressRepo, AddressTagRepo addressTagRepo)
+    private readonly CustomerRepo _customerRepo;
+    public ProfileController(UserManager<IdentityUser> userManager, DataContext context, CustomerAddressRepo customerAddressRepo, ProfileService profileService, AddressRepo addressRepo, AddressTagRepo addressTagRepo, CustomerRepo customerRepo)
     {
         _userManager = userManager;
         _context = context;
@@ -27,6 +30,7 @@ public class ProfileController : ControllerBase
         _profileService = profileService;
         _addressRepo = addressRepo;
         _addressTagRepo = addressTagRepo;
+        _customerRepo = customerRepo;
     }
 
     [HttpGet("GetProfile")]
@@ -49,7 +53,7 @@ public class ProfileController : ControllerBase
         {
             FirstName = userProfileEntity.FirstName,
             LastName = userProfileEntity.LastName,
-            Email = userIdentity.Email,
+            Email = userIdentity.Email!,
         };
         return Ok(userProfile);
     }
@@ -57,89 +61,137 @@ public class ProfileController : ControllerBase
     [HttpPost("CreateProfileAddress")]
     public async Task<IActionResult> CreateProfileAddress(Address address)
     {
-        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        if (userId == null)
-            return NotFound();
+        try
+        {
+            if (ModelState.IsValid)
+            {
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-        var profile = await _profileService.GetProfile(userId);
-        
-        if(profile == null)
-            return NotFound();
+                var result = await _profileService.CreateAddressAsync(address, userId!);
 
-
-        /* var addressTag = await _addressTagRepo.GetAsync(x => x.TagName == address.AddressTag);
-
-
-         AddressEntity addressEntity = address;
-
-         addressEntity.AddressTagId = addressTag.Id;
-
-
-         var newAddress = await _addressRepo.CreateAsync(addressEntity);
-
-         var newCustomerAddress = new CustomerAddress()
-         {
-             AddressId = newAddress.Id,
-             CustomerId = userId
-         };
-
-         var createCustomerAddress = await _customerAddressRepo.CreateAsync(newCustomerAddress);
-
-         if(createCustomerAddress == null)
-         {
-             return NotFound();
-         } */
-        var result = await _profileService.CreateAddressAsync(address, userId);
-
-        if(result.Content != null)
-            return Ok(result.Content);
-        else
-            return NotFound();
-
-    } 
+                if (result != null)
+                    return StatusCode((int)result.StatusCode, result);
+                else
+                    return Conflict();
+            }
+            else
+            {
+                return Conflict();
+            }
+        }
+        catch
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "A database error occurred");
+        }
+    }
 
     [HttpGet("GetProfileAddresses")]
     public async Task<IActionResult> GetProfileAddresses()
     {
-        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        if(userId == null)
-            return NotFound();
 
-
-        /*var userIdentity = await _userManager.FindByIdAsync(userId);
-        if (userIdentity == null)
-            return NotFound();
-
-        var userProfileEntity = await _context.Customer.FirstOrDefaultAsync(x => x.Id == userId);
-
-        if (userProfileEntity == null)
-            return NotFound(); */
-
-        var profile = await _profileService.GetProfile(userId);
-
-        var addresses = await _customerAddressRepo.GetAllAsync(x => x.CustomerId == userId);
-
-        var profileAddress = new List<Address>();
-
-        foreach(var addressId in addresses)
+        try
         {
-            var Address = await _addressRepo.GetAsync(x => x.Id == addressId.AddressId);
-            var tagName = await _addressTagRepo?.GetAsync(x => x.Id == Address.AddressTagId)!;
-            profileAddress.Add(new Address
-            {
-                StreetName = Address.StreetName,
-                PostalCode = Address.PostalCode,
-                City = Address.City,
-                AddressTag = tagName.TagName
-            });
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            var result = await _profileService.GetProfileAddressesAsync(userId!);
+
+            if (result != null)
+                return StatusCode((int)result.StatusCode, result);
+            else
+                return Conflict();
         }
-        var userProfile = new Profile
+        catch
         {
-            FirstName = profile.Content!.FirstName,
-            LastName = profile.Content.LastName,
-            Email = profile.Content.Email,
-            Address = profileAddress
-        };
-        return Ok(userProfile);
+            return StatusCode(StatusCodes.Status500InternalServerError, "A database error occurred");
+        }
+       
     }
+    [HttpPost("UpdateProfileAddress")]
+    public async Task<IActionResult> UpdateProfileAddress(EditAddress editAddress)
+    {
+        try
+        {
+            if (ModelState.IsValid)
+            {
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+                var result = await _profileService.UpdateProfileAddressAsync(editAddress, userId!);
+
+                if (result != null)
+                    return StatusCode((int)result.StatusCode, result);
+                else
+                    return Conflict();
+            }
+            else
+            {
+                return Conflict();
+            }
+        }
+        catch
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "A database error occurred");
+        }
+    }
+        
+
+        
+
+
+
+      /*  if (userId == null)
+            return NotFound();
+
+        AddressEntity addressEntity = await _addressRepo.GetAsync(x => x.StreetName == editAddress.CurrentAddress.StreetName && x.PostalCode == editAddress.CurrentAddress.PostalCode);
+
+        var addressTag = await _addressTagRepo.GetAsync(x => x.TagName == editAddress.NewAddress.AddressTag);
+
+        AddressEntity newAddressEntityMap = new AddressEntity()
+        {
+            StreetName = editAddress.NewAddress.StreetName,
+            PostalCode = editAddress.NewAddress.PostalCode,
+            City = editAddress.NewAddress.City,
+            AddressTagId = addressTag.Id
+        };
+
+        var addressExists = await _addressRepo.GetAsync(x => x.StreetName == newAddressEntityMap.StreetName && x.PostalCode == newAddressEntityMap.PostalCode && x.City == newAddressEntityMap.City);
+        CustomerAddressEntity customerAddressEntity = await _customerAddressRepo.GetAsync(x => x.CustomerId == userId && x.AddressId == addressEntity.Id);
+
+        if (addressExists == null) 
+        { 
+            var createdAddress = await _addressRepo.CreateAsync(newAddressEntityMap);
+            if (customerAddressEntity != null)
+            {
+                customerAddressEntity.AddressId = createdAddress.Id;
+
+                await _context.SaveChangesAsync();
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+        else
+        {
+            if(customerAddressEntity != null)
+            {
+                customerAddressEntity.AddressId = addressExists.Id;
+
+                await _context.SaveChangesAsync();
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        } */
+
+         //AddressEntity newAddressEntity = await _addressRepo.CreateAsync(newAddressEntityMap);
+
+       
+
+
+
+       
+    
 }

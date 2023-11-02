@@ -10,6 +10,7 @@ public class CustomerAddressEntity
     public string CustomerId { get; set; } = null!;
     public CustomerEntity Customer { get; set; } = null!;
 
+
     public static implicit operator CustomerAddressEntity(CustomerAddress customerAddress)
     {
         try

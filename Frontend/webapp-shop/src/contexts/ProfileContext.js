@@ -42,5 +42,22 @@ export const ProfileProvider = ({children}) => {
         }
     }
 
-    return <ProfileContext.Provider value={{createProfileAddress, getProfileAddress}}>{children}</ProfileContext.Provider>
+    const editProfileAddress = async(address) => {
+        const res = await fetch(`${url}/updateprofileaddress`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+            },
+            body: JSON.stringify(address),
+            
+        })
+        console.log(res);
+        if(res.status === 200){
+            window.location.replace("/profile/address")
+            
+        }
+    }
+
+    return <ProfileContext.Provider value={{createProfileAddress, getProfileAddress, editProfileAddress}}>{children}</ProfileContext.Provider>
 }

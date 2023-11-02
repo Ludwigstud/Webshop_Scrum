@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Manero.Models.dto;
 using Manero.Models.Entities;
+using Azure;
 
 namespace Manero.Services
 {
@@ -69,6 +70,126 @@ namespace Manero.Services
             }
             return response;
         }
+
+        public async Task<ServiceResponse<Profile>> GetProfileAddressesAsync(string userId)
+        {
+            var response = new ServiceResponse<Profile>();
+
+            if (userId == null)
+            {
+                response.StatusCode = StatusCode.NotFound;
+                response.Content = null;
+            }
+            else
+            {
+                var profile = await GetProfile(userId!);
+
+                if(profile == null)
+                {
+                    response.StatusCode = StatusCode.NotFound;
+                    response.Content = null;
+                }
+                else
+                {
+                    var addresses = await _customerAddressRepo.GetAllAsync(x => x.CustomerId == userId);
+
+                    var profileAddress = new List<Address>();
+
+                    foreach (var addressId in addresses)
+                    {
+                        var Address = await _addressRepo.GetAsync(x => x.Id == addressId.AddressId);
+                        var tagName = await _addressTagRepo?.GetAsync(x => x.Id == Address.AddressTagId)!;
+                        profileAddress.Add(new Address
+                        {
+                            StreetName = Address.StreetName,
+                            PostalCode = Address.PostalCode,
+                            City = Address.City,
+                            AddressTag = tagName.TagName
+                        });
+                    }
+                    var userProfile = new Profile
+                    {
+                        FirstName = profile.Content!.FirstName,
+                        LastName = profile.Content.LastName,
+                        Email = profile.Content.Email,
+                        Address = profileAddress
+                    };
+                    response.Content = userProfile;
+                    response.StatusCode = StatusCode.Ok;
+                }
+
+            }
+            return response;
+        }
+
+        public async Task<ServiceResponse<EditAddress>> UpdateProfileAddressAsync(EditAddress editAddress, string userId)
+        {
+            var response = new ServiceResponse<EditAddress>();
+            if (userId == null)
+            {
+                response.StatusCode = StatusCode.NotFound;
+                response.Content = null;
+            }
+            else
+            {
+                AddressEntity addressEntity = await _addressRepo.GetAsync(x => x.StreetName == editAddress.CurrentAddress.StreetName && x.PostalCode == editAddress.CurrentAddress.PostalCode && x.City == editAddress.CurrentAddress.City);
+
+                if(addressEntity == null)
+                {
+                    response.StatusCode = StatusCode.NotFound;
+                    response.Content = null;
+                }
+                else
+                {
+                    var addressTag = await _addressTagRepo.GetAsync(x => x.TagName == editAddress.NewAddress.AddressTag);
+
+                    AddressEntity newAddressEntityMap = new AddressEntity()
+                    {
+                        StreetName = editAddress.NewAddress.StreetName,
+                        PostalCode = editAddress.NewAddress.PostalCode,
+                        City = editAddress.NewAddress.City,
+                        AddressTagId = addressTag.Id
+                    };
+                    var addressExists = await _addressRepo.GetAsync(x => x.StreetName == newAddressEntityMap.StreetName && x.PostalCode == newAddressEntityMap.PostalCode && x.City == newAddressEntityMap.City);
+                    CustomerAddressEntity customerAddressEntity = await _customerAddressRepo.GetAsync(x => x.CustomerId == userId && x.AddressId == addressEntity.Id);
+
+                    if (addressExists == null)
+                    {
+                        var createdAddress = await _addressRepo.CreateAsync(newAddressEntityMap);
+                        if (customerAddressEntity != null)
+                        {
+                            customerAddressEntity.AddressId = createdAddress.Id;
+
+                            await _dataContext.SaveChangesAsync();
+                            response.StatusCode = StatusCode.Ok;
+                            response.Content = editAddress;
+                        }
+                        else
+                        {
+                            response.StatusCode = StatusCode.NotFound;
+                            response.Content = null;
+                        }
+                    }
+                    else
+                    {
+                        if (customerAddressEntity != null)
+                        {
+                            customerAddressEntity.AddressId = addressExists.Id;
+
+                            await _dataContext.SaveChangesAsync();
+                            response.StatusCode = StatusCode.Ok;
+                            response.Content = editAddress;
+                        }
+                        else
+                        {
+                            response.StatusCode = StatusCode.NotFound;
+                            response.Content = null;
+                        }
+                    }
+                }
+            }
+            return response;
+        }
         public async Task<ServiceResponse<Address>> CreateAddressAsync(Address address, string userId)
         {
             var response = new ServiceResponse<Address>();
@@ -89,42 +210,55 @@ namespace Manero.Services
                 }
                 else
                 {
-                    AddressEntity addressEntity = address;
+                    var addressExists = await _addressRepo.GetAsync(x => x.StreetName == address.StreetName && x.PostalCode == address.PostalCode && x.City == address.City);
 
-                    addressEntity.AddressTagId = addressTag!.Id;
-
-
-                    var newAddress = await _addressRepo.CreateAsync(addressEntity);
-
-                    if(newAddress == null)
+                    if(addressExists == null)
                     {
-                        response.StatusCode = StatusCode.NotFound;
-                        response.Content = null;
-                    }
-                    else
-                    {
-                        var newCustomerAddress = new CustomerAddress()
-                        {
-                            AddressId = newAddress.Id,
-                            CustomerId = userId
-                        };
+                        AddressEntity addressEntity = address;
 
-                        var createCustomerAddress = await _customerAddressRepo.CreateAsync(newCustomerAddress);
+                        addressEntity.AddressTagId = addressTag!.Id;
 
-                        if(createCustomerAddress == null)
+
+                        var newAddress = await _addressRepo.CreateAsync(addressEntity);
+
+                        if (newAddress == null)
                         {
                             response.StatusCode = StatusCode.NotFound;
                             response.Content = null;
                         }
                         else
                         {
-                            response.StatusCode = StatusCode.Created;
-                            response.Content = address;
+                            var newCustomerAddress = new CustomerAddress()
+                            {
+                                AddressId = newAddress.Id,
+                                CustomerId = userId
+                            };
+
+                            var createCustomerAddress = await _customerAddressRepo.CreateAsync(newCustomerAddress);
+
+                            if (createCustomerAddress == null)
+                            {
+                                response.StatusCode = StatusCode.NotFound;
+                                response.Content = null;
+                            }
+                            else
+                            {
+                                response.StatusCode = StatusCode.Created;
+                                response.Content = address;
+                            }
                         }
+
                     }
+                    else
+                    {
+                        response.StatusCode = StatusCode.BadRequest;
+                        response.Content = null;
+                    }
+                   
                 }
             }
             return response;
         }
+
     }
 }

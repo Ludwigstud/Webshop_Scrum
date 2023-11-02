@@ -10,6 +10,7 @@ function MyAddresses() {
 const {getProfileAddress} = useProfileContext();
 const [data, setData] = useState([]);
 const [loading, setLoading] = useState(true);
+
     useEffect(() => {
         const fetchData = async () => {
             try{
@@ -28,7 +29,7 @@ const [loading, setLoading] = useState(true);
     if(loading){
         return <h1>loading..</h1>
     }
-
+    
   return (
     <div className='MyAddresses'>
         <div className='container'>
@@ -43,7 +44,7 @@ const [loading, setLoading] = useState(true);
                         <p>My address</p>
                     </div>
                 </div>
-                {data.address.map((addressItem, index) => 
+                {data.content.address.map((addressItem, index) => 
                 <div className='col-12 address-list-items' key={index}>
                     {addressItem.addressTag === "Home" ? <AiOutlineHome className='address-category-icon'/> : addressItem.addressTag === "Work" ? <PiBagLight className='address-category-icon'/> 
                     : addressItem.addressTag === "Family" ? <MdFamilyRestroom className='address-category-icon'/> : <CiLocationOn className='address-category-icon'/>}
@@ -52,7 +53,7 @@ const [loading, setLoading] = useState(true);
                         <p>{addressItem.addressTag}</p>
                         <small>{addressItem.streetName}, {addressItem.postalCode}, {addressItem.city}</small>
                     </div>
-                    <Link to={"/profil/address/edit/:id"}>
+                    <Link to={`/profile/address/edit/${index}`}>
                         <BsPencil className='edit-adress' />
                     </Link>
                 </div>
@@ -67,7 +68,7 @@ const [loading, setLoading] = useState(true);
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
   )
 }
 

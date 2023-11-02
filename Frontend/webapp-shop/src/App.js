@@ -9,6 +9,7 @@ import RegistrateUserScreen from "./screens/RegistrateUserScreen/RegistrateUserS
 import MyAddresses from './screens/profile/Address/MyAddresses';
 import AddAddress from './screens/profile/Address/AddAddress';
 import { ProfileProvider } from './contexts/ProfileContext';
+import EditAddress from './screens/profile/Address/EditAddress';
 function App() {
   return (
     <AuthProvider>
@@ -22,6 +23,7 @@ function App() {
               <Route path='/profile' element={<Profile />} />
               <Route path='/profile/address' element={<MyAddresses/>}/>
               <Route path='/profile/address/add' element={<AddAddress/>}/>
+              <Route path='/profile/address/edit/:id' element={<EditAddress/>}/>
             <Route path="/Register" element={<RegistrateUserScreen/>}/>
             <Route path="/signin" element={<SignIn/>}/>
           </Routes>
