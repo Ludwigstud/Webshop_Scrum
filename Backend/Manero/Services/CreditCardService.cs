@@ -51,7 +51,7 @@ public class CreditCardService : ICreditCardService
     public async Task<ServiceResponse<List<CreditCardDto>>> GetAllAsync(ServiceRequest<string> request)
     {
         var response = new ServiceResponse<List<CreditCardDto>>();
-            var creditCardList = new List<CreditCardDto>();
+        var creditCardList = new List<CreditCardDto>();
         if (request.Content != null)
         {
             var creditCards = await _customerCardRepo.GetAllAsync(x => x.CustomerId == request.Content);

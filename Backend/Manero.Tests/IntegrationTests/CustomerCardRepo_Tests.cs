@@ -40,5 +40,7 @@ public class CustomerCardRepo_Tests
         Assert.NotNull(result);
         Assert.IsType<CustomerCardEntity>(result);
         Assert.Equal(entity.FullName, result.FullName);
+
     }
+
 }
