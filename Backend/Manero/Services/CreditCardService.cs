@@ -35,7 +35,7 @@ public class CreditCardService : ICreditCardService
             }
             else
             {
-                response.StatusCode = StatusCode.InternalServerError;
+                response.StatusCode = StatusCode.BadRequest;
                 response.Content = null!;
             }
         }

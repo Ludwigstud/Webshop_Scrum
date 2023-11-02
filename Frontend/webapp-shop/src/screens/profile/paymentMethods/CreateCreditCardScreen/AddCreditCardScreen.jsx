@@ -46,7 +46,6 @@ const AddCreditCardScreen = () => {
         else {
             setFormErrors(errors);
         }
-        
     }
 
 

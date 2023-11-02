@@ -13,6 +13,7 @@ public class CreditCardController : ControllerBase
 {
     private readonly ICreditCardService _creditCardService;
 
+
     public CreditCardController(ICreditCardService creditCardService)
     {
         _creditCardService = creditCardService;
@@ -21,19 +22,18 @@ public class CreditCardController : ControllerBase
 
 
     [HttpPost("AddCreditCard")]
+    [Authorize]
     public async Task<IActionResult> Create(AddCreditCardSchema schema)
     {
         var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         if (ModelState.IsValid)
         {
-            
-
             if (userId == null)
                 return NotFound();
             var request = new ServiceRequest<AddCreditCardSchema> { Content = schema };
             var response = await _creditCardService.CreateAsync(request, userId);
 
-            if (response.Content != null)
+            if (response != null)
             {
                 return StatusCode((int)response.StatusCode, response);
             }
@@ -65,5 +65,4 @@ public class CreditCardController : ControllerBase
             return NotFound();
         }
     }
-
 }
