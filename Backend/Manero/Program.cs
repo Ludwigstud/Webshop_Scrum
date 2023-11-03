@@ -17,7 +17,7 @@ builder.Services.AddControllers();
 //Repos 
 builder.Services.AddScoped<CustomerRepo>();
 builder.Services.AddScoped<ProductRepo>();
-
+builder.Services.AddScoped<CustomerCardRepo>();
 
 
 
@@ -31,6 +31,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Identity")));
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<CustomerRepo>();
+builder.Services.AddScoped<ICreditCardService, CreditCardService>();
 
 
 

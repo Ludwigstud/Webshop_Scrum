@@ -1,39 +1,32 @@
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import BottomNavbar from './components/bottomNavbar/BottomNavbar';
+import ProductPage from './screens/productPage/ProductPage';
+import Profile from './screens/profile/Profile';
+import Home from './screens/Home/Home';
 import { AuthProvider } from "./contexts/AuthContext";
-import RegistrateUserScreen from "./screens/RegistrateUserScreen/RegistrateUserScreen";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignIn from "./screens/SignIn/SignIn";
-import ProductPage from "./screens/productPage/ProductPage";
-import Home from './screens/Home/Home'
-import TopNavbar from "./components/topNavbar/TopNavbar";
+import RegistrateUserScreen from "./screens/RegistrateUserScreen/RegistrateUserScreen";
+import PaymentMethodsScreen from './screens/profile/paymentMethods/paymentMethodsScreen/paymentMethodsScreen';
+import AddCreditCardScreen from './screens/profile/paymentMethods/CreateCreditCardScreen/AddCreditCardScreen';
 function App() {
-
-
-
-    return (
-        <>
-            <AuthProvider>
-                <TopNavbar/>
-                <Router>
-                    <Routes>
-                    <Route path="/" element={<Home />} />
-                        <Route
-                            exact
-                            path="/Register"
-                            element={<RegistrateUserScreen/>}
-                        />
-                            <Route
-                            exact
-                            path="/signin"
-                            element={<SignIn/>}
-
-                        />
-                                <Route path="/product" element={<ProductPage />} />
-
-                    </Routes>
-                </Router>
-            </AuthProvider>
-        </>
-    );
+  return (
+    <AuthProvider>
+    <Router>
+      <div className='App'>
+        <Routes>
+          <Route path='/home' element={<Home />} />
+          <Route path='/product' element={<ProductPage />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path="/profile/paymentmethods" element={<PaymentMethodsScreen/>}/>
+          <Route path="/profile/paymentmethods/addcreditcard" element={<AddCreditCardScreen/>}/>
+          <Route path="/Register" element={<RegistrateUserScreen/>}/>
+          <Route path="/signin" element={<SignIn/>}/>
+        </Routes>
+        <BottomNavbar />
+      </div>
+    </Router>
+    </AuthProvider>
+  );
 }
 
 export default App;
