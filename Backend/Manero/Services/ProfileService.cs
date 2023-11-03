@@ -1,30 +1,25 @@
 ﻿using Manero.Models;
 using Manero.Models.Contexts;
-using Manero.Models.Schemas;
 using Manero.Repos;
 using Manero.Enums;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Manero.Models.dto;
 using Manero.Models.Entities;
-using Azure;
+using Manero.Interfaces;
 
 namespace Manero.Services
 {
-    public class ProfileService
+    public class ProfileService : IProfileService
     {
         private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly CustomerRepo _customerRepo;
         private readonly DataContext _dataContext;
         private readonly AddressRepo _addressRepo;
         private readonly CustomerAddressRepo _customerAddressRepo;
         private readonly AddressTagRepo _addressTagRepo;
-        public ProfileService(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, CustomerRepo customerRepo, DataContext dataContext, AddressTagRepo addressTagRepo, AddressRepo addressRepo, CustomerAddressRepo customerAddressRepo)
+        public ProfileService(UserManager<IdentityUser> userManager, DataContext dataContext, AddressTagRepo addressTagRepo, AddressRepo addressRepo, CustomerAddressRepo customerAddressRepo)
         {
             _userManager = userManager;
-            _signInManager = signInManager;
-            _customerRepo = customerRepo;
             _dataContext = dataContext;
             _addressTagRepo = addressTagRepo;
             _addressRepo = addressRepo;

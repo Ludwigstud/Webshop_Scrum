@@ -17,20 +17,12 @@ public class ProfileController : ControllerBase
 {
     private readonly UserManager<IdentityUser> _userManager;
     private readonly DataContext _context;
-    private readonly CustomerAddressRepo _customerAddressRepo;
     private readonly ProfileService _profileService;
-    private readonly AddressRepo _addressRepo;
-    private readonly AddressTagRepo _addressTagRepo;
-    private readonly CustomerRepo _customerRepo;
-    public ProfileController(UserManager<IdentityUser> userManager, DataContext context, CustomerAddressRepo customerAddressRepo, ProfileService profileService, AddressRepo addressRepo, AddressTagRepo addressTagRepo, CustomerRepo customerRepo)
+    public ProfileController(UserManager<IdentityUser> userManager, DataContext context, ProfileService profileService)
     {
         _userManager = userManager;
         _context = context;
-        _customerAddressRepo = customerAddressRepo;
         _profileService = profileService;
-        _addressRepo = addressRepo;
-        _addressTagRepo = addressTagRepo;
-        _customerRepo = customerRepo;
     }
 
     [HttpGet("GetProfile")]
