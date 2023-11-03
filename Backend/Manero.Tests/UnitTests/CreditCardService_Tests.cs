@@ -1,5 +1,4 @@
-﻿
-using Manero.Enums;
+﻿using Manero.Enums;
 using Manero.Interfaces;
 using Manero.Models;
 using Manero.Models.dto;
@@ -43,6 +42,7 @@ public class CreditCardService_Tests
             ExpiryDate = "ExpiryDate",
             Money = 0,
         };
+
         var response = new ServiceResponse<CreditCardDto>()
         {
             StatusCode = StatusCode.Created,
