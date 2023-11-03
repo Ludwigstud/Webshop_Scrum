@@ -84,7 +84,7 @@ namespace Manero.Services
             {
                 var profile = await GetProfile(userId!);
 
-                if(profile == null)
+                if (profile == null)
                 {
                     response.StatusCode = StatusCode.NotFound;
                     response.Content = null;
@@ -98,7 +98,8 @@ namespace Manero.Services
                     foreach (var addressId in addresses)
                     {
                         var Address = await _addressRepo.GetAsync(x => x.Id == addressId.AddressId);
-                        var tagName = await _addressTagRepo?.GetAsync(x => x.Id == Address.AddressTagId)!;
+                        var findTagId = await _customerAddressRepo.GetAsync(x => x.CustomerId == userId && x.AddressId == addressId.AddressId);
+                        var tagName = await _addressTagRepo?.GetAsync(x => x.Id == findTagId.AddressTagId)!;
                         profileAddress.Add(new Address
                         {
                             StreetName = Address.StreetName,
@@ -134,7 +135,7 @@ namespace Manero.Services
             {
                 AddressEntity addressEntity = await _addressRepo.GetAsync(x => x.StreetName == editAddress.CurrentAddress.StreetName && x.PostalCode == editAddress.CurrentAddress.PostalCode && x.City == editAddress.CurrentAddress.City);
 
-                if(addressEntity == null)
+                if (addressEntity == null)
                 {
                     response.StatusCode = StatusCode.NotFound;
                     response.Content = null;
@@ -148,7 +149,6 @@ namespace Manero.Services
                         StreetName = editAddress.NewAddress.StreetName,
                         PostalCode = editAddress.NewAddress.PostalCode,
                         City = editAddress.NewAddress.City,
-                        AddressTagId = addressTag.Id
                     };
                     var addressExists = await _addressRepo.GetAsync(x => x.StreetName == newAddressEntityMap.StreetName && x.PostalCode == newAddressEntityMap.PostalCode && x.City == newAddressEntityMap.City);
                     CustomerAddressEntity customerAddressEntity = await _customerAddressRepo.GetAsync(x => x.CustomerId == userId && x.AddressId == addressEntity.Id);
@@ -159,6 +159,7 @@ namespace Manero.Services
                         if (customerAddressEntity != null)
                         {
                             customerAddressEntity.AddressId = createdAddress.Id;
+                            customerAddressEntity.AddressTagId = addressTag.Id;
 
                             await _dataContext.SaveChangesAsync();
                             response.StatusCode = StatusCode.Ok;
@@ -175,6 +176,7 @@ namespace Manero.Services
                         if (customerAddressEntity != null)
                         {
                             customerAddressEntity.AddressId = addressExists.Id;
+                            customerAddressEntity.AddressTagId = addressTag.Id;
 
                             await _dataContext.SaveChangesAsync();
                             response.StatusCode = StatusCode.Ok;
@@ -194,7 +196,7 @@ namespace Manero.Services
         {
             var response = new ServiceResponse<Address>();
 
-            if(userId == null)
+            if (userId == null)
             {
                 response.StatusCode = StatusCode.NotFound;
                 response.Content = null;
@@ -212,11 +214,9 @@ namespace Manero.Services
                 {
                     var addressExists = await _addressRepo.GetAsync(x => x.StreetName == address.StreetName && x.PostalCode == address.PostalCode && x.City == address.City);
 
-                    if(addressExists == null)
+                    if (addressExists == null)
                     {
                         AddressEntity addressEntity = address;
-
-                        addressEntity.AddressTagId = addressTag!.Id;
 
 
                         var newAddress = await _addressRepo.CreateAsync(addressEntity);
@@ -231,7 +231,8 @@ namespace Manero.Services
                             var newCustomerAddress = new CustomerAddress()
                             {
                                 AddressId = newAddress.Id,
-                                CustomerId = userId
+                                CustomerId = userId,
+                                AddressTagId = addressTag.Id,
                             };
 
                             var createCustomerAddress = await _customerAddressRepo.CreateAsync(newCustomerAddress);
@@ -251,14 +252,57 @@ namespace Manero.Services
                     }
                     else
                     {
-                        response.StatusCode = StatusCode.BadRequest;
-                        response.Content = null;
+                        var newCustomerAddress = new CustomerAddress()
+                        {
+                            AddressId = addressExists.Id,
+                            CustomerId = userId,
+                            AddressTagId = addressTag.Id,
+                        };
+
+                        var createCustomerAddress = await _customerAddressRepo.CreateAsync(newCustomerAddress);
+
+                        if (createCustomerAddress == null)
+                        {
+                            response.StatusCode = StatusCode.NotFound;
+                            response.Content = null;
+                        }
+                        else
+                        {
+                            response.StatusCode = StatusCode.Created;
+                            response.Content = address;
+                        }
                     }
-                   
+
                 }
             }
             return response;
         }
+        public async Task<ServiceResponse<CustomerAddress>> DeleteAddressAsync(Address address, string userId)
+        {
+            var response = new ServiceResponse<CustomerAddress>();
 
+            if (userId == null)
+            {
+                response.StatusCode = StatusCode.NotFound;
+                response.Content = null;
+            }
+            else
+            {
+                var addressEntity = await _addressRepo.GetAsync(x => x.StreetName == address.StreetName && x.City == address.City && x.PostalCode == address.PostalCode);
+                var customerAddress = await _customerAddressRepo.GetAsync(x => x.AddressId == addressEntity.Id && x.CustomerId == userId);
+                if (customerAddress == null)
+                {
+                    response.StatusCode = StatusCode.NotFound;
+                    response.Content = null;
+                }
+                else
+                {
+                    await _customerAddressRepo.DeleteAsync(x => x.Id == customerAddress.Id);
+                    response.StatusCode = StatusCode.Ok;
+                    response.Content = null;
+                }
+            }
+            return response;
+        }
     }
 }

@@ -16,7 +16,6 @@ const [loading, setLoading] = useState(true);
             try{
                 const addresses = await getProfileAddress();
                 setData(addresses)
-                console.log(addresses)
                 setLoading(false)
             } catch(error){
                 console.error("Error fetching addresses")
@@ -29,22 +28,24 @@ const [loading, setLoading] = useState(true);
     if(loading){
         return <h1>loading..</h1>
     }
-    
+
   return (
     <div className='MyAddresses'>
         <div className='container'>
             <div className='row'>
-                <div className='col-12 top-nav'>
-                    <div className='col-7 col-lg-6 navContainer'>
-                        <div>
-                            <Link to={"/profile"}>
-                                <AiOutlineArrowLeft className='go-back-arrow'/>
-                            </Link>
-                        </div>
-                        <p>My address</p>
+            <div className='col-12 top-nav'>
+                <div className='col-12 navContainer'>
+                    <div className='back-arrow-div'>
+                        <Link to={"/profile/address"}>
+                            <AiOutlineArrowLeft className='go-back-arrow'/>
+                        </Link>
+                    </div>
+                    <div className='flex-grow-1 test'>
+                        <p>My addresses</p>
                     </div>
                 </div>
-                {data.content.address.map((addressItem, index) => 
+            </div>
+                {typeof data !== "undefined" ? data.content.address.map((addressItem, index) => 
                 <div className='col-12 address-list-items' key={index}>
                     {addressItem.addressTag === "Home" ? <AiOutlineHome className='address-category-icon'/> : addressItem.addressTag === "Work" ? <PiBagLight className='address-category-icon'/> 
                     : addressItem.addressTag === "Family" ? <MdFamilyRestroom className='address-category-icon'/> : <CiLocationOn className='address-category-icon'/>}
@@ -57,7 +58,7 @@ const [loading, setLoading] = useState(true);
                         <BsPencil className='edit-adress' />
                     </Link>
                 </div>
-                )}
+                )  : ""}
                 <div className='col-12 add-address'>
                     <div>
                         <Link to={"/profile/address/add"}>

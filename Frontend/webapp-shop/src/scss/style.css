@@ -960,12 +960,17 @@ nav a {
 }
 .MyAddresses .container .row .top-nav .navContainer {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
 }
 .MyAddresses .container .row .top-nav .navContainer p {
   margin-bottom: 0;
+}
+.MyAddresses .container .row .top-nav .navContainer .back-arrow-div {
+  display: flex;
+  align-items: center;
+  position: absolute;
+}
+.MyAddresses .container .row .top-nav .navContainer .test {
+  text-align: center;
 }
 .MyAddresses .container .row .top-nav .navContainer div {
   padding: 8px;
@@ -1025,11 +1030,17 @@ nav a {
 }
 .add-address .container .row .top-nav .navContainer {
   display: flex;
-  justify-content: space-between;
-  text-align: center;
 }
 .add-address .container .row .top-nav .navContainer p {
   margin-bottom: 0;
+}
+.add-address .container .row .top-nav .navContainer .back-arrow-div {
+  display: flex;
+  align-items: center;
+  position: absolute;
+}
+.add-address .container .row .top-nav .navContainer .test {
+  text-align: center;
 }
 .add-address .container .row .top-nav .navContainer div {
   padding: 8px;

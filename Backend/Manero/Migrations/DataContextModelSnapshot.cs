@@ -30,9 +30,6 @@ namespace Manero.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AddressTagId")
-                        .HasColumnType("int");
-
                     b.Property<string>("City")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -45,8 +42,6 @@ namespace Manero.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AddressTagId");
 
                     b.ToTable("Address");
                 });
@@ -96,6 +91,9 @@ namespace Manero.Migrations
                     b.Property<int>("AddressId")
                         .HasColumnType("int");
 
+                    b.Property<int>("AddressTagId")
+                        .HasColumnType("int");
+
                     b.Property<string>("CustomerId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -103,6 +101,8 @@ namespace Manero.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AddressId");
+
+                    b.HasIndex("AddressTagId");
 
                     b.HasIndex("CustomerId");
 
@@ -536,22 +536,17 @@ namespace Manero.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Manero.Models.Entities.AddressEntity", b =>
-                {
-                    b.HasOne("Manero.Models.Entities.AddressTagEntity", "AddressTag")
-                        .WithMany()
-                        .HasForeignKey("AddressTagId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AddressTag");
-                });
-
             modelBuilder.Entity("Manero.Models.Entities.CustomerAddressEntity", b =>
                 {
                     b.HasOne("Manero.Models.Entities.AddressEntity", "Address")
                         .WithMany("Customers")
                         .HasForeignKey("AddressId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Manero.Models.Entities.AddressTagEntity", "AddressTag")
+                        .WithMany()
+                        .HasForeignKey("AddressTagId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -562,6 +557,8 @@ namespace Manero.Migrations
                         .IsRequired();
 
                     b.Navigation("Address");
+
+                    b.Navigation("AddressTag");
 
                     b.Navigation("Customer");
                 });

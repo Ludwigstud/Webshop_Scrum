@@ -132,66 +132,31 @@ public class ProfileController : ControllerBase
             return StatusCode(StatusCodes.Status500InternalServerError, "A database error occurred");
         }
     }
-        
-
-        
-
-
-
-      /*  if (userId == null)
-            return NotFound();
-
-        AddressEntity addressEntity = await _addressRepo.GetAsync(x => x.StreetName == editAddress.CurrentAddress.StreetName && x.PostalCode == editAddress.CurrentAddress.PostalCode);
-
-        var addressTag = await _addressTagRepo.GetAsync(x => x.TagName == editAddress.NewAddress.AddressTag);
-
-        AddressEntity newAddressEntityMap = new AddressEntity()
+    [HttpDelete("DeleteProfileAddress")]
+    public async Task<IActionResult> DeleteProfileAddress(Address address)
+    {
+        try
         {
-            StreetName = editAddress.NewAddress.StreetName,
-            PostalCode = editAddress.NewAddress.PostalCode,
-            City = editAddress.NewAddress.City,
-            AddressTagId = addressTag.Id
-        };
-
-        var addressExists = await _addressRepo.GetAsync(x => x.StreetName == newAddressEntityMap.StreetName && x.PostalCode == newAddressEntityMap.PostalCode && x.City == newAddressEntityMap.City);
-        CustomerAddressEntity customerAddressEntity = await _customerAddressRepo.GetAsync(x => x.CustomerId == userId && x.AddressId == addressEntity.Id);
-
-        if (addressExists == null) 
-        { 
-            var createdAddress = await _addressRepo.CreateAsync(newAddressEntityMap);
-            if (customerAddressEntity != null)
+            if (ModelState.IsValid)
             {
-                customerAddressEntity.AddressId = createdAddress.Id;
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-                await _context.SaveChangesAsync();
-                return Ok();
+                var result = await _profileService.DeleteAddressAsync(address, userId!);
+
+                if (result != null)
+                    return StatusCode((int)result.StatusCode, result);
+                else
+                    return Conflict();
             }
             else
             {
-                return BadRequest();
+                return Conflict();
             }
         }
-        else
+        catch
         {
-            if(customerAddressEntity != null)
-            {
-                customerAddressEntity.AddressId = addressExists.Id;
-
-                await _context.SaveChangesAsync();
-                return Ok();
-            }
-            else
-            {
-                return BadRequest();
-            }
-        } */
-
-         //AddressEntity newAddressEntity = await _addressRepo.CreateAsync(newAddressEntityMap);
-
-       
-
-
-
-       
+            return StatusCode(StatusCodes.Status500InternalServerError, "A database error occurred");
+        }
+    }
     
 }

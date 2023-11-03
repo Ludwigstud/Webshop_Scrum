@@ -7,10 +7,17 @@
                 margin: 10px 0;
                 .navContainer{
                     display: flex;
-                    justify-content: space-between;
-                    text-align: center;
+
                     p{
                         margin-bottom: 0;
+                    }
+                    .back-arrow-div{
+                        display: flex;
+                        align-items: center;
+                        position: absolute;
+                    }
+                    .test{
+                        text-align: center;
                     }
                     div{
                         padding: 8px;
