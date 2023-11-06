@@ -91,7 +91,6 @@ const Profile = () => {
       </div>
       
     </div>
-    <NavBottomReplace/>
     </>
   );
 };

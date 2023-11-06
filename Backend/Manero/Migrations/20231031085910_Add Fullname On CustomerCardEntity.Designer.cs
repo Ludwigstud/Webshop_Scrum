@@ -4,6 +4,7 @@ using Manero.Models.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Manero.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20231031085910_Add Fullname On CustomerCardEntity")]
+    partial class AddFullnameOnCustomerCardEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,23 +49,6 @@ namespace Manero.Migrations
                     b.ToTable("Address");
                 });
 
-            modelBuilder.Entity("Manero.Models.Entities.AddressTagEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("TagName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AddressTags");
-                });
-
             modelBuilder.Entity("Manero.Models.Entities.CategoryEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -91,9 +77,6 @@ namespace Manero.Migrations
                     b.Property<int>("AddressId")
                         .HasColumnType("int");
 
-                    b.Property<int>("AddressTagId")
-                        .HasColumnType("int");
-
                     b.Property<string>("CustomerId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -101,8 +84,6 @@ namespace Manero.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AddressId");
-
-                    b.HasIndex("AddressTagId");
 
                     b.HasIndex("CustomerId");
 
@@ -117,16 +98,12 @@ namespace Manero.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CVV")
-                        .HasColumnType("int");
-
                     b.Property<string>("CustomerId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("ExpiryDate")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("ExpiryDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("FullName")
                         .IsRequired()
@@ -135,9 +112,8 @@ namespace Manero.Migrations
                     b.Property<int>("Money")
                         .HasColumnType("int");
 
-                    b.Property<string>("Number")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Number")
+                        .HasColumnType("int");
 
                     b.Property<string>("PaymentType")
                         .HasColumnType("nvarchar(max)");
@@ -553,12 +529,6 @@ namespace Manero.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Manero.Models.Entities.AddressTagEntity", "AddressTag")
-                        .WithMany()
-                        .HasForeignKey("AddressTagId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Manero.Models.Entities.CustomerEntity", "Customer")
                         .WithMany("Addresses")
                         .HasForeignKey("CustomerId")
@@ -566,8 +536,6 @@ namespace Manero.Migrations
                         .IsRequired();
 
                     b.Navigation("Address");
-
-                    b.Navigation("AddressTag");
 
                     b.Navigation("Customer");
                 });
