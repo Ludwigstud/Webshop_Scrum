@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Manero.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class ChangedCustomerAddressTable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -24,6 +24,19 @@ namespace Manero.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Address", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AddressTags",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TagName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AddressTags", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -245,8 +258,9 @@ namespace Manero.Migrations
                     ProductName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
-                    DiscountId = table.Column<int>(type: "int", nullable: false)
+                    DiscountId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -261,8 +275,7 @@ namespace Manero.Migrations
                         name: "FK_Products_Discount_DiscountId",
                         column: x => x.DiscountId,
                         principalTable: "Discount",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -272,11 +285,18 @@ namespace Manero.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AddressId = table.Column<int>(type: "int", nullable: false),
-                    CustomerId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    CustomerId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    AddressTagId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CustomerAdress", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CustomerAdress_AddressTags_AddressTagId",
+                        column: x => x.AddressTagId,
+                        principalTable: "AddressTags",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_CustomerAdress_Address_AddressId",
                         column: x => x.AddressId,
@@ -442,6 +462,11 @@ namespace Manero.Migrations
                 column: "AddressId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_CustomerAdress_AddressTagId",
+                table: "CustomerAdress",
+                column: "AddressTagId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_CustomerAdress_CustomerId",
                 table: "CustomerAdress",
                 column: "CustomerId");
@@ -524,6 +549,9 @@ namespace Manero.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "AddressTags");
 
             migrationBuilder.DropTable(
                 name: "Address");
