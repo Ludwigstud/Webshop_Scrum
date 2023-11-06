@@ -5,6 +5,7 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,900&family=Inter:wght@300;400;500;700;900&family=Mulish:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,200&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,900&family=Inter:wght@300;400;500;700;900&family=Mulish:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,200&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,900&family=Inter:wght@300;400;500;700;900&family=Mulish:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,900&family=Inter:wght@300;400;500;700;900&family=Mulish:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,200&display=swap");
 .navbar-bottom {
   position: fixed;
   width: 100%;
@@ -703,9 +704,9 @@
 }
 
 .categories-header-container .categorie-image {
-  background-color: #DBE3F5;
   border-radius: 100%;
-  padding: 40px;
+  width: 80px;
+  height: 80px;
 }
 .categories-header-container .title {
   text-align: center;
@@ -848,8 +849,8 @@
   position: relative;
 }
 .showcase-container .showcase-image {
-  background-color: #DBE3F5;
-  padding: 80px;
+  width: 95%;
+  height: 150px;
   margin: 0 10px;
 }
 .showcase-container .info {
@@ -876,102 +877,8 @@
   font-size: 14px;
 }
 
-.button-container {
-  position: relative;
-  margin: 20px;
-}
-.button-container .button {
-  background: transparent !important;
-  border: none;
-  cursor: pointer;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-.button-container .button .line {
-  width: 30px;
-  height: 3px;
-  background: #000;
-  margin: 3px 0;
-  transition: 0.4s;
-}
-.button-container .button .line:nth-child(2) {
-  margin-left: 10px;
-}
-
-.offcanvas-body {
-  background-color: #111111;
-  color: #FFFFFF;
-  padding-top: 6rem;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.offcanvas-body h3 {
-  padding-bottom: 2rem;
-  padding-left: 2rem;
-  font-size: 2rem;
-}
-.offcanvas-body .contact-icons .contactinfo {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-  border-bottom: 1px solid gray;
-  padding-left: 2rem;
-  padding-bottom: 2rem;
-}
-.offcanvas-body .contact-icons .contactinfo .icon {
-  border-radius: 50%;
-  outline: 2px solid var(--color-text-faded);
-  outline-offset: 0.5rem;
-  display: inline-flex;
-  justify-content: center;
-  color: #626262;
-}
-.offcanvas-body .contact-icons .contactinfo p {
-  padding-left: 0.5rem;
-  margin: 0px;
-}
-
-.order-tracker {
-  padding-bottom: 4rem;
-  padding-left: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-}
-.order-tracker .input-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.order-tracker .input-container input {
-  all: unset;
-  height: 3rem;
-  border-radius: 2.5rem;
-  padding-left: 1rem;
-}
-.order-tracker .input-container button {
-  position: absolute;
-  top: 50%;
-  right: 2.4rem;
-  transform: translateY(-50%);
-  border: 0;
-  padding: 0;
-  background: transparent;
-  color: var(--color-greytext);
-  border-radius: 50%;
-  width: 2.6rem;
-  height: 2.6rem;
-}
-.order-tracker .input-container button .container-arrow {
-  display: flex;
-  justify-content: center;
+nav a {
+  font-size: large;
 }
 
 .profile .container {
@@ -1048,3 +955,110 @@
   font-size: 22px;
   color: #111111;
 }
+
+.favorites-page .massage {
+  font-family: "Mulish", sans-serif;
+  font-weight: 900;
+  font-size: 22px;
+  position: absolute;
+  top: 30%;
+  left: 9%;
+  text-transform: uppercase;
+}
+
+.wish-list-container {
+  margin-top: 40px;
+}
+.wish-list-container .content {
+  position: relative;
+  padding: 20px 0;
+}
+.wish-list-container .content .item {
+  display: grid;
+  grid-template-columns: 150px auto;
+}
+.wish-list-container .content .item .product-image {
+  width: 110px;
+  height: 110px;
+  margin-left: 5px;
+}
+.wish-list-container .content .item .sale {
+  background-color: #69864D;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  width: 37px;
+  text-align: center;
+  font-size: 9px;
+  font-family: "Mulish", sans-serif;
+  font-weight: 700;
+  padding: 3px 0;
+  margin-bottom: 0;
+  margin-left: 3px;
+  position: absolute;
+  top: 20px;
+}
+.wish-list-container .content .item .info {
+  margin-left: -30px;
+}
+.wish-list-container .content .item .info .title {
+  font-family: "Mulish", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 5px;
+  margin-bottom: 0;
+}
+.wish-list-container .content .item .info .price {
+  font-family: "Mulish", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 5px;
+  display: inline;
+}
+.wish-list-container .content .item .info .price-before-sale {
+  font-family: "Mulish", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 5px;
+  display: inline;
+  text-decoration-line: line-through;
+}
+.wish-list-container .content .item .info .price-after-sale {
+  display: inline;
+  margin-left: 8px;
+  font-family: "Mulish", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #F4303C;
+}
+.wish-list-container .content .item .info .star-rating {
+  display: flex;
+  margin-top: 10px;
+}
+.wish-list-container .content .item .info .star-rating .star {
+  color: orange;
+  margin-left: 1px;
+}
+.wish-list-container .content .item .info .star-rating .checked {
+  color: orange;
+}
+.wish-list-container .content .item .info .star-rating .review {
+  margin-left: 5px;
+  margin-bottom: 7px;
+}
+.wish-list-container .content .heart {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 21px;
+}
+.wish-list-container .content .bag {
+  position: absolute;
+  top: 90px;
+  right: 10px;
+  font-size: 21px;
+  border: 1px solid #111111;
+  border-radius: 100%;
+  padding: 4px 8px;
+  background-color: #111111;
+  color: #FFFFFF;
+}/*# sourceMappingURL=style.css.map */
