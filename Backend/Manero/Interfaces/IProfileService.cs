@@ -5,7 +5,7 @@ namespace Manero.Interfaces
 {
     public interface IProfileService
     {
-        Task<ServiceResponse<Profile>> GetProfile(string userId);
+        Task<ServiceResponse<Profile>> GetProfileAsync(string userId);
         Task<ServiceResponse<Profile>> GetProfileAddressesAsync(string userId);
         Task<ServiceResponse<EditAddress>> UpdateProfileAddressAsync(EditAddress editAddress, string userId);
 

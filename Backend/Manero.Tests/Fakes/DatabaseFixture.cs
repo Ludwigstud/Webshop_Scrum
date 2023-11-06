@@ -1,4 +1,7 @@
 ﻿using Manero.Models.Contexts;
+using Manero.Models.dto;
+using Manero.Models.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Manero.Tests.Fakes
@@ -6,6 +9,8 @@ namespace Manero.Tests.Fakes
     public class DatabaseFixture : IDisposable
     {
         public DataContext Context { get; private set; }
+
+
 
         public DatabaseFixture()
         {
@@ -19,5 +24,6 @@ namespace Manero.Tests.Fakes
         {
             Context.Dispose();
         }
+       
     }
 }

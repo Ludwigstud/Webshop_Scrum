@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Manero.Migrations
 {
     /// <inheritdoc />
-    public partial class ChangedCustomerAddressTable : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -319,9 +319,11 @@ namespace Manero.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PaymentType = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Provider = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Number = table.Column<int>(type: "int", nullable: false),
+                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CVV = table.Column<int>(type: "int", nullable: false),
+                    Number = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Money = table.Column<int>(type: "int", nullable: false),
-                    ExpiryDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ExpiryDate = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CustomerId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>

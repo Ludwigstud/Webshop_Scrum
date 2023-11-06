@@ -954,3 +954,344 @@ nav a {
   font-size: 22px;
   color: #111111;
 }
+
+.MyAddresses .container .row .top-nav {
+  margin: 10px 0;
+}
+.MyAddresses .container .row .top-nav .navContainer {
+  display: flex;
+}
+.MyAddresses .container .row .top-nav .navContainer p {
+  margin-bottom: 0;
+}
+.MyAddresses .container .row .top-nav .navContainer .back-arrow-div {
+  display: flex;
+  align-items: center;
+  position: absolute;
+}
+.MyAddresses .container .row .top-nav .navContainer .test {
+  text-align: center;
+}
+.MyAddresses .container .row .top-nav .navContainer div {
+  padding: 8px;
+}
+.MyAddresses .container .row .top-nav .navContainer div a {
+  color: #111111;
+}
+.MyAddresses .container .row .top-nav .navContainer div a .go-back-arrow {
+  font-size: large;
+}
+.MyAddresses .container .address-list-items {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+.MyAddresses .container .address-list-items .address-category-icon {
+  font-size: 1.6rem;
+}
+.MyAddresses .container .address-list-items .address p {
+  margin-bottom: 0;
+  color: #626262;
+}
+.MyAddresses .container .address-list-items .address small {
+  color: #626262;
+}
+.MyAddresses .container .address-list-items a {
+  color: #111111;
+}
+.MyAddresses .container .address-list-items a .edit-adress {
+  font-size: 1rem;
+}
+.MyAddresses .container .add-address {
+  display: flex;
+  justify-content: center;
+  margin: 25px 0;
+}
+.MyAddresses .container .add-address div {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+.MyAddresses .container .add-address div .add-address-icon {
+  font-size: 1.4rem;
+  margin: 10px 0;
+  color: #111111;
+}
+.MyAddresses .container .add-address div p {
+  color: #626262;
+}
+
+.add-address .container .row .top-nav {
+  margin: 10px 0;
+}
+.add-address .container .row .top-nav .navContainer {
+  display: flex;
+}
+.add-address .container .row .top-nav .navContainer p {
+  margin-bottom: 0;
+}
+.add-address .container .row .top-nav .navContainer .back-arrow-div {
+  display: flex;
+  align-items: center;
+  position: absolute;
+}
+.add-address .container .row .top-nav .navContainer .test {
+  text-align: center;
+}
+.add-address .container .row .top-nav .navContainer div {
+  padding: 8px;
+}
+.add-address .container .row .top-nav .navContainer div a {
+  color: #111111;
+}
+.add-address .container .row .top-nav .navContainer div a .go-back-arrow {
+  font-size: large;
+}
+.add-address .container .row .add-address-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+.add-address .container .row .add-address-container .registrate-input-group {
+  position: relative;
+}
+.add-address .container .row .add-address-container .registrate-input-group .registrate-user-label {
+  position: absolute;
+  left: 5em;
+  top: -0.4em;
+  padding: 0 0.5em;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  background-color: white;
+  z-index: 99;
+}
+.add-address .container .row .add-address-container .registrate-input-group .registrate-user-input {
+  color: #111111;
+  font-size: 0.9rem;
+  line-height: 1;
+  height: 3.6em;
+  width: 100%;
+  padding: 0.8em 1em;
+  border: 1.5px solid #DBE3F5;
+  border-radius: 1.8em;
+}
+.add-address .container .row .add-address-container .registrate-input-group .registrate-icon-input-container {
+  position: relative;
+  margin-bottom: 20px;
+}
+.add-address .container .row .add-address-container .registrate-input-group .registrate-icon-input-container .registrate-user-icon {
+  position: absolute;
+  right: 1em;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.add-address .container .row .add-address-container .col-12 {
+  display: flex;
+  justify-content: space-evenly;
+}
+.add-address .container .row .add-address-container .col-12 .checkboxContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 10px;
+}
+.add-address .container .row .add-address-container .col-12 .checkboxContainer label {
+  color: #626262;
+}
+.add-address .container .row .add-address-container .sign-in-button {
+  background-color: #111111;
+  color: #FFFFFF;
+  border-radius: 20px;
+  margin: 20px 0;
+  width: 100%;
+}
+
+.payment-methods-section i {
+  font-size: 30px;
+}
+.payment-methods-section h2 {
+  margin: 0;
+  text-align: center;
+  color: #626262;
+}
+.payment-methods-section h3 {
+  margin: 0;
+  font-size: 20px;
+  color: #626262;
+}
+.payment-methods-section a {
+  text-decoration: none;
+  margin: 0;
+  color: #626262;
+}
+.payment-methods-section a:hover {
+  opacity: 0.7;
+}
+.payment-methods-section .payment-methods-container .payment-methods-column {
+  border-bottom: 1px solid #DBE3F5;
+}
+
+.add-credit-card select {
+  margin-right: 15px;
+}
+.add-credit-card i {
+  font-size: 30px;
+}
+.add-credit-card h2 {
+  margin: 0;
+  text-align: center;
+  color: #626262;
+}
+.add-credit-card h3 {
+  margin: 0;
+  font-size: 20px;
+  color: #626262;
+}
+.add-credit-card a {
+  text-decoration: none;
+  margin: 0;
+  color: #626262;
+}
+.add-credit-card a:hover {
+  opacity: 0.7;
+}
+.add-credit-card .payment-methods-column .col-12 {
+  border-bottom: 1px solid #DBE3F5;
+}
+.add-credit-card .registrate-input-group {
+  position: relative;
+}
+.add-credit-card .registrate-input-group .error-message {
+  color: #F4303C;
+  font-size: 12px;
+  height: 30px;
+  margin-left: 10px;
+}
+.add-credit-card .registrate-input-group .registrate-user-label {
+  position: absolute;
+  left: 3em;
+  top: -0.4em;
+  padding: 0 0.5em;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  background-color: white;
+  z-index: 99;
+}
+.add-credit-card .registrate-input-group .registrate-user-input {
+  color: #111111;
+  font-size: 0.9rem;
+  line-height: 1;
+  height: 3.6em;
+  width: 100%;
+  padding: 0.8em 1em;
+  border: 1.5px solid #DBE3F5;
+  border-radius: 1.8em;
+}
+.add-credit-card .registrate-input-group .registrate-icon-input-container {
+  position: relative;
+}
+.add-credit-card .registrate-input-group .registrate-icon-input-container .registrate-user-icon {
+  position: absolute;
+  right: 1em;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.add-credit-card .registrate-input-group .registrate-icon-input-container .cross-icon {
+  color: #F4303C;
+}
+.add-credit-card .registrate-input-group .registrate-icon-input-container .check-icon {
+  color: #00824B;
+}
+.add-credit-card button {
+  color: #FFFFFF;
+  background-color: #111111;
+  width: 100%;
+  display: block;
+  border-radius: 1.8em;
+  padding: 10px;
+  border: 0px;
+  margin: 1em 0;
+}
+.add-credit-card button:hover {
+  opacity: 0.7;
+}
+.add-credit-card a {
+  text-decoration: none;
+  color: #626262;
+}
+.add-credit-card a:hover {
+  opacity: 0.7;
+}
+
+.credit-card {
+  max-width: 350px;
+  width: 100%;
+  margin: 5% auto;
+  padding: 0.1em 1em;
+  color: white;
+  border-radius: 11px;
+  background: linear-gradient(135deg, #45484d 0%, #000000 100%);
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+  transition: transform 0.3s ease, box-shadow 0.2s ease-in;
+}
+.credit-card .front-card {
+  height: 200px;
+  max-width: 100%;
+  position: relative;
+}
+.credit-card .front-card #globe {
+  float: right;
+  margin-top: -0.7em;
+  margin-right: 0.2em;
+  font-size: 1.6em;
+}
+.credit-card .front-card span {
+  font-weight: normal;
+  color: #f8f8f8;
+}
+.credit-card .front-card #chip {
+  width: 50px;
+  height: 50px;
+  margin-top: 2.3em;
+  margin-left: 0.4em;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.credit-card .front-card .card-info #no {
+  font-size: 0.9em;
+  font-family: "Cutive Mono";
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
+}
+.credit-card .front-card .card-info #name {
+  font-family: "Cutive Mono";
+  font-weight: bold;
+  font-size: 0.6em;
+}
+.credit-card .front-card .card-info #exp-date {
+  position: absolute;
+  bottom: 2.3em;
+  font-size: 0.6em;
+  opacity: 0.9;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.credit-card .front-card #mastercard {
+  float: right;
+  margin-top: -6.3em;
+  background: url("http://www.pngall.com/wp-content/uploads/2016/07/Mastercard-PNG-Clipart.png");
+  width: 80px;
+  height: 65px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}/*# sourceMappingURL=style.css.map */

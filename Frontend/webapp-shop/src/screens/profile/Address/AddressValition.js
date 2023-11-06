@@ -16,12 +16,10 @@ function AddressValition(address, postalcode, city, addressTag) {
             document.getElementById("postalcodeLabel").style.color = "black";
         
         if(!cityRegex.test(city) || city === null)
-            console.log("KUK")
-           //document.getElementById("cityLabel").style.color = "red";
+           document.getElementById("cityLabel").style.color = "red";
         else
             document.getElementById("cityLabel").style.color = "black";
         if (addressTag === null) {
-            console.log("KUK")
             let checkboxes = document.querySelectorAll(".checkboxLabel");
             for (let i = 0; i < checkboxes.length; i++) {
                 checkboxes[i].style.color = "red";
