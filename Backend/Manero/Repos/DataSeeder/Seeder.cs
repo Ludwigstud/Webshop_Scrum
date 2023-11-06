@@ -58,5 +58,28 @@ namespace Manero.Repos.DataSeeder
             context.Products.AddRange(products);
             context.SaveChanges();
         }
+
+        public static void ClearDatabase(DataContext context)
+        {
+            try
+            {
+                // Remove all records from your database tables
+                context.Database.ExecuteSqlRaw("DELETE FROM Products");
+                context.Database.ExecuteSqlRaw("DELETE FROM Categories");
+
+                // Optionally reset the primary key sequences (if using database-generated IDs)
+                // context.Database.ExecuteSqlRaw("DBCC CHECKIDENT ('ProductEntities', RESEED, 0)");
+                // context.Database.ExecuteSqlRaw("DBCC CHECKIDENT ('CategoryEntities', RESEED, 0)");
+
+                context.SaveChanges(); // Save changes to the database
+                Console.WriteLine("Database cleared successfully.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Database clearing failed: {ex.Message}");
+            }
+        }
+
     }
+
 }

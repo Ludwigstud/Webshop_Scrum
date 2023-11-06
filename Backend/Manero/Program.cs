@@ -21,6 +21,8 @@ builder.Services.AddScoped<ProductRepo>();
 
 
 
+
+
 // Services
 
 builder.Services.AddControllers().AddNewtonsoftJson(options =>
@@ -31,12 +33,6 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Identity")));
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<CustomerRepo>();
-
-
-
-
-
-
 
 
 
@@ -85,12 +81,6 @@ app.UseStaticFiles();
 app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
 
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    var context = services.GetRequiredService<DataContext>();
-    Seeder.SeedAll(context);
-}
 
 if (app.Environment.IsDevelopment())
 {
