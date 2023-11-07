@@ -1,7 +1,7 @@
 import React from "react";
 import { BsChevronLeft } from "react-icons/bs";
 import { useState} from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CreditCard from "../../../../components/CreditCard/CreditCard";
 import PostCreditCardSchemaAsync from "./PostCreditCardSchemaAsync";
 import {formatCVV, formatCreditCard, formatExpiryDate} from './FormatStrings'
@@ -10,6 +10,7 @@ const AddCreditCardScreen = () => {
     const [creditCard, SetCreditCard] = useState({fullName: "", number: "", expiryDate: "", provider: "Choose a card", cvv: ""});
     const [formErrorIcons, setFormErrorIcons] = useState({});
     const [formErrors, setFormErrors] = useState({});
+    const navigate = useNavigate();
 
 
     const handleOnChange = (e) => {
@@ -42,6 +43,7 @@ const AddCreditCardScreen = () => {
         if(Object.keys(errors).length === 0)
         {
             await PostCreditCardSchemaAsync(registrateCard);
+            navigate("/profile/paymentmethods")
         }
         else {
             setFormErrors(errors);

@@ -12,6 +12,7 @@ import MyAddresses from './screens/profile/Address/MyAddresses';
 import AddAddress from './screens/profile/Address/AddAddress';
 import { ProfileProvider } from './contexts/ProfileContext';
 import EditAddress from './screens/profile/Address/EditAddress';
+import EditCreditCardScreen from './screens/profile/paymentMethods/EditCreditCardScreen/EditCreditCardScreen';
 function App() {
   return (
     <AuthProvider>
@@ -27,6 +28,7 @@ function App() {
             <Route path='/profile/address/edit/:id' element={<EditAddress/>}/>
             <Route path="/profile/paymentmethods" element={<PaymentMethodsScreen/>}/>
             <Route path="/profile/paymentmethods/addcreditcard" element={<AddCreditCardScreen/>}/>
+            <Route path="/profile/paymentmethods/edit/:id" element={<EditCreditCardScreen/>}/>
             <Route path="/Register" element={<RegistrateUserScreen/>}/>
             <Route path="/signin" element={<SignIn/>}/>
           </Routes>

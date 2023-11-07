@@ -48,6 +48,32 @@ public class CreditCardService : ICreditCardService
         return response;
     }
 
+    public async Task<ServiceResponse<bool>> DeleteAsync(ServiceRequest<(int, string)> request)
+    {
+        var response = new ServiceResponse<bool>();
+        var creditCard = await _customerCardRepo.GetAsync(x => x.Id == request.Content.Item1 && x.CustomerId == request.Content.Item2);
+        if (creditCard != null)
+        {
+            var result = await _customerCardRepo.DeleteAsync(x => x.Id == creditCard.Id && x.CustomerId == creditCard.CustomerId);
+            if (result)
+            {
+                response.Content = true;
+                response.StatusCode = StatusCode.Ok;
+            }
+            else
+            {
+                response.Content = false;
+                response.StatusCode = StatusCode.BadRequest;
+            }
+        }
+        else
+        {
+            response.Content = false;
+            response.StatusCode = StatusCode.BadRequest;
+        }
+        return response;
+    }
+
     public async Task<ServiceResponse<List<CreditCardDto>>> GetAllAsync(ServiceRequest<string> request)
     {
         var response = new ServiceResponse<List<CreditCardDto>>();
@@ -69,6 +95,23 @@ public class CreditCardService : ICreditCardService
                 response.Content = null;
                 response.StatusCode = StatusCode.BadRequest;
             }
+        }
+        else
+        {
+            response.Content = null;
+            response.StatusCode = StatusCode.BadRequest;
+        }
+        return response;
+    }
+
+    public async Task<ServiceResponse<CreditCardDto>> GetAsync(ServiceRequest<(int,string)> request)
+    {
+        var response = new ServiceResponse<CreditCardDto>();
+        var creditCard = await _customerCardRepo.GetAsync(x => x.Id == request.Content.Item1 && x.CustomerId == request.Content.Item2);
+        if (creditCard != null)
+        {
+            response.Content = creditCard;
+            response.StatusCode = StatusCode.Ok;
         }
         else
         {
