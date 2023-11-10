@@ -48,27 +48,18 @@ public class CreditCardService : ICreditCardService
         return response;
     }
 
-    public async Task<ServiceResponse<bool>> DeleteAsync(ServiceRequest<(int, string)> request)
+    public async Task<ServiceResponse<CreditCardDto>> GetAsync(ServiceRequest<(int, string)> request)
     {
-        var response = new ServiceResponse<bool>();
+        var response = new ServiceResponse<CreditCardDto>();
         var creditCard = await _customerCardRepo.GetAsync(x => x.Id == request.Content.Item1 && x.CustomerId == request.Content.Item2);
         if (creditCard != null)
         {
-            var result = await _customerCardRepo.DeleteAsync(x => x.Id == creditCard.Id && x.CustomerId == creditCard.CustomerId);
-            if (result)
-            {
-                response.Content = true;
-                response.StatusCode = StatusCode.Ok;
-            }
-            else
-            {
-                response.Content = false;
-                response.StatusCode = StatusCode.BadRequest;
-            }
+            response.Content = creditCard;
+            response.StatusCode = StatusCode.Ok;
         }
         else
         {
-            response.Content = false;
+            response.Content = null;
             response.StatusCode = StatusCode.BadRequest;
         }
         return response;
@@ -104,18 +95,27 @@ public class CreditCardService : ICreditCardService
         return response;
     }
 
-    public async Task<ServiceResponse<CreditCardDto>> GetAsync(ServiceRequest<(int,string)> request)
+    public async Task<ServiceResponse<bool>> DeleteAsync(ServiceRequest<(int, string)> request)
     {
-        var response = new ServiceResponse<CreditCardDto>();
+        var response = new ServiceResponse<bool>();
         var creditCard = await _customerCardRepo.GetAsync(x => x.Id == request.Content.Item1 && x.CustomerId == request.Content.Item2);
         if (creditCard != null)
         {
-            response.Content = creditCard;
-            response.StatusCode = StatusCode.Ok;
+            var result = await _customerCardRepo.DeleteAsync(x => x.Id == creditCard.Id && x.CustomerId == creditCard.CustomerId);
+            if (result)
+            {
+                response.Content = true;
+                response.StatusCode = StatusCode.Ok;
+            }
+            else
+            {
+                response.Content = false;
+                response.StatusCode = StatusCode.BadRequest;
+            }
         }
         else
         {
-            response.Content = null;
+            response.Content = false;
             response.StatusCode = StatusCode.BadRequest;
         }
         return response;
