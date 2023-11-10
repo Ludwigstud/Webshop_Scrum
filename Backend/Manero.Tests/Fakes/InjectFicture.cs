@@ -31,7 +31,8 @@ namespace Manero.Tests.Fakes
             var signInManager = new Mock<FakeSignInManager>();
 
 
-
+            fakeUserManager.Setup(x => x.FindByIdAsync(It.IsAny<string>()))
+                .ReturnsAsync(new IdentityUser { });
 
             fakeUserManager.Setup(x => x.FindByEmailAsync(It.IsAny<string>()))
                 .ReturnsAsync(new IdentityUser { });

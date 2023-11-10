@@ -1,22 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { BsChevronLeft, BsPlusLg, BsPencil } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CreditCardCarousel from "../../../../components/Carousels/CreditCardCarousel/CreditCardCarousel";
-import GetAllCreditCards from "./GetAllCreditCards";
-const PaymentMethodsScreen = () => {
+import useFetch from '../../../../hooks/useFetch';
 
-    const [creditCards, setCreditCards] = useState(null);
-      useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const UserCreditCards = await GetAllCreditCards(); 
-                setCreditCards(UserCreditCards.content);
-            } catch (error) {
-                console.error('Error fetching user Credit Cards', error);
-            }
-        };
-        fetchData();
-    }, []); 
+
+const PaymentMethodsScreen = () => {
+    const creditCards = useFetch(`https://localhost:7042/api/CreditCard/GetAllCreditCard`);
+    const authToken = localStorage.getItem('accessToken');
+    const navigate = useNavigate();
+    useEffect(() => {
+        if(!authToken){
+            navigate("/signin")
+        }
+    })
+
+    if(creditCards.isLoading){
+        return <p>Loading....</p>
+    }
 
     return (
         <section className="payment-methods-section my-3">
@@ -45,7 +46,7 @@ const PaymentMethodsScreen = () => {
                         </div>
                     </div>
                     <div className="col-12 col-md-6">
-                        {creditCards ? <CreditCardCarousel creditCards={creditCards}/> : <p>Loading</p>}
+                        {<CreditCardCarousel creditCards={creditCards.data.content}/>}
                     </div>
                     <div className="col-12 col-md-7 d-flex align-items-center justify-content-between py-3 payment-methods-column">
                         <div className="d-flex align-items-center">

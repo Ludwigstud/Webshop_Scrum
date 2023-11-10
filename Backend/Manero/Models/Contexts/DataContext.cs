@@ -23,6 +23,6 @@ public class DataContext : IdentityDbContext<IdentityUser>
     public DbSet<OrderProductEntity> OrderProduct { get; set; }
     public DbSet<CategoryEntity> Categories { get; set; }
     public DbSet<DiscountEntity> Discount { get; set; }
-
     
+    public DbSet<AddressTagEntity> AddressTags { get; set; }
 }

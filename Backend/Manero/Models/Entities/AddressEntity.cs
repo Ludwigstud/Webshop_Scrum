@@ -1,4 +1,6 @@
-﻿namespace Manero.Models.Entities;
+﻿using Manero.Models.dto;
+
+namespace Manero.Models.Entities;
 
 public class AddressEntity
 {
@@ -7,4 +9,14 @@ public class AddressEntity
     public int PostalCode { get; set; }
     public string City { get; set; } = null!;
     public ICollection<CustomerAddressEntity> Customers { get; set; } = new HashSet<CustomerAddressEntity>();
+
+    public static implicit operator Address(AddressEntity entity)
+    {
+        return new Address
+        {
+            StreetName = entity.StreetName,
+            City = entity.City,
+            PostalCode = entity.PostalCode,
+        };
+    }
 }

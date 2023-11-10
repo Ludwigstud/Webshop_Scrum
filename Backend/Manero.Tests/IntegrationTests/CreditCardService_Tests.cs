@@ -1,4 +1,5 @@
 ﻿using Castle.Core.Resource;
+using Castle.Core.Smtp;
 using Manero.Enums;
 using Manero.Interfaces;
 using Manero.Models;
@@ -28,8 +29,10 @@ public class CreditCardService_Tests : IClassFixture<DatabaseFixture>
 
     private async Task SeedDummyData(DataContext context)
     {
+        _fixture.Context.CustomerCard.RemoveRange(_fixture.Context.CustomerCard);
         var creditCard1 = new CustomerCardEntity()
         {
+            Id = 1,
             PaymentType = "Creditcard",
             Provider = "Visa",
             FullName = "John Doe",
@@ -40,7 +43,7 @@ public class CreditCardService_Tests : IClassFixture<DatabaseFixture>
         };
 
         var creditCard2 = new CustomerCardEntity()
-        {
+        {   Id = 2,
             PaymentType = "Creditcard",
             Provider = "Mastercard",
             FullName = "Jane Smith",
@@ -54,6 +57,7 @@ public class CreditCardService_Tests : IClassFixture<DatabaseFixture>
         await context.CustomerCard.AddAsync(creditCard2);
         await context.SaveChangesAsync();
     }
+
 
     [Fact]
     public async Task CreateAsync_Should_ReturnServiceResponseWithStatusCodeOK_And_CustomerCardDto_WhenCreatedSuccessfully()
@@ -133,6 +137,28 @@ public class CreditCardService_Tests : IClassFixture<DatabaseFixture>
         Assert.Equal(2, result.Content.Count);
         Assert.Equal("5678 1234 5678 9012", result.Content[0].Number);
         Assert.Equal("1234 5678 9012 3456", result.Content[1].Number);
+    }
+
+    [Fact]
+    public async Task GetAsync_Should_Return_CreditCardDto_And_OKResponse()
+    {
+        //Arrange
+        string userId = "31d7f0b3-5b29-475f-83a4-9b62b0f87c8b";
+        int creditCardId = 1; 
+        await SeedDummyData(_fixture.Context);
+        var request = new ServiceRequest<(int, string)>()
+        {
+            Content = (creditCardId, userId)
+        };
+
+        //Act
+        var result = await _service.GetAsync(request);
+
+        //Assert
+        Assert.Equal(1, result.Content!.Id);
+        Assert.Equal("5678 1234 5678 9012", result.Content!.Number);
+        Assert.IsType<ServiceResponse<CreditCardDto>>(result);
+        Assert.Equal(StatusCode.Ok, result.StatusCode);
     }
 }
 

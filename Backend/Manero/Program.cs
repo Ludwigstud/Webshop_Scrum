@@ -16,8 +16,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 //Repos 
 builder.Services.AddScoped<CustomerRepo>();
+builder.Services.AddScoped<AddressRepo>();
+builder.Services.AddScoped<CustomerAddressRepo>();
+builder.Services.AddScoped<AddressTagRepo>();
 builder.Services.AddScoped<ProductRepo>();
 builder.Services.AddScoped<CustomerCardRepo>();
+
 
 
 
@@ -30,6 +34,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Identity")));
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<ProfileService>();
 builder.Services.AddScoped<CustomerRepo>();
 builder.Services.AddScoped<ICreditCardService, CreditCardService>();
 

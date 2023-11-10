@@ -1,34 +1,42 @@
-import { useEffect, useState } from 'react';
-
-export default function useFetch(url) {
+import { useEffect, useState, useMemo } from 'react';
+const useFetch = (url) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const authToken = localStorage.getItem('accessToken');
+
+  const headers = useMemo(() => {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    if (authToken) {
+      headers.append('Authorization', `Bearer ${authToken}`);
+    }
+    return headers;
+  }, [authToken]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-
+    const getData = async () => {
       try {
-        const response = await fetch(url);
+        const response = await fetch(url, {
+          method: 'GET',
+          headers: headers,
+        });
 
         if (!response.ok) {
-          throw new Error(
-            `Failed to fetch data: ${response.status} ${response.statusText}`
-          );
+          throw Error(`${response.status}: ${await response.text()}`);
         }
-
-        const result = await response.json();
-        setData(result);
-      } catch (err) {
-        setError(err.message);
+        const data = await response.json();
+        setData(data);
+      } catch (error) {
+        setError(error.message);
       } finally {
         setIsLoading(false);
       }
     };
-
-    fetchData();
-  }, [url]);
+    getData();
+  }, [url, headers]);
 
   return { data, error, isLoading };
-}
+};
+
+export default useFetch;

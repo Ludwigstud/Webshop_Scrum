@@ -3,12 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
-
 namespace Manero.Migrations
 {
     /// <inheritdoc />
-    public partial class testdb : Migration
+    public partial class DennisNewMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -26,6 +24,19 @@ namespace Manero.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Address", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AddressTags",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TagName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AddressTags", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -73,7 +84,7 @@ namespace Manero.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CategoryName = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -274,11 +285,18 @@ namespace Manero.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AddressId = table.Column<int>(type: "int", nullable: false),
-                    CustomerId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    CustomerId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    AddressTagId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CustomerAdress", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CustomerAdress_AddressTags_AddressTagId",
+                        column: x => x.AddressTagId,
+                        principalTable: "AddressTags",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_CustomerAdress_Address_AddressId",
                         column: x => x.AddressId,
@@ -301,9 +319,11 @@ namespace Manero.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PaymentType = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Provider = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Number = table.Column<int>(type: "int", nullable: false),
+                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CVV = table.Column<int>(type: "int", nullable: false),
+                    Number = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Money = table.Column<int>(type: "int", nullable: false),
-                    ExpiryDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ExpiryDate = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CustomerId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
@@ -399,33 +419,6 @@ namespace Manero.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.InsertData(
-                table: "Categories",
-                columns: new[] { "Id", "CategoryName" },
-                values: new object[,]
-                {
-                    { 1, "Shirts" },
-                    { 2, "Jackets" },
-                    { 3, "Pants" },
-                    { 4, "Footwear" },
-                    { 5, "Headwear" },
-                    { 6, "Accessories" },
-                    { 7, "Dresses" },
-                    { 8, "Underwear" },
-                    { 9, "Suits" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Products",
-                columns: new[] { "Id", "CategoryId", "Description", "DiscountId", "ImageUrl", "Price", "ProductName" },
-                values: new object[,]
-                {
-                    { 1, 1, "A comfortable red T-shirt for casual wear.", 1, null, 20, "Red T-Shirt" },
-                    { 2, 2, "Stylish blue jeans for all occasions.", 2, null, 40, "Blue Jeans" },
-                    { 3, 1, "High-performance running shoes for athletes.", 1, null, 80, "Running Shoes" },
-                    { 4, 2, "A classic leather jacket for a bold look.", 2, null, 130, "Leather Jacket" }
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -466,15 +459,14 @@ namespace Manero.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Categories_CategoryName",
-                table: "Categories",
-                column: "CategoryName",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
                 name: "IX_CustomerAdress_AddressId",
                 table: "CustomerAdress",
                 column: "AddressId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CustomerAdress_AddressTagId",
+                table: "CustomerAdress",
+                column: "AddressTagId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CustomerAdress_CustomerId",
@@ -559,6 +551,9 @@ namespace Manero.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "AddressTags");
 
             migrationBuilder.DropTable(
                 name: "Address");
