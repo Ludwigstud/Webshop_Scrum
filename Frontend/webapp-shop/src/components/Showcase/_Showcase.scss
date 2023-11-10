@@ -5,8 +5,8 @@
 .showcase-container{
     position: relative;
     .showcase-image{
-        width: 95%;
-        height: 150px;
+        background-color: $color-blue;
+        padding: 80px;
         margin: 0 10px;
     }
     .info{

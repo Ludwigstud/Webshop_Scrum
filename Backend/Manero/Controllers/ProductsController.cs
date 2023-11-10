@@ -1,5 +1,4 @@
 ﻿using Manero.Models.Contexts;
-using Manero.Models.dto;
 using Manero.Models.DTO;
 using Manero.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -61,7 +60,6 @@ public class ProductsController : ControllerBase
                 Id = item.Id,
                 ProductName = item.ProductName,
                 Price = item.Price,
-                PriceAfterSale = item.PriceAfterSale,
                 Description = item.Description,
                 ImageUrl = item.ImageUrl,
                 CategoryId = item.CategoryId

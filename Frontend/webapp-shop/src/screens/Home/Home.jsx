@@ -44,7 +44,10 @@ const Home = () => {
     <section className='home-section'>
       <div className='container'>
         <div className='categories-header'>
-        < CategoriesHeader/>
+        <Link to="/Men"><span>< CategoriesHeader categoryName="Men"/></span></Link>
+        <Link to="/Women">< CategoriesHeader categoryName="Women"/></Link>
+        <Link to="/Kids">< CategoriesHeader categoryName="Kids"/></Link>
+        <Link to="/Sport">< CategoriesHeader categoryName="Sport"/></Link>
         </div>
         <div className='showcase'>
           <Showcase/>

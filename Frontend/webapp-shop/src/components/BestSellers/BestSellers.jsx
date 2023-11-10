@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import BestSellersSale from '../../components/BestSellersSale/BestSellersSale'
 import {FaRegHeart} from 'react-icons/fa'
-import { FaHeart } from 'react-icons/fa'
 import {FaRegStar} from 'react-icons/fa'
 import {BsStarFill} from 'react-icons/bs'
 
@@ -9,7 +8,6 @@ const BestSellers = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
     fetch("https://localhost:7042/api/Products/GetproductsHadi")
@@ -29,30 +27,6 @@ const BestSellers = () => {
         setLoading(false);
       });
   }, []);
-  
-
-     // Ladda favoriter från localStorage när komponenten monteras
-     useEffect(() => {
-      const storedFavorites = localStorage.getItem("favorites");
-      if (storedFavorites) {
-        setFavorites(JSON.parse(storedFavorites));
-      }
-    }, []);
-  
-    // Funktion för att lägga till eller ta bort en produkt från favoriter
-    const toggleFavorite = (product) => {
-      const isFavorite = favorites.some((item) => item.id === product.id);
-      if (isFavorite) {
-        const updatedFavorites = favorites.filter((item) => item.id !== product.id);
-        setFavorites(updatedFavorites);
-        localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-      } else {
-        const updatedFavorites = [...favorites, product];
-        setFavorites(updatedFavorites);
-        localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-      }
-    };
-
 
   if (loading) {
     return <div>Loading...</div>;
@@ -66,14 +40,12 @@ const BestSellers = () => {
     return <div>No data available.</div>;
   }
 
-  
-
   return (
     <div className='best-sellers-container'>
         {data.map((product, index) => (
              <div key={index} className='content'>
              <div className='item'>
-             <img className='product-image' src={product.imageUrl} alt={product.productName}/>
+             <img className='product-image' src={product.imageUrl} alt="API Image" />
                <div className='info'>
                  <p className='title'>{product.productName}</p>
                  <p className='price'>${product.price}</p>
@@ -87,13 +59,7 @@ const BestSellers = () => {
                  </div>
                </div>
              </div>
-             <span className='heart' onClick={() => toggleFavorite(product)}>
-              {favorites.some((item) => item.id === product.id) ? (
-                <FaHeart color='red' />
-              ) : (
-                    <FaRegHeart color='black' />
-                  )}
-            </span>
+             <span className='heart'><FaRegHeart /></span>
            </div>
       ))}
  
