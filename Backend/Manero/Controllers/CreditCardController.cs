@@ -65,4 +65,44 @@ public class CreditCardController : ControllerBase
             return NotFound();
         }
     }
+
+    [HttpGet]
+    [Authorize]
+    [Route("{id}")]
+    public async Task<IActionResult> GetById([FromRoute] int id)
+    {
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (userId == null)
+            return NotFound();
+
+
+        var request = new ServiceRequest<(int, string)> { Content = (id, userId) };
+        var response = await _creditCardService.GetAsync(request);
+        if(response.Content != null)
+        {
+            return StatusCode((int)response.StatusCode, response);
+        }
+        else
+        {
+            return NotFound();
+        }
+    }
+
+    [HttpDelete]
+    [Authorize]
+    [Route("{id}")]
+    public async Task<IActionResult> DeleteById([FromRoute] int id)
+    {
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (userId == null)
+            return NotFound();
+
+        var request = new ServiceRequest<(int, string)> { Content= (id, userId) };
+        var response = await _creditCardService.DeleteAsync(request);
+        if(response.Content == true)
+        {
+            return StatusCode((int)response.StatusCode, response);
+        }
+        else { return NotFound(); }
+    }
 }

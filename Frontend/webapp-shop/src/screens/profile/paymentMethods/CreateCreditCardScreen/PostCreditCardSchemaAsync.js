@@ -8,7 +8,6 @@ const PostCreditCardSchemaAsync = async (AddCreditCardSchema) => {
       body: JSON.stringify(AddCreditCardSchema),
     });
     if (res.status === 201) {
-      window.location.replace("/profile/paymentmethods");
     }
   };
 
