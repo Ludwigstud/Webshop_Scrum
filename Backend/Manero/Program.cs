@@ -86,12 +86,7 @@ app.UseStaticFiles();
 app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
 
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    var context = services.GetRequiredService<DataContext>();
-    Seeder.SeedAll(context);
-}
+
 
 if (app.Environment.IsDevelopment())
 {
