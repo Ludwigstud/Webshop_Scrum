@@ -1,0 +1,114 @@
+@import "../../../../scss/corecss/colors";
+
+
+
+.add-credit-card {
+    select {
+        margin-right: 15px;
+    }
+    i {
+        font-size: 30px;
+    }
+    h2 {
+        margin: 0;
+        text-align: center;
+        color: $color-greytext;
+    }
+
+    h3 {
+        margin: 0;
+        font-size: 20px;
+        color: $color-greytext;
+    }
+
+    a {
+        text-decoration: none;
+        margin: 0;
+        color: $color-greytext;
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
+    .payment-methods-column {
+        .col-12 {
+            border-bottom: 1px solid $color-blue;
+        }
+    }
+
+    .registrate-input-group {
+        position: relative;
+
+
+        .error-message {
+            color: $color-red;
+            font-size: 12px;
+            height: 30px;
+            margin-left: 10px;
+        }
+
+        .registrate-user-label {
+            position: absolute;
+            left: 3em;
+            top: -0.4em;
+            padding: 0 0.5em;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            background-color: white;
+            z-index: 99;
+        }
+
+        .registrate-user-input {
+            color: $color-black;
+            font-size: 0.9rem;
+            line-height: 1;
+            height: calc(1.5em + 1.6em + 0.5em);
+            width: 100%;
+            padding: 0.8em 1em;
+            border: 1.5px solid $color-blue;
+            border-radius: 1.8em;
+        }
+
+        .registrate-icon-input-container {
+            position: relative;
+            .registrate-user-icon {
+                position: absolute;
+                right: 1em;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .cross-icon {
+                color: $color-red;
+            }
+
+            .check-icon {
+                color: $color-green;
+            }
+        }
+    }
+
+    button {
+        color: $color-white;
+        background-color: $color-black;
+        width: 100%;
+        display: block;
+        border-radius: 1.8em;
+        padding: 10px;
+        border: 0px;
+        margin: 1em 0;
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
+    a {
+        text-decoration: none;
+        color: $color-greytext;
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+}

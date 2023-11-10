@@ -1,0 +1,101 @@
+@import "../../../scss/corecss/colors";
+@import "../../../scss/corecss/mixin";
+.add-address{
+    .container{
+        .row{
+            .top-nav{
+                margin: 10px 0;
+                .navContainer{
+                    display: flex;
+
+                    p{
+                        margin-bottom: 0;
+                    }
+                    .back-arrow-div{
+                        display: flex;
+                        align-items: center;
+                        position: absolute;
+                    }
+                    .test{
+                        text-align: center;
+                    }
+                    div{
+                        padding: 8px;
+                        a{
+                            color: $color-black;
+                            .go-back-arrow{
+                                font-size: large;
+                            }
+                        }
+                    }
+
+                }
+            }
+            .add-address-container{
+                display: flex;
+                justify-content: center;
+                margin-top: 40px;
+                .registrate-input-group {
+                    position: relative;
+                
+                    .registrate-user-label {
+                      position: absolute;
+                      left: 5em;
+                      top: -0.4em;
+                      padding: 0 0.5em;
+                      font-size: 11px;
+                      letter-spacing: 0.1em;
+                      cursor: pointer;
+                      background-color: white;
+                      z-index: 99;
+                    }
+                
+                    .registrate-user-input {
+                      color: $color-black;
+                      font-size: 0.9rem;
+                      line-height: 1;
+                      height: calc(1.5em + 1.6em + 0.5em);
+                      width: 100%;
+                      padding: 0.8em 1em;
+                      border: 1.5px solid $color-blue;
+                      border-radius: 1.8em;
+                    }
+                
+                    .registrate-icon-input-container {
+                      position: relative;
+                      margin-bottom: 20px;
+                
+                      .registrate-user-icon {
+                        position: absolute;
+                        right: 1em;
+                        top: 50%;
+                        transform: translateY(-50%);
+                      }
+                    }
+                  }
+                  .col-12{
+                    display: flex;
+                    justify-content: space-evenly;
+                    .checkboxContainer{
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        margin: 10px 10px;
+                        label{
+                            color: $color-greytext;
+                        }
+                    }
+                }
+                .sign-in-button {
+                    background-color: $color-black;
+                    color: $color-white;
+                    border-radius: 20px;
+                    margin: 20px 0;
+                    width: 100%;
+                  }
+            }
+        }
+    }
+}
+

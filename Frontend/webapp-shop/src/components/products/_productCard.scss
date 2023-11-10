@@ -1,0 +1,271 @@
+.product-page {
+
+    .container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        img {}
+
+        .information {
+            padding-top: 40px;
+            padding-right: 10px;
+            padding-left: 10px;
+
+
+
+            .product-name {
+                padding-top: 10px;
+                border-top: 1px solid rgba(0, 0, 0, 0.384);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .icon {
+                    font-size: 25px;
+                }
+
+                h5 {
+                    font-size: 25px;
+                    font-weight: 700;
+                }
+
+            }
+
+            .rating {
+                .star {
+                    color: #FFBE00;
+                }
+
+                display: flex;
+
+
+            }
+
+            .total-rating {
+                padding-left: 10px;
+                padding-top: 2px;
+                color: #707070;
+                font-weight: 600;
+            }
+
+
+            .cost-add {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+
+                .product-cost {
+
+                    font-size: 24px;
+                    font-weight: 450;
+                }
+
+                .add {
+
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+
+
+                    .button {
+                        padding: 0;
+                        border: none;
+                        background: none;
+                        font-size: 20px;
+                    }
+
+                    .minus {
+                        padding-right: 15px;
+                        font-size: 45px;
+                    }
+
+                    .plus {
+                        padding-left: 15px;
+                        font-size: 35px;
+
+                    }
+
+                    .total {
+                        font-size: 30px;
+                        padding-top: 5px;
+
+                    }
+
+                }
+
+            }
+
+
+            .size {
+                .sizetext {
+                    font-size: 22px;
+                }
+
+
+                .sizepick {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .roundsize {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+
+                        border: solid 1px rgba(128, 128, 128, 0.521);
+                        border-radius: 100%;
+                        padding: 10px 15px 10px 15px;
+                        width: 50px;
+                        height: 50px;
+
+                        p {
+                            padding-top: 12px;
+                        }
+
+                        &:hover {
+                            background-color: #DBE3F5;
+                            border-color: #DBE3F5;
+                        }
+
+
+                    }
+                }
+            }
+
+            .colorpick {
+                padding-top: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                p {
+                    font-size: 24px;
+                    font-weight: 350;
+                    padding-top: 7px;
+                    padding-right: 10px;
+
+                }
+
+                .colors {
+                    display: flex;
+                    justify-content: space-around;
+                    width: 100%;
+                    padding-right: 45px;
+
+
+                    .color {
+                        height: 35px;
+                        width: 35px;
+
+                        border-radius: 50%;
+
+
+
+                    }
+
+                    .red {
+                        background-color: #FF6262;
+
+                        &:hover {
+                            border: solid 2px #DBE3F5;
+
+                        }
+                    }
+
+                    .blue {
+                        background-color: #63C7FF;
+
+
+                        &:hover {
+                            border: solid 2px #DBE3F5;
+
+                        }
+                    }
+
+                    .white {
+                        background-color: #F8E7CD;
+
+
+                        &:hover {
+                            border: solid 2px #DBE3F5;
+                        }
+                    }
+
+                    .grey {
+                        background-color: #323858;
+
+
+                        &:hover {
+                            border: solid 2px #DBE3F5;
+                        }
+                    }
+
+                    .black {
+                        background-color: #111111;
+
+
+                        &:hover {
+                            border: solid 2px #DBE3F5;
+                        }
+                    }
+                }
+            }
+
+
+        }
+
+        .description {
+            padding-top: 40px;
+
+            h5 {
+                font-weight: 400;
+            }
+
+            .information {
+                color: #535353;
+                font-weight: 400;
+                font-size: 16px;
+            }
+
+
+        }
+
+        .add-to-cart {
+            padding-top: 10px;
+            padding-bottom: 10px;
+
+            .button {
+                color: white;
+                background-color: black;
+                display: flex;
+                justify-content: center;
+                padding-top: 15px;
+                padding-bottom: 15px;
+                border-radius: 25px;
+
+                &:hover {
+                    background-color: rgba(0, 0, 0, 0.808);
+                }
+            }
+
+
+        }
+
+
+.reviews{
+    display: flex;
+    justify-content: space-between;
+    h6{
+        font-weight: 700;
+        font-size: 22px;
+    }
+}
+
+
+    }
+
+}
+

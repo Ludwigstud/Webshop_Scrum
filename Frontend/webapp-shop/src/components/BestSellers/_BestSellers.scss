@@ -1,0 +1,62 @@
+@import '../../scss/corecss/colors';
+@import '../../scss/corecss/fonts';
+@import '../../scss/corecss/mixin';
+
+.best-sellers-container{
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: auto;
+    gap: 20px;
+    .content {
+        position: relative;
+
+        .item{
+            display: grid;
+            grid-template-columns: 150px auto;
+            .product-image{
+                width: 150px;
+                height: 150px;
+            }
+            .info{
+                margin-left: 20px;
+                .title{
+                    font-family: 'Mulish', sans-serif;
+                    font-weight: 500;
+                    font-size: 16px;
+                    margin-bottom: 5px;
+                }
+                .price{
+                    font-family: 'Mulish', sans-serif;
+                    font-weight: 700;
+                    font-size: 14px;
+                    margin-bottom: 5px;
+                }
+                .star-rating{
+                    display: flex;
+                    margin-top: 10px;
+                    .star{
+                        color: orange;
+                        margin-left: 1px;
+                    }
+                    .checked{
+                        color: orange;
+                    }
+                    .review{
+                        margin-left: 5px;
+                        margin-bottom: 7px;
+                    }
+                }
+            }
+        }
+
+        .heart{
+            position: absolute;
+            top: 0;
+            right: 20px;
+            font-size: 21px;
+        }
+
+
+
+    }
+}
