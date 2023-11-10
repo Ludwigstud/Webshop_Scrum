@@ -25,4 +25,6 @@ public class DataContext : IdentityDbContext
     public DbSet<OrderProductEntity> OrderProduct { get; set; }
     public DbSet<CategoryEntity> Categories { get; set; }
     public DbSet<DiscountEntity> Discount { get; set; }
+    
+    public DbSet<AddressTagEntity> AddressTags { get; set; }
 }
