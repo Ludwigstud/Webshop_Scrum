@@ -12,20 +12,19 @@ namespace Manero.Services
 {
     public class ProfileService : IProfileService
     {
-        private readonly UserManager<IdentityUser> _userManager;
         private readonly DataContext _dataContext;
         private readonly AddressRepo _addressRepo;
         private readonly CustomerAddressRepo _customerAddressRepo;
         private readonly AddressTagRepo _addressTagRepo;
-        public ProfileService(UserManager<IdentityUser> userManager, DataContext dataContext, AddressTagRepo addressTagRepo, AddressRepo addressRepo, CustomerAddressRepo customerAddressRepo)
+
+        public ProfileService(DataContext dataContext, AddressTagRepo addressTagRepo, AddressRepo addressRepo, CustomerAddressRepo customerAddressRepo)
         {
-            _userManager = userManager;
             _dataContext = dataContext;
             _addressTagRepo = addressTagRepo;
             _addressRepo = addressRepo;
             _customerAddressRepo = customerAddressRepo;
         }
-        public async Task<ServiceResponse<Profile>> GetProfile(string userId)
+        public async Task<ServiceResponse<Profile>> GetProfileAsync(string userId)
         {
             var response = new ServiceResponse<Profile>();
             if (userId == null)
@@ -35,7 +34,7 @@ namespace Manero.Services
             }
             else
             {
-                var userIdentity = await _userManager.FindByIdAsync(userId);
+                var userIdentity = await _dataContext.Users.FirstOrDefaultAsync(x => x.Id == userId);
                 if (userIdentity == null)
                 {
                     response.StatusCode = StatusCode.NotFound;
@@ -77,7 +76,7 @@ namespace Manero.Services
             }
             else
             {
-                var profile = await GetProfile(userId!);
+                var profile = await GetProfileAsync(userId!);
 
                 if (profile == null)
                 {

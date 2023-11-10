@@ -36,7 +36,7 @@ const [loading, setLoading] = useState(true);
             <div className='col-12 top-nav'>
                 <div className='col-12 navContainer'>
                     <div className='back-arrow-div'>
-                        <Link to={"/profile/address"}>
+                        <Link to={"/profile"}>
                             <AiOutlineArrowLeft className='go-back-arrow'/>
                         </Link>
                     </div>
