@@ -1,7 +1,6 @@
 ﻿using Manero.Models.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Manero.Repos.DataSeeder;
 using Microsoft.AspNetCore.Identity;
 
 namespace Manero.Models.Contexts;
