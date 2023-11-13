@@ -56,7 +56,7 @@ public class CreditCardController : ControllerBase
 
         var request = new ServiceRequest<string> { Content = userId };
         var response = await _creditCardService.GetAllAsync(request);
-        if (response.Content != null)
+        if (response != null)
         {
             return StatusCode((int)response.StatusCode, response);
         }

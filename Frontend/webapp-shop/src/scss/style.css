@@ -937,20 +937,28 @@ nav a {
 }
 .profile .container .menu .option {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   border-top: 1px #DBE3F5 solid;
   min-width: 100%;
   padding-top: 5px;
   padding-bottom: 8px;
 }
+.profile .container .menu .option a {
+  min-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
 .profile .container .menu .option i {
   padding-right: 8px;
+  height: 15px;
+  width: 15px;
 }
 .profile .container .menu .option p {
-  padding-left: 30px;
-  margin-top: 10px;
-  padding-top: 15px;
+  padding: 15px 0px 15px 30px;
+  margin: 0;
   font-size: 22px;
   color: #111111;
 }

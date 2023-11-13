@@ -8,8 +8,6 @@ import {
 import { useAuthContext } from '../../contexts/AuthContext';
 import {validateOnChange, validateOnSubmit} from './RegistrateUserValidation';
 
-
-
 const RegistrateUser = ({setSuccess}) => {
     const {signUp} = useAuthContext();
     const [registrateForm, setRegistrateForm] = useState({ firstName: "", lastName: "", email: "", password: "", confirmPassword: ""});
@@ -47,7 +45,6 @@ const RegistrateUser = ({setSuccess}) => {
         else {
             setFormErrors(errors);
         }
-        
     }
 
     return (

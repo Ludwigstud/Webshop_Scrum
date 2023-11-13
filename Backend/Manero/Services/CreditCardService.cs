@@ -84,7 +84,7 @@ public class CreditCardService : ICreditCardService
             else
             {
                 response.Content = null;
-                response.StatusCode = StatusCode.BadRequest;
+                response.StatusCode = StatusCode.Ok;
             }
         }
         else
