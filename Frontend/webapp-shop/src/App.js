@@ -6,6 +6,8 @@ import Home from './screens/Home/Home';
 import { AuthProvider } from "./contexts/AuthContext";
 import SignIn from "./screens/SignIn/SignIn";
 import RegistrateUserScreen from "./screens/RegistrateUserScreen/RegistrateUserScreen";
+import WishListPage from './screens/WishListPage/Favorites.jsx';
+
 import PaymentMethodsScreen from './screens/profile/paymentMethods/paymentMethodsScreen/paymentMethodsScreen';
 import AddCreditCardScreen from './screens/profile/paymentMethods/CreateCreditCardScreen/AddCreditCardScreen';
 import MyAddresses from './screens/profile/Address/MyAddresses';
@@ -25,6 +27,7 @@ function App() {
             <Route path='/home' element={<Home />} />
             <Route path='/product' element={<ProductPage />} />
             <Route path='/profile' element={<Profile />} />
+             <Route path='/favorites' element={<WishListPage />} />
             <Route path='/profile/address' element={<MyAddresses/>}/>
             <Route path='/profile/address/add' element={<AddAddress/>}/>
             <Route path='/profile/address/edit/:id' element={<EditAddress/>}/>
