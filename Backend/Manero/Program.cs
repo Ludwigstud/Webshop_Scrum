@@ -1,14 +1,15 @@
-using Manero.Interfaces;
-using Manero.Models.Contexts;
-using Microsoft.Extensions.DependencyInjection;
-using Manero.Repos;
-using Manero.Repos.DataSeeder;
-using Manero.Services;
+
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Manero.Interfaces;
+using Manero.Models.Contexts;
+using Manero.Repos;
+using Manero.Repos.DataSeeder;
+using Manero.Services;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,8 @@ builder.Services.AddScoped<CustomerAddressRepo>();
 builder.Services.AddScoped<AddressTagRepo>();
 builder.Services.AddScoped<ProductRepo>();
 builder.Services.AddScoped<CustomerCardRepo>();
+builder.Services.AddScoped<CategoryRepo>();
+
 
 
 
@@ -37,6 +40,9 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ProfileService>();
 builder.Services.AddScoped<CustomerRepo>();
 builder.Services.AddScoped<ICreditCardService, CreditCardService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+
+
 
 
 

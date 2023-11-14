@@ -1,6 +1,3 @@
-
-@import "../components/dummyNavBar/navBottomReplace";
-@import "../components/dummyNavBar/navTopReplace";
 @import "../components/products/productCard";
 @import "../components/products/productReview";
 @import '../components/RegistrateUser/registrateUser';
@@ -20,3 +17,4 @@
 @import '../screens/profile/paymentMethods/paymentMethodsScreen/paymentMethodsScreen.scss';
 @import '../screens/profile/paymentMethods/CreateCreditCardScreen/AddCreditCardScreen.scss';
 @import '../components/CreditCard/CreditCard';
+@import '../components/Onboarding/Onboardingpage';
