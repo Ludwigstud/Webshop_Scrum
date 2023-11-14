@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Manero.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20231018102417_testagain")]
-    partial class testagain
+    [Migration("20231102191242_AddPriceAfterSaleColumn")]
+    partial class AddPriceAfterSaleColumn
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -263,10 +263,16 @@ namespace Manero.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DiscountId")
+                    b.Property<int?>("DiscountId")
                         .HasColumnType("int");
 
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PriceAfterSale")
                         .HasColumnType("int");
 
                     b.Property<string>("ProductName")
@@ -603,9 +609,7 @@ namespace Manero.Migrations
 
                     b.HasOne("Manero.Models.Entities.DiscountEntity", "Discount")
                         .WithMany("Products")
-                        .HasForeignKey("DiscountId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DiscountId");
 
                     b.Navigation("Category");
 

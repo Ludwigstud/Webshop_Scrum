@@ -1,6 +1,6 @@
 ﻿using Manero.Models.Entities;
 
-namespace Manero.Models.DTO;
+namespace Manero.Models.dto;
 
 
 
