@@ -5,6 +5,8 @@ import SignIn from "./screens/SignIn/SignIn";
 import ProductPage from "./screens/productPage/ProductPage";
 import Home from './screens/Home/Home'
 import TopNavbar from "./components/topNavbar/TopNavbar";
+import Reviews from "./components/Reviews/ReviewList"
+import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 function App() {
 
 
@@ -27,7 +29,19 @@ function App() {
                             element={<SignIn/>}
 
                         />
-                                <Route path="/product" element={<ProductPage />} />
+                                <Route path="/product" element={<ProductPage />} 
+                                
+                                
+                        />
+
+                                <Route path="/Reviews" element={<Reviews />} 
+
+                        />
+
+                                <Route path="/ShoppingCart" element={<ShoppingCart />} 
+
+                        />
+                                
 
                     </Routes>
                 </Router>
