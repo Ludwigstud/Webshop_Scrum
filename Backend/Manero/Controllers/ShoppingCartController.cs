@@ -8,12 +8,12 @@ using System.Collections.Generic;
 
 [Route("api/products")]
 [ApiController]
-public class ProductsController : ControllerBase
+public class ProductsErjoniController : ControllerBase
 {
 	private readonly List<Product> products = new List<Product>
 	{
-		new Product { Id = 1, Name = "Product 1", Price = 10.99, Size = "M", Color = "Blue", ImageUrl = "product1.jpg" },
-		new Product { Id = 2, Name = "Product 2", Price = 19.99, Size = "L", Color = "Red", ImageUrl = "product2.jpg" }
+		new Product { Id = 1, Name = "Product 1", Price = 1099, Size = "M", Color = "Blue", ImageUrl = "product1.jpg" },
+		new Product { Id = 2, Name = "Product 2", Price = 1999, Size = "L", Color = "Red", ImageUrl = "product2.jpg" }
         // lägg till mer produkter
     };
 
@@ -40,8 +40,14 @@ public class ProductsController : ControllerBase
 public class CartController : ControllerBase
 {
 	private readonly Cart cart = new Cart { Items = new List<CartItem>() };
+    private readonly List<Product> products = new List<Product>
+    {
+        new Product { Id = 1, Name = "Product 1", Price = 1099, Size = "M", Color = "Blue", ImageUrl = "product1.jpg" },
+        new Product { Id = 2, Name = "Product 2", Price = 1999, Size = "L", Color = "Red", ImageUrl = "product2.jpg" }
+        // lägg till mer produkter
+    };
 
-	[HttpGet]
+    [HttpGet]
 	public ActionResult<Cart> GetCart()
 	{
 		return Ok(cart);
