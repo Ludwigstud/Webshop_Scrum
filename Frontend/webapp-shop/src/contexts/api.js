@@ -1,9 +1,12 @@
+import { getAccessToken } from "../helpers/getAccessToken";
+
 export const getProfile = async () => {
+    const token = getAccessToken();
     const res = await fetch(`https://localhost:7042/api/Profile/GetProfile`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+            'Authorization': `Bearer ${token}`,
         },
     });
 

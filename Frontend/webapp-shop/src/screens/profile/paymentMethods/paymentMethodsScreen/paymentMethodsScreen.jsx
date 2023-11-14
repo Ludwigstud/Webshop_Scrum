@@ -3,11 +3,12 @@ import { BsChevronLeft, BsPlusLg, BsPencil } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import CreditCardCarousel from "../../../../components/Carousels/CreditCardCarousel/CreditCardCarousel";
 import useFetch from '../../../../hooks/useFetch';
+import { getAccessToken } from '../../../../helpers/getAccessToken';
 
 
 const PaymentMethodsScreen = () => {
     const creditCards = useFetch(`https://localhost:7042/api/CreditCard/GetAllCreditCard`);
-    const authToken = localStorage.getItem('accessToken');
+    const authToken = getAccessToken();
     const navigate = useNavigate();
     useEffect(() => {
         if(!authToken){

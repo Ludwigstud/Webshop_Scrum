@@ -32,6 +32,7 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ProfileService>();
 builder.Services.AddScoped<CustomerRepo>();
 builder.Services.AddScoped<ICreditCardService, CreditCardService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
 
 
 
@@ -39,15 +40,16 @@ builder.Services.AddScoped<ICreditCardService, CreditCardService>();
 
 
 
-
+builder.Services.Configure<DataProtectionTokenProviderOptions>(options => options.TokenLifespan = TimeSpan.FromHours(10));
 
 //Identity
+
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(x =>
 {
     x.SignIn.RequireConfirmedAccount = false;
     x.Password.RequiredLength = 8;
     x.User.RequireUniqueEmail = true;
-}).AddEntityFrameworkStores<DataContext>();
+}).AddEntityFrameworkStores<DataContext>().AddDefaultTokenProviders();
 builder.Services.AddAuthentication(x =>
 {
     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
