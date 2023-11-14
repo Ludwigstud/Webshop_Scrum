@@ -1,6 +1,4 @@
 import { useContext, createContext } from "react";
-import { json } from "react-router-dom";
-
 
 
 const AuthContext = createContext();
@@ -11,7 +9,6 @@ export const useAuthContext = () => {
 
 export const AuthProvider = ({children}) => {
     const url = "https://localhost:7042/api/auth";
-
 
     const signUp = async (signUpSchema, setSuccess) => {
         const res = await fetch(`${url}/signup`, {
