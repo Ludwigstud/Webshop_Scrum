@@ -77,32 +77,5 @@ public class ProductsController : ControllerBase
             return Ok(products);
         }
     }
-    public async Task<IActionResult> arsle()
-    {
-        var items = await _context.Products.ToListAsync();
-        var products = new List<ProductEntity>();
-        foreach (var item in items)
-        {
-            products.Add(new ProductEntity
-            {
-                Id = item.Id,
-                ProductName = item.ProductName,
-                Price = item.Price,
-                PriceAfterSale = item.PriceAfterSale,
-                Description = item.Description,
-                ImageUrl = item.ImageUrl,
-                CategoryId = item.CategoryId
-            });
-        }
-
-        if (products.Count == 0)
-        {
-            return BadRequest();
-        }
-        else
-        {
-            return Ok(products);
-        }
-    }
 
 }
