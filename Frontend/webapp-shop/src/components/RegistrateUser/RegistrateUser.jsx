@@ -1,51 +1,45 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
     BiLogoFacebook,
     BiLogoTwitter,
     BiLogoGooglePlus,
 } from "react-icons/bi";
-import { useAuthContext } from '../../contexts/AuthContext';
-import {validateOnChange, validateOnSubmit} from './RegistrateUserValidation';
+import { useAuthContext } from "../../contexts/AuthContext";
+import StyledInput from "../Input/StyledInput";
+import { isName, isEmail, isConfirmPassword, isPassword } from "../../utils/validation";
+import { useInputField } from "../../hooks/useInput";
 
-const RegistrateUser = ({setSuccess}) => {
-    const {signUp} = useAuthContext();
-    const [registrateForm, setRegistrateForm] = useState({ firstName: "", lastName: "", email: "", password: "", confirmPassword: ""});
-    const [formErrorIcons, setFormErrorIcons] = useState({});
-    const [formErrors, setFormErrors] = useState({});
-
-
-    const handleOnChange = (e) => {
-        const { name, value } = e.target;
-        setRegistrateForm(previousState => {
-            return { ...previousState, [name]: value };
-        });
-        var errorIcons = validateOnChange({ ...registrateForm, [name]: value });
-        setFormErrorIcons(errorIcons);
-
-        setFormErrors(previousErrors => ({
-            ...previousErrors,
-            [name]: ""
-        }));
-    }
+const RegistrateUser = ({ setSuccess }) => {
+    const { signUp } = useAuthContext();
+    const firstNameField = useInputField("", isName);
+    const lastNameField = useInputField("", isName);
+    const emailField = useInputField("", isEmail);
+    const passwordField = useInputField("", isPassword);
+    const confirmPasswordField = useInputField("", isConfirmPassword.bind(null, passwordField.value));
+    
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const errors = validateOnSubmit(registrateForm);
-        const registrateUser  = {
-            firstName: registrateForm.firstName,
-            lastName: registrateForm.lastName,
-            email: registrateForm.email,
-            password: registrateForm.password
-        };
-        if(Object.keys(errors).length === 0)
-        {
+
+        const isEmailValid = await emailField.handleSubmit();
+        const isPasswordValid = await passwordField.handleSubmit();
+        const isFirstNameValid = await firstNameField.handleSubmit();
+        const isLastNameValid = await lastNameField.handleSubmit();
+        const isConfirmPasswordValid = await confirmPasswordField.handleSubmit();
+
+        if (isEmailValid || isPasswordValid || isFirstNameValid || isLastNameValid || isConfirmPasswordValid) {
+            const registrateUser = {
+                firstName: firstNameField.value,
+                lastName: lastNameField.value,
+                email: emailField.value,
+                password: passwordField.value,
+            };
+
             await signUp(registrateUser, setSuccess);
         }
-        else {
-            setFormErrors(errors);
-        }
-    }
+    };
+    
 
     return (
         <section className="registrate-user">
@@ -53,119 +47,82 @@ const RegistrateUser = ({setSuccess}) => {
                 <div className="row d-flex flex-column align-items-center">
                     <div className="col-11 col-md-5">
                         <h1>Sign Up</h1>
-                        <form onSubmit={handleSubmit} className="d-flex flex-column align-items-center">
-                            <div className="registrate-input-group">
-                                <label
-                                    className="registrate-user-label"
-                                    htmlFor="firstname"
-                                >
-                                    First Name
-                                </label>
-                                <div className="registrate-icon-input-container">
-                                    <input
-                                        onChange={handleOnChange}
-                                        value={registrateForm.firstName}
-                                        className="registrate-user-input"
-                                        type="text"
-                                        id="firstname"
-                                        placeholder="Enter your First Name"
-                                        name="firstName"
-                                    />
-                                    {formErrorIcons.firstNameIcon}
-                                </div>
-                                <div className="error-message">{formErrors.firstName}</div>
-                            </div>
-                            <div className="registrate-input-group">
-                                <label
-                                    className="registrate-user-label"
-                                    htmlFor="lastname"
-                                >
-                                    Last Name
-                                </label>
-                                <div className="registrate-icon-input-container">
-                                    <input
-                                        onChange={handleOnChange}
-                                        value={registrateForm.lastName}
-                                        className="registrate-user-input"
-                                        type="text"
-                                        id="lastname"
-                                        placeholder="Enter your Last Name"
-                                        name="lastName"
-                                    />
-                                    {formErrorIcons.lastNameIcon}
-                                </div>
-                                <div className="error-message">{formErrors.lastName}</div>
-                            </div>
+                        <form
+                            onSubmit={handleSubmit}
+                            className="d-flex flex-column align-items-center"
+                        >
+                            <StyledInput
+                                label="Firstname"
+                                id="firstname"
+                                type="text"
+                                name="firstname"
+                                onChange={firstNameField.handleOnChange}
+                                value={firstNameField.value}
+                                errorMessage={
+                                    firstNameField.onSubmitHasError &&
+                                    "Please enter a First name"
+                                }
+                                isValid={!firstNameField.onChangeHasError}
+                            />
+                            <StyledInput
+                                label="Lastname"
+                                id="lastname"
+                                type="text"
+                                name="lastname"
+                                onChange={lastNameField.handleOnChange}
+                                value={lastNameField.value}
+                                errorMessage={
+                                    lastNameField.onSubmitHasError &&
+                                    "Please enter a last name"
+                                }
+                                isValid={!lastNameField.onChangeHasError}
+                            />
 
-                            <div className="registrate-input-group">
-                                <label
-                                    className="registrate-user-label"
-                                    htmlFor="email"
-                                >
-                                    Email
-                                </label>
-                                <div className="registrate-icon-input-container">
-                                    <input
-                                        onChange={handleOnChange}
-                                        value={registrateForm.email}
-                                        className="registrate-user-input"
-                                        type="text"
-                                        id="email"
-                                        placeholder="Johndoe@domain.com"
-                                        name="email"
-                                    />
-                                    {formErrorIcons.emailIcon}
-                                </div>
-                                <div className="error-message">{formErrors.email}</div>
-                            </div>
+                            <StyledInput
+                                label="Email"
+                                id="email"
+                                type="text"
+                                name="email"
+                                onChange={emailField.handleOnChange}
+                                value={emailField.value}
+                                errorMessage={
+                                    emailField.onSubmitHasError &&
+                                    "Please enter a valid email"
+                                }
+                                isValid={!emailField.onChangeHasError}
+                            />
 
-                            <div className="registrate-input-group">
-                                <label
-                                    className="registrate-user-label"
-                                    htmlFor="password"
-                                >
-                                    Password
-                                </label>
-                                <div className="registrate-icon-input-container">
-                                    <input
-                                        onChange={handleOnChange}
-                                        value={registrateForm.password}
-                                        className="registrate-user-input"
-                                        type="password"
-                                        id="password"
-                                        placeholder="Your password"
-                                        name="password"
-                                    />
-                                    {formErrorIcons.passwordIcon}
-                                </div>
-                                <div className="error-message">{formErrors.password}</div>
-                            </div>
+                            <StyledInput
+                                label="Password"
+                                id="password"
+                                type="password"
+                                name="password"
+                                onChange={passwordField.handleOnChange}
+                                value={passwordField.value}
+                                errorMessage={
+                                    passwordField.onSubmitHasError &&
+                                    "Please enter a valid password"
+                                }
+                                isValid={!passwordField.onChangeHasError}
+                            />
 
-                            <div className="registrate-input-group">
-                                <label
-                                    className="registrate-user-label"
-                                    htmlFor="confirmpassword"
-                                >
-                                    Confirm Password
-                                </label>
-                                <div className="registrate-icon-input-container">
-                                    <input
-                                        onChange={handleOnChange}
-                                        value={registrateForm.confirmPassword}
-                                        className="registrate-user-input"
-                                        type="password"
-                                        id="confirmpassword"
-                                        placeholder="Confirm password"
-                                        name="confirmPassword"
-                                    />
-                                    {formErrorIcons.confirmPasswordIcon}
-                                </div>
-                                <div className="error-message">{formErrors.confirmPassword}</div>
-                            </div>
+                            <StyledInput
+                                label="Confirm Password"
+                                id="confirmPassword"
+                                type="password"
+                                name="confirmPassword"
+                                onChange={confirmPasswordField.handleOnChange}
+                                value={confirmPasswordField.value}
+                                errorMessage={
+                                    confirmPasswordField.onSubmitHasError &&
+                                    "Passwords must be the same"
+                                }
+                                isValid={!confirmPasswordField.onChangeHasError}
+                            />
                             <div className="sign-up-button"></div>
                             <button>Sign up</button>
                         </form>
-                        <Link to="SignIn">
+                        <Link to="/SignIn">
                             Already have an account? Sign in
                         </Link>
                         <div className="social-media-icons">
