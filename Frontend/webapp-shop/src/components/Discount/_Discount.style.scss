@@ -1,0 +1,114 @@
+@import '../scss/corecss/colors';
+@import '../scss/corecss/mixin';
+
+*{
+    padding: 0;
+    margin: 0;
+    
+}
+
+
+.app{
+    overflow: hidden;
+}
+
+.title-box{
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    
+
+    .icon-text-box{
+        position: relative;
+       i{
+        font-size: 15;
+        position: absolute;
+        left: 3%;
+        top: 40%;
+       }
+        
+
+       
+    h2{ 
+        margin: 35px 0;
+        font-size: 17px;
+        text-align: center;
+        
+    }
+}
+
+.button-box{
+    align-self: center;
+    display: flex;
+    gap:10px;
+
+
+    button{
+        background-color: $color-blue;
+        border-radius: 14px;
+        border: none;
+        font-size: 13px;
+        width: 80px;
+        height: 25px;
+        transition: 0.4s;
+    }
+    button:hover{
+        background-color: $color-black;
+        color: $color-white;
+        
+    }
+   
+}
+}
+
+.cupon{
+    display: grid;
+    text-align: start;
+    border-top:1px solid $color-blue ;
+    border-bottom:1px solid $color-blue ;
+    width: 100vw;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 10px 0;
+
+    img{
+        margin: 5% 15%;
+        background-color: $color-blue;
+        height: 85px;
+        width: 70px;
+        
+    }
+
+    .text-box{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        
+        .text-title{
+            font-size: 18px;
+            margin: 0 0 3px 0;
+        }
+
+        .text-discount{
+            margin: 0 0 5px 0;
+            color: $color-red;
+            font-size: 18px;
+            font-weight: 400;
+        }
+
+        .text-validity{
+            
+            color: $color-greytext;
+            font-size: 12px;
+        }
+        
+    }
+
+    .icon-box{
+        margin: 35% 65%;
+
+    .copyicon{
+        font-size: 20px;
+        padding-top: 20px;
+    }
+}
+}

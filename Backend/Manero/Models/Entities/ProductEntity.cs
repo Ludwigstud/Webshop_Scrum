@@ -10,9 +10,9 @@ public class ProductEntity
 
     public string? ImageUrl { get; set; }
 
-    public CategoryEntity Category { get; set; } = null!;
+    public CategoryEntity? Category { get; set; } = null!;
     public int CategoryId { get; set; }
-    public DiscountEntity Discount { get; set; } = null!;
+    public DiscountEntity? Discount { get; set; } = null!;
     public int? DiscountId { get; set; }
 }
 
