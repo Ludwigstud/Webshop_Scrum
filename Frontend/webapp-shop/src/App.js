@@ -14,6 +14,7 @@ import { ProfileProvider } from './contexts/ProfileContext';
 import EditAddress from './screens/profile/Address/EditAddress';
 import EditCreditCardScreen from './screens/profile/paymentMethods/EditCreditCardScreen/EditCreditCardScreen';
 import OnboardingPage from './components/onBoarding/OnBoardingPage';
+import CategoryPage from './screens/CategoryPage/CategoryPage';
 function App() {
   return (
     <AuthProvider>
@@ -23,6 +24,7 @@ function App() {
             <Routes>
               <Route path='/home' element={<Home />} />
               <Route path='/product' element={<ProductPage />} />
+              <Route path ='/categories' element={<CategoryPage />} />
               <Route path='/profile' element={<Profile />} />
               <Route path='/profile/address' element={<MyAddresses />} />
               <Route path='/profile/address/add' element={<AddAddress />} />
