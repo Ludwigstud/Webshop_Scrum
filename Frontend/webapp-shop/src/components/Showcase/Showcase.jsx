@@ -7,7 +7,7 @@ const Showcase = () => {
      
       <img className='showcase-image'  src={showcase} alt="sowcaseImage" />
       <div className='info'>
-        <p title>Take 50% off!</p>
+        <p className='title'>Take 50% off!</p>
         <button>shop now</button>
       </div>
     </div>

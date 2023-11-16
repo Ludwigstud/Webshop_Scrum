@@ -4,7 +4,6 @@ import CategoriesHeader from '../../components/CategoriesHeader/CategoriesHeader
 import Showcase from '../../components/Showcase/Showcase';
 import FeaturedProducts from '../../components/FeaturedProducts/FeaturedProducts';
 import BestSellers from '../../components/BestSellers/BestSellers';
-import useFetch from '../../hooks/useFetch';
 import { BiSolidChevronRight } from 'react-icons/bi';
 const Home = () => {
   //fetch('https://localhost:7042/api/Products/GetproductsHadi')
@@ -20,13 +19,6 @@ const Home = () => {
           <Showcase/>
         </div>
         <div className='featured-products'>
-          <div className='section-header'>
-            <h4>Featured Products</h4>
-            <Link to="/Products">view all <span><BiSolidChevronRight /></span></Link>
-          </div>
-          <div className='showcase'>
-            <Showcase />
-          </div>
           <div className='featured-products'>
             <div className='section-header'>
               <h4>Featured Products</h4>
@@ -60,6 +52,7 @@ const Home = () => {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </section>
     </>

@@ -4,7 +4,6 @@ using Manero.Models.Entities;
 using Manero.Models.Schemas;
 using Manero.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
 using System.Collections.Generic;

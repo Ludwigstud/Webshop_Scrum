@@ -17,7 +17,7 @@ namespace Manero.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.12")
+                .HasAnnotation("ProductVersion", "7.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -73,61 +73,11 @@ namespace Manero.Migrations
 
                     b.Property<string>("CategoryName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryName")
-                        .IsUnique();
-
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CategoryName = "Shirts"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CategoryName = "Jackets"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CategoryName = "Pants"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CategoryName = "Footwear"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CategoryName = "Headwear"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            CategoryName = "Accessories"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            CategoryName = "Dresses"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            CategoryName = "Underwear"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            CategoryName = "Suits"
-                        });
                 });
 
             modelBuilder.Entity("Manero.Models.Entities.CustomerAddressEntity", b =>
@@ -249,11 +199,9 @@ namespace Manero.Migrations
 
             modelBuilder.Entity("Manero.Models.Entities.DiscountEntity", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -341,8 +289,8 @@ namespace Manero.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("DiscountId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("DiscountId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
@@ -364,44 +312,6 @@ namespace Manero.Migrations
                     b.HasIndex("DiscountId");
 
                     b.ToTable("Products");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CategoryId = 1,
-                            Description = "A comfortable red T-shirt for casual wear.",
-                            DiscountId = 1,
-                            Price = 20,
-                            ProductName = "Red T-Shirt"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CategoryId = 2,
-                            Description = "Stylish blue jeans for all occasions.",
-                            DiscountId = 2,
-                            Price = 40,
-                            ProductName = "Blue Jeans"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CategoryId = 1,
-                            Description = "High-performance running shoes for athletes.",
-                            DiscountId = 1,
-                            Price = 80,
-                            ProductName = "Running Shoes"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CategoryId = 2,
-                            Description = "A classic leather jacket for a bold look.",
-                            DiscountId = 2,
-                            Price = 130,
-                            ProductName = "Leather Jacket"
-                        });
                 });
 
             modelBuilder.Entity("Manero.Models.Entities.ReviewEntity", b =>

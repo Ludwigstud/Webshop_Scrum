@@ -14,8 +14,6 @@ import AddAddress from './screens/profile/Address/AddAddress';
 import { ProfileProvider } from './contexts/ProfileContext';
 import EditAddress from './screens/profile/Address/EditAddress';
 import EditCreditCardScreen from './screens/profile/paymentMethods/EditCreditCardScreen/EditCreditCardScreen';
-import FacebookLoginScript from './screens/SignIn/ FacebookLoginScript';
-import GoogleLoginComponent from './screens/SignIn/GoogleLoginComponent.jsx';
 import Reviews from "./components/Reviews/ReviewList"
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import PasswordResetScreen from './screens/Password/ResetPasswordScreen';
@@ -29,7 +27,7 @@ function App() {
       <ProfileProvider>
       <Router>
           <Routes>
-            <Route path='/home' element={<Home />} />
+            <Route path='/' element={<Home />} />
             <Route path='/product' element={<ProductPage />} />
             <Route path='/profile' element={<Profile />} />
             <Route path='/favorites' element={<WishListPage />} />
@@ -45,7 +43,6 @@ function App() {
             <Route path="/ShoppingCart" element={<ShoppingCart />}/>
             <Route path="/resetpassword" element={<PasswordResetScreen/>}/>
             <Route path="/updatepassword" element={<UpdatePasswordScreen/>}/>
-            <Route path="/googlelogin" element=<GoogleLoginComponent />}/>
             <Route path ='/categories' element={<CategoryPage />} />
             <Route path='/onboarding' element={<OnboardingPage />} />
           </Routes>

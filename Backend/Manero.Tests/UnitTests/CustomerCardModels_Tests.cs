@@ -56,7 +56,5 @@ public class CustomerCardModels_Tests
         Assert.Equal(entity.PaymentType, dto.PaymentType);
         Assert.Equal(entity.FullName, dto.FullName);
         Assert.Equal(entity.CVV, dto.CVV);
-
-
     }
 }

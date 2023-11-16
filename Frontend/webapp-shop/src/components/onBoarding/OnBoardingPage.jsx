@@ -1,6 +1,5 @@
 import { Component } from 'react';
-
-
+import "./_OnBoarding.scss";
 class App extends Component {
   constructor() {
     super();
