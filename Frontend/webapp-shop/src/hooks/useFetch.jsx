@@ -1,9 +1,10 @@
 import { useEffect, useState, useMemo } from 'react'
+import { getAccessToken } from '../helpers/getAccessToken';
 const useFetch = (url) => {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-    const authToken = localStorage.getItem('accessToken');
+    const authToken = getAccessToken();
 
 
     const headers = useMemo(() => {

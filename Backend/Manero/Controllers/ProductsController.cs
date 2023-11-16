@@ -28,9 +28,9 @@ public class ProductsController : ControllerBase
         try
         {
             var items = await _context.Products.ToListAsync();
-            var products = new List<Product>();
+            var products = new List<Models.dto.Product>();
             foreach (var item in items)
-                products.Add(new Product
+                products.Add(new Models.dto.Product
                 {
                     Id = item.Id,
                     ProductName = item.ProductName,

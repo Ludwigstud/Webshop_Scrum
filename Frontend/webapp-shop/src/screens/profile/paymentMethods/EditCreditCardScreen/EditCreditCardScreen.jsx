@@ -6,12 +6,13 @@ import useFetch from '../../../../hooks/useFetch';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import useDelete from '../../../../hooks/useDelete';
+import { getAccessToken } from '../../../../helpers/getAccessToken';
 
 const EditCreditCardScreen = () => {
     const { id } = useParams();
     const url = `https://localhost:7042/api/CreditCard/${id}`;
     const creditCard = useFetch(url);
-    const authToken = localStorage.getItem('accessToken');
+    const authToken = getAccessToken();
     const navigate = useNavigate();
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
