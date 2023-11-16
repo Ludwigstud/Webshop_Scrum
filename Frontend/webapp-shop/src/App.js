@@ -15,6 +15,8 @@ import AddAddress from './screens/profile/Address/AddAddress';
 import { ProfileProvider } from './contexts/ProfileContext';
 import EditAddress from './screens/profile/Address/EditAddress';
 import EditCreditCardScreen from './screens/profile/paymentMethods/EditCreditCardScreen/EditCreditCardScreen';
+import FacebookLoginScript from './screens/SignIn/ FacebookLoginScript';
+import GoogleLoginComponent from './screens/SignIn/GoogleLoginComponent.jsx';
 function App() {
   return (
     <AuthProvider>
@@ -36,7 +38,13 @@ function App() {
             <Route path="/signin" element={<SignIn/>}/>
           </Routes>
           <BottomNavbar />
-        </div>
+                  </div>
+                  <div className="App">
+                      <header className="App-header">
+                          {/* Other code in your App component */}
+                          <GoogleLoginComponent />
+                      </header>
+                  </div>
       </Router>
       </ProfileProvider>
     </AuthProvider>
