@@ -1,15 +1,15 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import TopNavbar from './burgerMenu';
+import BurgerMenu from './burgerMenu';
 
-test('it renders the TopNavbar component', () => {
-  render(<TopNavbar />);
+test('it renders the BurgerMenu component', () => {
+  render(<BurgerMenu />);
   const button = screen.getByRole('button');
   expect(button).toBeInTheDocument();
 });
 
 test('it opens the Offcanvas when the button is clicked', () => {
-  render(<TopNavbar />);
+  render(<BurgerMenu />);
   const button = screen.getByRole('button');
   const offcanvas = screen.getByRole('dialog');
 
@@ -19,7 +19,7 @@ test('it opens the Offcanvas when the button is clicked', () => {
 });
 
 test('it displays the Contact us title', () => {
-  render(<TopNavbar />);
+  render(<BurgerMenu />);
   const title = screen.getByText('Contact us');
   expect(title).toBeInTheDocument();
 });
