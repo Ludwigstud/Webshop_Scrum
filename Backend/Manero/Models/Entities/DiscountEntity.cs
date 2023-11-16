@@ -2,7 +2,7 @@
 
 public class DiscountEntity
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
     public string DiscountName { get; set; } = null!;
     public int Discount {  get; set; }

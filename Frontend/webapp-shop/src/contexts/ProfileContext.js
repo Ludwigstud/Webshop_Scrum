@@ -9,19 +9,17 @@ export const useProfileContext = () =>{
 
 export const ProfileProvider = ({children}) => {
     const url = "https://localhost:7042/api/profile";
-    const token = getAccessToken();
+    
 
     const createProfileAddress = async (address) => {
         const res = await fetch(`${url}/createprofileaddress`,{
             method: "post",
             headers:{
                 "Content-Type": "application/json",
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${getAccessToken()}`
             },
             body: JSON.stringify(address),
         });
-        console.log(res)
-        console.log(address)
         if(res.status === 201){
             window.location.replace("/profile/address")
         }
@@ -32,7 +30,7 @@ export const ProfileProvider = ({children}) => {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
+                'Authorization': `Bearer ${getAccessToken()}`,
             },
         })
         if(res.ok){
@@ -49,7 +47,7 @@ export const ProfileProvider = ({children}) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
+                'Authorization': `Bearer ${getAccessToken()}`,
             },
             body: JSON.stringify(address),
             
@@ -65,7 +63,7 @@ export const ProfileProvider = ({children}) => {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
+                'Authorization': `Bearer ${getAccessToken()}`,
             },
             body: JSON.stringify(address),
         })

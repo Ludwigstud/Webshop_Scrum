@@ -12,7 +12,7 @@ export default class BottomNavbar extends Component {
         <ul>
           <li data-testid='bottom-navbar-link'>
             <i>
-              <NavLink to='/home' className='inactive' data-testid='home-link'>
+              <NavLink to='/' className='inactive' data-testid='home-link'>
                 <AiOutlineHome />
               </NavLink>
             </i>
