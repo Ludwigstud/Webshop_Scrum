@@ -1,9 +1,11 @@
 import React from 'react'
+import showcase from './showcase.jpg';
 
 const Showcase = () => {
   return (
     <div className='showcase-container'>
-      <div className='showcase-image'></div>
+     
+      <img className='showcase-image'  src={showcase} alt="sowcaseImage" />
       <div className='info'>
         <p title>Take 50% off!</p>
         <button>shop now</button>

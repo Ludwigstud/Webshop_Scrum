@@ -11,23 +11,18 @@ const Home = () => {
 
   return (
     <>
-      <section className='home-section'>
-        <div className='container'>
-          <div className='categories-header'>
-            <Link to='/Men'>
-              <span>
-                <CategoriesHeader categoryName='Men' />
-              </span>
-            </Link>
-            <Link to='/Women'>
-              <CategoriesHeader categoryName='Women' />
-            </Link>
-            <Link to='/Kids'>
-              <CategoriesHeader categoryName='Kids' />
-            </Link>
-            <Link to='/Sport'>
-              <CategoriesHeader categoryName='Sport' />
-            </Link>
+    <section className='home-section'>
+      <div className='container'>
+        <div className='categories-header'>
+        < CategoriesHeader/>
+        </div>
+        <div className='showcase'>
+          <Showcase/>
+        </div>
+        <div className='featured-products'>
+          <div className='section-header'>
+            <h4>Featured Products</h4>
+            <Link to="/Products">view all <span><BiSolidChevronRight /></span></Link>
           </div>
           <div className='showcase'>
             <Showcase />

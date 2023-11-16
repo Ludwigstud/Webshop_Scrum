@@ -8,6 +8,10 @@ import {
 } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../contexts/AuthContext";
+import {getAccessToken} from '../../helpers/getAccessToken';
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+
 function SignIn() {
   const { signIn } = useAuthContext();
   const [email, setEmail] = useState(null);
@@ -15,8 +19,16 @@ function SignIn() {
   const [rememberMe, setRememberMe] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [validEmail, setValidEmail] = useState(false);
-  const [loginChecker, setLoginChecker] = useState(null);
+  const [loginChecker, setLoginChecker] = useState();
   const mailformat = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+  const navigate = useNavigate();
+  const authToken = getAccessToken();
+
+  useEffect(() => {
+    if(authToken){
+        navigate("/profile")
+    }
+})
 
   const handleChange = () => {
     const emailInput = document.getElementById("email");
@@ -38,6 +50,9 @@ function SignIn() {
 
     const signInSchema = { email, password, rememberMe };
     await signIn(signInSchema, setLoginChecker, loginChecker);
+    if(loginChecker === null)
+      navigate("profile")
+
   };
 
   const togglePassword = () =>{
@@ -98,10 +113,10 @@ function SignIn() {
                 <div className="col-12">
                   <div className="col-5 checkbox">
                     <input type="checkbox" onChange={handleCheckBoxChange}/>
-                    <small>Remeber me</small>
+                    <small>Remember me</small>
                   </div>
                   <div className="col-5 forgot-password">
-                    <Link to="/">
+                    <Link to="/resetpassword">
                       <small>Forgot password?</small>
                     </Link>
                   </div>

@@ -1,4 +1,5 @@
 import { createContext, useContext } from "react";
+import { getAccessToken } from "../helpers/getAccessToken";
 
 const ProfileContext = createContext();
 
@@ -8,13 +9,14 @@ export const useProfileContext = () =>{
 
 export const ProfileProvider = ({children}) => {
     const url = "https://localhost:7042/api/profile";
+    const token = getAccessToken();
 
     const createProfileAddress = async (address) => {
         const res = await fetch(`${url}/createprofileaddress`,{
             method: "post",
             headers:{
                 "Content-Type": "application/json",
-                'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify(address),
         });
@@ -30,7 +32,7 @@ export const ProfileProvider = ({children}) => {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+                'Authorization': `Bearer ${token}`,
             },
         })
         if(res.ok){
@@ -47,7 +49,7 @@ export const ProfileProvider = ({children}) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+                'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify(address),
             
@@ -63,7 +65,7 @@ export const ProfileProvider = ({children}) => {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+                'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify(address),
         })

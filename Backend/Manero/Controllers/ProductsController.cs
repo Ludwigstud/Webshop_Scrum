@@ -1,4 +1,5 @@
 ﻿using Manero.Models.Contexts;
+using Manero.Models.dto;
 using Manero.Models.DTO;
 using Manero.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -27,9 +28,9 @@ public class ProductsController : ControllerBase
         try
         {
             var items = await _context.Products.ToListAsync();
-            var products = new List<Product>();
+            var products = new List<Models.dto.Product>();
             foreach (var item in items)
-                products.Add(new Product
+                products.Add(new Models.dto.Product
                 {
                     Id = item.Id,
                     ProductName = item.ProductName,
@@ -60,6 +61,7 @@ public class ProductsController : ControllerBase
                 Id = item.Id,
                 ProductName = item.ProductName,
                 Price = item.Price,
+                PriceAfterSale = item.PriceAfterSale,
                 Description = item.Description,
                 ImageUrl = item.ImageUrl,
                 CategoryId = item.CategoryId

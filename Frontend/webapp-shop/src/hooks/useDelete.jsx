@@ -1,10 +1,10 @@
 import { useState, useMemo } from 'react';
-
+import { getAccessToken } from '../helpers/getAccessToken';
 const useDelete = () => {
   const [response, setResponse] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const authToken = localStorage.getItem('accessToken');
+  const authToken = getAccessToken();
 
   const headers = useMemo(() => {
     const headers = new Headers();
