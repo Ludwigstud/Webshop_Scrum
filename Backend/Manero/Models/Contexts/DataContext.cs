@@ -1,17 +1,14 @@
 ﻿using Manero.Models.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace Manero.Models.Contexts;
 
-public class DataContext : IdentityDbContext
+public class DataContext : IdentityDbContext<IdentityUser>
 {
     public DataContext(DbContextOptions<DataContext> options) : base(options)
     {
-
-
-
-
     }
 
     public DbSet<CustomerEntity> Customer { get; set; }
@@ -25,4 +22,6 @@ public class DataContext : IdentityDbContext
     public DbSet<OrderProductEntity> OrderProduct { get; set; }
     public DbSet<CategoryEntity> Categories { get; set; }
     public DbSet<DiscountEntity> Discount { get; set; }
+    
+    public DbSet<AddressTagEntity> AddressTags { get; set; }
 }

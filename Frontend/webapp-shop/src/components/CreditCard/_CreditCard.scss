@@ -1,0 +1,75 @@
+.credit-card {
+  max-width: 350px;
+  width: 100%;
+  margin: 5% auto;
+  padding: .1em 1em;
+  color: white;
+  border-radius: 11px;
+  background: linear-gradient(135deg, #45484d 0%, #000000 100%);
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+  transition: transform 0.3s ease, box-shadow 0.2s ease-in;
+
+  .front-card {
+    height: 200px;
+    max-width: 100%;
+    position: relative;
+
+    #globe {
+      float: right;
+      margin-top: -0.7em;
+      margin-right: 0.2em;
+      font-size: 1.6em;
+    }
+
+    span {
+      font-weight: normal;
+      color: #f8f8f8;
+    }
+
+    #chip {
+      width: 50px;
+      height: 50px;
+      margin-top: 2.3em;
+      margin-left: 0.4em;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .card-info {
+      #no {
+        font-size: 0.9em;
+        font-family: 'Cutive Mono';
+        font-weight: bold;
+        letter-spacing: 2px;
+        text-shadow: 2px 2px 1px rgba(black, 0.3);
+      }
+
+      #name {
+        font-family: 'Cutive Mono';
+        font-weight: bold;
+        font-size: 0.6em;
+      }
+
+      #exp-date {
+        position: absolute;
+        bottom: 2.3em;
+        font-size: 0.6em;
+        opacity: 0.9;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    #mastercard {
+      float: right;
+      margin-top: -6.3em;
+      background: url('http://www.pngall.com/wp-content/uploads/2016/07/Mastercard-PNG-Clipart.png');
+      width: 80px;
+      height: 65px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+  }
+}

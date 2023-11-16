@@ -46,6 +46,23 @@ namespace Manero.Migrations
                     b.ToTable("Address");
                 });
 
+            modelBuilder.Entity("Manero.Models.Entities.AddressTagEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("TagName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AddressTags");
+                });
+
             modelBuilder.Entity("Manero.Models.Entities.CategoryEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -56,11 +73,61 @@ namespace Manero.Migrations
 
                     b.Property<string>("CategoryName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryName")
+                        .IsUnique();
+
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryName = "Shirts"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryName = "Jackets"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryName = "Pants"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CategoryName = "Footwear"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CategoryName = "Headwear"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CategoryName = "Accessories"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CategoryName = "Dresses"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CategoryName = "Underwear"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CategoryName = "Suits"
+                        });
                 });
 
             modelBuilder.Entity("Manero.Models.Entities.CustomerAddressEntity", b =>
@@ -74,6 +141,9 @@ namespace Manero.Migrations
                     b.Property<int>("AddressId")
                         .HasColumnType("int");
 
+                    b.Property<int>("AddressTagId")
+                        .HasColumnType("int");
+
                     b.Property<string>("CustomerId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -81,6 +151,8 @@ namespace Manero.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AddressId");
+
+                    b.HasIndex("AddressTagId");
 
                     b.HasIndex("CustomerId");
 
@@ -95,18 +167,27 @@ namespace Manero.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("CVV")
+                        .HasColumnType("int");
+
                     b.Property<string>("CustomerId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime>("ExpiryDate")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("ExpiryDate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Money")
                         .HasColumnType("int");
 
-                    b.Property<int>("Number")
-                        .HasColumnType("int");
+                    b.Property<string>("Number")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PaymentType")
                         .HasColumnType("nvarchar(max)");
@@ -269,6 +350,9 @@ namespace Manero.Migrations
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
+                    b.Property<int?>("PriceAfterSale")
+                        .HasColumnType("int");
+
                     b.Property<string>("ProductName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -280,6 +364,44 @@ namespace Manero.Migrations
                     b.HasIndex("DiscountId");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryId = 1,
+                            Description = "A comfortable red T-shirt for casual wear.",
+                            DiscountId = 1,
+                            Price = 20,
+                            ProductName = "Red T-Shirt"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryId = 2,
+                            Description = "Stylish blue jeans for all occasions.",
+                            DiscountId = 2,
+                            Price = 40,
+                            ProductName = "Blue Jeans"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryId = 1,
+                            Description = "High-performance running shoes for athletes.",
+                            DiscountId = 1,
+                            Price = 80,
+                            ProductName = "Running Shoes"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CategoryId = 2,
+                            Description = "A classic leather jacket for a bold look.",
+                            DiscountId = 2,
+                            Price = 130,
+                            ProductName = "Leather Jacket"
+                        });
                 });
 
             modelBuilder.Entity("Manero.Models.Entities.ReviewEntity", b =>
@@ -522,6 +644,12 @@ namespace Manero.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Manero.Models.Entities.AddressTagEntity", "AddressTag")
+                        .WithMany()
+                        .HasForeignKey("AddressTagId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Manero.Models.Entities.CustomerEntity", "Customer")
                         .WithMany("Addresses")
                         .HasForeignKey("CustomerId")
@@ -529,6 +657,8 @@ namespace Manero.Migrations
                         .IsRequired();
 
                     b.Navigation("Address");
+
+                    b.Navigation("AddressTag");
 
                     b.Navigation("Customer");
                 });

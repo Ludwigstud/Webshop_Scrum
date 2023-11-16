@@ -14,11 +14,6 @@ public class AuthService_Tests
     {
         _injectFixture = new InjectFixture();
     }
-
-
-
-    
-
     [Fact]
     public async Task SignUpAsync_Should_Return200Reponse_WhenCreatedSuccessfully()
     {
