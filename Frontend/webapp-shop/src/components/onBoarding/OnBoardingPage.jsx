@@ -1,7 +1,5 @@
 import { Component } from 'react';
-import './_OnBoarding.scss';
 
-import "bootstrap-icons/font/bootstrap-icons.css";
 
 class App extends Component {
   constructor() {

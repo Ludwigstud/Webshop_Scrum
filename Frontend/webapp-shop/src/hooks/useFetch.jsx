@@ -45,4 +45,4 @@ const useFetch = (url) => {
   return{data, error, isLoading}
 }
 
-export default useFetch
+export default useFetch;

@@ -20,6 +20,8 @@ import Reviews from "./components/Reviews/ReviewList"
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import PasswordResetScreen from './screens/Password/ResetPasswordScreen';
 import UpdatePasswordScreen from './screens/Password/UpdatePasswordScreen';
+import OnboardingPage from './components/onBoarding/OnBoardingPage';
+import CategoryPage from './screens/CategoryPage/CategoryPage';
 
 function App() {
   return (
@@ -44,6 +46,8 @@ function App() {
             <Route path="/resetpassword" element={<PasswordResetScreen/>}/>
             <Route path="/updatepassword" element={<UpdatePasswordScreen/>}/>
             <Route path="/googlelogin" element=<GoogleLoginComponent />}/>
+            <Route path ='/categories' element={<CategoryPage />} />
+            <Route path='/onboarding' element={<OnboardingPage />} />
           </Routes>
           <BottomNavbar />
       </Router>
