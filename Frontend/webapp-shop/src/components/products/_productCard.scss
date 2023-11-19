@@ -5,7 +5,10 @@
         justify-content: center;
         flex-direction: column;
 
-        img {}
+        .img {
+            max-width: 100%;
+            height: auto;
+        }
 
         .information {
             padding-top: 40px;
@@ -255,17 +258,17 @@
         }
 
 
-.reviews{
-    display: flex;
-    justify-content: space-between;
-    h6{
-        font-weight: 700;
-        font-size: 22px;
-    }
-}
+        .reviews {
+            display: flex;
+            justify-content: space-between;
+
+            h6 {
+                font-weight: 700;
+                font-size: 22px;
+            }
+        }
 
 
     }
 
 }
-

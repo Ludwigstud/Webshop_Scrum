@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Manero.Repos.DataSeeder;
 
 namespace Manero.Models.Contexts;
 
@@ -24,4 +25,17 @@ public class DataContext : IdentityDbContext<IdentityUser>
     public DbSet<DiscountEntity> Discount { get; set; }
     
     public DbSet<AddressTagEntity> AddressTags { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        base.OnModelCreating(builder);
+
+        builder.Entity<CategoryEntity>()
+            .HasIndex(x => x.CategoryName)
+            .IsUnique();
+
+       
+
+        Seeder.SeedAll(builder);
+    }
 }

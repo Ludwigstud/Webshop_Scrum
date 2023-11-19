@@ -6,7 +6,6 @@ import FeaturedProducts from '../../components/FeaturedProducts/FeaturedProducts
 import BestSellers from '../../components/BestSellers/BestSellers';
 import { BiSolidChevronRight } from 'react-icons/bi';
 const Home = () => {
-  //fetch('https://localhost:7042/api/Products/GetproductsHadi')
 
   return (
     <>

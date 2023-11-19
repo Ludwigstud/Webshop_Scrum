@@ -9,7 +9,6 @@ const ShoppingCart = () => {
   const [promoCode, setPromoCode] = useState('');
   const deliveryFee = 0.00;
   const [promoApplied, setPromoApplied] = useState(false);
-
   const calculateTotalPrice = () => {
     let total = 0;
     cartItems.forEach((item) => {
@@ -65,6 +64,7 @@ const ShoppingCart = () => {
       setCartItems(updatedCart);
     }
   };
+  
 
   return (
     <div>

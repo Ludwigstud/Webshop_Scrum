@@ -17,18 +17,21 @@ public class CategoryService : ICategoryService
     public async Task<List<CategoryDto>> GetAllAsync()
     {
         var dtos = new List<CategoryDto>();
-        var entities = await _categoryRepo.GetAllCategoriesAsync(); // Use the custom method for manual mapping
+        var entities = await _categoryRepo.GetAllCategoriesAsync();
 
-        foreach (var entity in entities)
+        if (entities != null)
         {
-            var dto = new CategoryDto
+            foreach (var entity in entities)
             {
-                Id = entity.Id,
-                CategoryName = entity.CategoryName,
-                // Map other properties as needed
-            };
+                var dto = new CategoryDto
+                {
+                    Id = entity.Id,
+                    CategoryName = entity.CategoryName,
+                    // Map other properties as needed
+                };
 
-            dtos.Add(dto);
+                dtos.Add(dto);
+            }
         }
 
         return dtos;

@@ -1,402 +1,142 @@
 [
   {
-    "ProductName": "Honorable",
-    "Price": 160.8,
-    "Description": "Brocket, red",
-    "Category": null,
+    "Id": 1,
+    "ProductName": "Heavy-Duty Power Drill",
+    "Description": "Get the job done with our heavy-duty power drill. Perfect for various DIY projects, this drill provides reliable performance and durability.",
     "CategoryId": 1,
-    "Discount": null
+    "Price": 49.99
   },
   {
-    "ProductName": "Mr",
-    "Price": 6.65,
-    "Description": "Fox, cape",
-    "Category": null,
-    "CategoryId": 2,
-    "Discount": null
+    "Id": 2,
+    "ProductName": "Versatile Screwdriver Set",
+    "Description": "A must-have in every toolbox, our versatile screwdriver set is designed for precision and ease of use. Suitable for a wide range of tasks.",
+    "CategoryId": 3,
+    "Price": 59.99
   },
   {
-    "ProductName": "Rev",
-    "Price": 38.83,
-    "Description": "Falcon, prairie",
-    "Category": null,
+    "Id": 3,
+    "ProductName": "Sturdy Hammer Kit",
+    "Description": "Build with confidence using our sturdy hammer kit. Crafted for durability, this kit includes a variety of hammers for different applications.",
+    "CategoryId": 7,
+    "Price": 139.99
+  },
+  {
+    "Id": 4,
+    "ProductName": "Durable Work Gloves",
+    "Description": "Protect your hands during any project with our durable work gloves. Comfortable and reliable, these gloves are essential for every handyman.",
     "CategoryId": 1,
-    "Discount": null
+    "Price": 29.99
   },
   {
-    "ProductName": "Mrs",
-    "Price": 116.6,
-    "Description": "Pale white-eye",
-    "Category": null,
+    "Id": 5,
+    "ProductName": "Precision Measuring Tape",
+    "Description": "Accurate measurements made easy with our precision measuring tape. Ideal for carpentry and other tasks where precision is key.",
+    "CategoryId": 3,
+    "Price": 34.99
+  },
+  {
+    "Id": 6,
+    "ProductName": "Professional Tool Belt",
+    "Description": "Stay organized and have your tools at your fingertips with our professional tool belt. Adjustable and durable, it's a must-have for any handyman.",
+    "CategoryId": 2,
+    "Price": 89.99
+  },
+  {
+    "Id": 7,
+    "ProductName": "Heavy-Duty Nails Assortment",
+    "Description": "Secure your projects with our heavy-duty nails assortment. Various sizes for different applications, ensuring a strong and reliable hold.",
+    "CategoryId": 3,
+    "Price": 19.99
+  },
+  {
+    "Id": 8,
+    "ProductName": "Professional Tool Chest",
+    "Description": "Organize your tools with our professional tool chest. Sturdy and spacious, it's perfect for storing and transporting your tools with ease.",
+    "CategoryId": 9,
+    "Price": 179.99
+  },
+  {
+    "Id": 9,
+    "ProductName": "Versatile Duct Tape Set",
+    "Description": "Fix, repair, and create with our versatile duct tape set. A handy addition to any toolbox, this tape is durable and easy to use.",
     "CategoryId": 1,
-    "Discount": null
+    "Price": 54.99
   },
   {
-    "ProductName": "Honorable",
-    "Price": 188.8,
-    "Description": "American racer",
-    "Category": null,
+    "Id": 10,
+    "ProductName": "Heavy-Duty Work Boots",
+    "Description": "Keep your feet protected with our heavy-duty work boots. Designed for comfort and safety, these boots are essential for any construction project.",
+    "CategoryId": 2,
+    "Price": 109.99
+  },
+  {
+    "Id": 11,
+    "ProductName": "Adjustable Wrench Set",
+    "Description": "Tighten and loosen with precision using our adjustable wrench set. Versatile and durable, these wrenches are a must-have in any toolkit.",
+    "CategoryId": 3,
+    "Price": 29.99
+  },
+  {
+    "Id": 12,
+    "ProductName": "High-Quality Drill Bits",
+    "Description": "Drill through any material with ease using our high-quality drill bits. Designed for durability and precision, these bits deliver reliable performance.",
+    "CategoryId": 4,
+    "Price": 79.99
+  },
+  {
+    "Id": 13,
+    "ProductName": "Safety Goggles Set",
+    "Description": "Protect your eyes during projects with our safety goggles set. Comfortable and effective, these goggles provide clear vision and safety.",
+    "CategoryId": 5,
+    "Price": 24.99
+  },
+  {
+    "Id": 14,
+    "ProductName": "Toolbox Organization Kit",
+    "Description": "Keep your toolbox neat and organized with our toolbox organization kit. Includes compartments and accessories for efficient tool storage.",
+    "CategoryId": 6,
+    "Price": 39.99
+  },
+  {
+    "Id": 15,
+    "ProductName": "Professional Paint Sprayer",
+    "Description": "Achieve a flawless finish with our professional paint sprayer. Ideal for DIY painting projects, this sprayer ensures even and smooth coverage.",
+    "CategoryId": 7,
+    "Price": 169.99
+  },
+  {
+    "Id": 16,
+    "ProductName": "Ultra-Comfort Knee Pads",
+    "Description": "Protect your knees during tasks with our ultra-comfort knee pads. Designed for comfort and durability, these knee pads provide reliable support.",
+    "CategoryId": 8,
+    "Price": 19.99
+  },
+  {
+    "Id": 17,
+    "ProductName": "Precision Screw Assortment",
+    "Description": "Have the right screw for every task with our precision screw assortment. Various sizes and types to meet the needs of different projects.",
+    "CategoryId": 9,
+    "Price": 219.99
+  },
+  {
+    "Id": 18,
+    "ProductName": "Heavy-Duty Work Shirt",
+    "Description": "Stay comfortable during projects with our heavy-duty work shirt. Durable and breathable, it's the perfect shirt for a day of hard work.",
     "CategoryId": 1,
-    "Discount": null
+    "Price": 49.99
   },
   {
-    "ProductName": "Mr",
-    "Price": 42.07,
-    "Description": "Jaeger, long-tailed",
-    "Category": null,
+    "Id": 19,
+    "ProductName": "Weatherproof Tool Bag",
+    "Description": "Keep your tools safe from the elements with our weatherproof tool bag. Designed for durability, it's perfect for on-the-go professionals.",
     "CategoryId": 2,
-    "Discount": null
+    "Price": 89.99
   },
   {
-    "ProductName": "Honorable",
-    "Price": 158.9,
-    "Description": "Fringe-eared oryx",
-    "Category": null,
-    "CategoryId": 2,
-    "Discount": null
-  },
-  {
-    "ProductName": "Mr",
-    "Price": 128.23,
-    "Description": "Monitor lizard (unidentified)",
-    "Category": null,
-    "CategoryId": 2,
-    "Discount": null
-  },
-  {
-    "ProductName": "Dr",
-    "Price": 23.91,
-    "Description": "Starling, red-shouldered glossy",
-    "Category": null,
-    "CategoryId": 2,
-    "Discount": null
-  },
-  {
-    "ProductName": "Dr",
-    "Price": 32.09,
-    "Description": "Insect, stick",
-    "Category": null,
-    "CategoryId": 1,
-    "Discount": null
-  },
-  {
-    "ProductName": "Honorable",
-    "Price": 78.52,
-    "Description": "Deer, white-tailed",
-    "Category": null,
-    "CategoryId": 2,
-    "Discount": null
-  },
-  {
-    "ProductName": "Mrs",
-    "Price": 84.24,
-    "Description": "Lemur, ring-tailed",
-    "Category": null,
-    "CategoryId": 2,
-    "Discount": null
-  },
-  {
-    "ProductName": "Rev",
-    "Price": 58.36,
-    "Description": "African fish eagle",
-    "Category": null,
-    "CategoryId": 1,
-    "Discount": null
-  },
-  {
-    "ProductName": "Rev",
-    "Price": 76.89,
-    "Description": "Nutcracker, clark's",
-    "Category": null,
-    "CategoryId": 2,
-    "Discount": null
-  },
-  {
-    "ProductName": "Honorable",
-    "Price": 31.11,
-    "Description": "Ring-tailed possum",
-    "Category": null,
-    "CategoryId": 2,
-    "Discount": null
-  },
-  {
-    "ProductName": "Mr",
-    "Price": 27.14,
-    "Description": "Bird, red-billed tropic",
-    "Category": null,
-    "CategoryId": 1,
-    "Discount": null
-  },
-  {
-    "ProductName": "Dr",
-    "Price": 151.5,
-    "Description": "Red and blue macaw",
-    "Category": null,
-    "CategoryId": 2,
-    "Discount": null
-  },
-  {
-    "ProductName": "Dr",
-    "Price": 168.83,
-    "Description": "Kongoni",
-    "Category": null,
-    "CategoryId": 1,
-    "Discount": null
-  },
-  {
-    "ProductName": "Mrs",
-    "Price": 182.92,
-    "Description": "Barasingha deer",
-    "Category": null,
-    "CategoryId": 2,
-    "Discount": null
-  },
-  {
-    "ProductName": "Ms",
-    "Price": 62.72,
-    "Description": "Snake, tiger",
-    "Category": null,
-    "CategoryId": 2,
-    "Discount": null
-  },
-  {
-    "ProductName": "Mrs",
-    "Price": 126.77,
-    "Description": "Fork-tailed drongo",
-    "Category": null,
-    "CategoryId": 2,
-    "Discount": null
-  },
-  {
-    "ProductName": "Mr",
-    "Price": 116.49,
-    "Description": "Sloth bear",
-    "Category": null,
-    "CategoryId": 2,
-    "Discount": null
-  },
-  {
-    "ProductName": "Mrs",
-    "Price": 85.0,
-    "Description": "Armadillo, nine-banded",
-    "Category": null,
-    "CategoryId": 2,
-    "Discount": null
-  },
-  {
-    "ProductName": "Rev",
-    "Price": 110.93,
-    "Description": "Dusky gull",
-    "Category": null,
-    "CategoryId": 1,
-    "Discount": null
-  },
-  {
-    "ProductName": "Mr",
-    "Price": 55.89,
-    "Description": "Mocking cliffchat",
-    "Category": null,
-    "CategoryId": 2,
-    "Discount": null
-  },
-  {
-    "ProductName": "Honorable",
-    "Price": 78.22,
-    "Description": "Teal, hottentot",
-    "Category": null,
-    "CategoryId": 1,
-    "Discount": null
-  },
-  {
-    "ProductName": "Rev",
-    "Price": 150.62,
-    "Description": "Richardson's ground squirrel",
-    "Category": null,
-    "CategoryId": 1,
-    "Discount": null
-  },
-  {
-    "ProductName": "Rev",
-    "Price": 1.48,
-    "Description": "Squirrel, arctic ground",
-    "Category": null,
-    "CategoryId": 2,
-    "Discount": null
-  },
-  {
-    "ProductName": "Mrs",
-    "Price": 192.6,
-    "Description": "Ringtail, common",
-    "Category": null,
-    "CategoryId": 2,
-    "Discount": null
-  },
-  {
-    "ProductName": "Rev",
-    "Price": 147.55,
-    "Description": "Lesser double-collared sunbird",
-    "Category": null,
-    "CategoryId": 1,
-    "Discount": null
-  },
-  {
-    "ProductName": "Ms",
-    "Price": 199.07,
-    "Description": "Bird (unidentified)",
-    "Category": null,
-    "CategoryId": 2,
-    "Discount": null
-  },
-  {
-    "ProductName": "Mrs",
-    "Price": 191.25,
-    "Description": "Falcon, prairie",
-    "Category": null,
-    "CategoryId": 1,
-    "Discount": null
-  },
-  {
-    "ProductName": "Mr",
-    "Price": 185.17,
-    "Description": "Gecko (unidentified)",
-    "Category": null,
-    "CategoryId": 2,
-    "Discount": null
-  },
-  {
-    "ProductName": "Dr",
-    "Price": 37.16,
-    "Description": "Salmon, sockeye",
-    "Category": null,
-    "CategoryId": 1,
-    "Discount": null
-  },
-  {
-    "ProductName": "Honorable",
-    "Price": 184.61,
-    "Description": "Galah",
-    "Category": null,
-    "CategoryId": 1,
-    "Discount": null
-  },
-  {
-    "ProductName": "Mrs",
-    "Price": 182.56,
-    "Description": "Flightless cormorant",
-    "Category": null,
-    "CategoryId": 2,
-    "Discount": null
-  },
-  {
-    "ProductName": "Mrs",
-    "Price": 82.25,
-    "Description": "Squirrel glider",
-    "Category": null,
-    "CategoryId": 2,
-    "Discount": null
-  },
-  {
-    "ProductName": "Dr",
-    "Price": 47.0,
-    "Description": "Hippopotamus",
-    "Category": null,
-    "CategoryId": 1,
-    "Discount": null
-  },
-  {
-    "ProductName": "Rev",
-    "Price": 120.53,
-    "Description": "Tern, white-winged black",
-    "Category": null,
-    "CategoryId": 1,
-    "Discount": null
-  },
-  {
-    "ProductName": "Ms",
-    "Price": 25.35,
-    "Description": "Great skua",
-    "Category": null,
-    "CategoryId": 1,
-    "Discount": null
-  },
-  {
-    "ProductName": "Mr",
-    "Price": 51.74,
-    "Description": "Ovenbird",
-    "Category": null,
-    "CategoryId": 2,
-    "Discount": null
-  },
-  {
-    "ProductName": "Rev",
-    "Price": 105.74,
-    "Description": "Galapagos mockingbird",
-    "Category": null,
-    "CategoryId": 2,
-    "Discount": null
-  },
-  {
-    "ProductName": "Dr",
-    "Price": 176.08,
-    "Description": "Indian leopard",
-    "Category": null,
-    "CategoryId": 2,
-    "Discount": null
-  },
-  {
-    "ProductName": "Dr",
-    "Price": 71.34,
-    "Description": "Australian spiny anteater",
-    "Category": null,
-    "CategoryId": 2,
-    "Discount": null
-  },
-  {
-    "ProductName": "Ms",
-    "Price": 161.21,
-    "Description": "Miner's cat",
-    "Category": null,
-    "CategoryId": 1,
-    "Discount": null
-  },
-  {
-    "ProductName": "Mr",
-    "Price": 147.72,
-    "Description": "Fringe-eared oryx",
-    "Category": null,
-    "CategoryId": 1,
-    "Discount": null
-  },
-  {
-    "ProductName": "Honorable",
-    "Price": 166.34,
-    "Description": "Stork, black-necked",
-    "Category": null,
-    "CategoryId": 1,
-    "Discount": null
-  },
-  {
-    "ProductName": "Mr",
-    "Price": 111.22,
-    "Description": "Siskin, pine",
-    "Category": null,
-    "CategoryId": 1,
-    "Discount": null
-  },
-  {
-    "ProductName": "Mrs",
-    "Price": 154.01,
-    "Description": "Lion, mountain",
-    "Category": null,
-    "CategoryId": 2,
-    "Discount": null
-  },
-  {
-    "ProductName": "Mrs",
-    "Price": 101.28,
-    "Description": "Civet cat",
-    "Category": null,
-    "CategoryId": 1,
-    "Discount": null
+    "Id": 20,
+    "ProductName": "Flexible Extension Cord",
+    "Description": "Power your tools with our flexible extension cord. Durable and versatile, this extension cord is an essential accessory for any workshop.",
+    "CategoryId": 3,
+    "Price": 29.99
   }
 ]

@@ -22,7 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Migrations\" />
     <Folder Include="Models\ViewModels\" />
+    <Folder Include="wwwroot\Images\ProductsImages\" />
   </ItemGroup>
 
 </Project>

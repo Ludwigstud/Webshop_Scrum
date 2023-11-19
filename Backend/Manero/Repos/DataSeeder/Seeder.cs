@@ -1,40 +1,35 @@
-﻿using Manero.Models.Contexts;
-using Manero.Models.Entities;
+﻿using Newtonsoft.Json.Linq;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
-using System.IO;
+using Manero.Models.Entities;
 
 namespace Manero.Repos.DataSeeder
 {
     public static class Seeder
     {
-        public static void SeedAll(DataContext context)
+        public static void SeedAll(ModelBuilder builder)
         {
-            SeedCategories(context);
-            SeedProducts(context);
+         
+            SeedCategories(builder);
+            SeedProducts(builder);
         }
 
-        private static void SeedCategories(DataContext context)
+        private static void SeedCategories(ModelBuilder builder)
         {
-            context.Categories.AddRange(
-                new CategoryEntity { CategoryName = "Electronics" },
-                new CategoryEntity { CategoryName = "Books" },
-                    new CategoryEntity { CategoryName = "Home Decor" },
-                    new CategoryEntity { CategoryName = "Toys" },
-                    new CategoryEntity { CategoryName = "Kitchen Appliances" },
-                    new CategoryEntity { CategoryName = "Sporting Goods" },
-                    new CategoryEntity { CategoryName = "Beauty Products" },
-                    new CategoryEntity { CategoryName = "Furniture" },
-                    new CategoryEntity { CategoryName = "Jewelry" }
-            );
-
-            context.SaveChanges();
+            builder.Entity<CategoryEntity>().HasData(
+            new CategoryEntity { Id = 1, CategoryName = "Power Tools" },
+            new CategoryEntity { Id = 2, CategoryName = "Building Materials" },
+            new CategoryEntity { Id = 3, CategoryName = "Plumbing Supplies" },
+            new CategoryEntity { Id = 4, CategoryName = "Hardware and Fasteners" },
+            new CategoryEntity { Id = 5, CategoryName = "Electrical Components" },
+            new CategoryEntity { Id = 6, CategoryName = "Paint and Finishes" },
+            new CategoryEntity { Id = 7, CategoryName = "Home and Outdoor" },
+            new CategoryEntity { Id = 8, CategoryName = "Safety and Security" },
+            new CategoryEntity { Id = 9, CategoryName = "Automotive and Tools" }
+        );
         }
 
-        private static void SeedProducts(DataContext context)
+        private static void SeedProducts(ModelBuilder builder)
         {
-
             var seedData = JArray.Parse(File.ReadAllText(@"./Repos/DataSeeder/ProductData.json"));
             var products = new List<ProductEntity>();
 
@@ -51,12 +46,14 @@ namespace Manero.Repos.DataSeeder
                     var imageIndex = random.Next(0, imageFiles.Length);
                     product.ImageUrl = Path.Combine("ProductsImages", Path.GetFileName(imageFiles[imageIndex]));
 
+                    product.ImageUrl = product.ImageUrl.Replace("\\", "/");
                     products.Add(product);
                 }
             }
 
-            context.Products.AddRange(products);
-            context.SaveChanges();
+            builder.Entity<ProductEntity>().HasData(products);
         }
+
+
     }
 }

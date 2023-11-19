@@ -73,11 +73,61 @@ namespace Manero.Migrations
 
                     b.Property<string>("CategoryName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryName")
+                        .IsUnique();
+
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryName = "Power Tools"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryName = "Building Materials"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryName = "Plumbing Supplies"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CategoryName = "Hardware and Fasteners"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CategoryName = "Electrical Components"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CategoryName = "Paint and Finishes"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CategoryName = "Home and Outdoor"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CategoryName = "Safety and Security"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CategoryName = "Automotive and Tools"
+                        });
                 });
 
             modelBuilder.Entity("Manero.Models.Entities.CustomerAddressEntity", b =>
@@ -312,6 +362,188 @@ namespace Manero.Migrations
                     b.HasIndex("DiscountId");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryId = 1,
+                            Description = "Get the job done with our heavy-duty power drill. Perfect for various DIY projects, this drill provides reliable performance and durability.",
+                            ImageUrl = "ProductsImages/screwdriverset.jpg",
+                            Price = 50,
+                            ProductName = "Heavy-Duty Power Drill"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryId = 3,
+                            Description = "A must-have in every toolbox, our versatile screwdriver set is designed for precision and ease of use. Suitable for a wide range of tasks.",
+                            ImageUrl = "ProductsImages/drill.jpg",
+                            Price = 60,
+                            ProductName = "Versatile Screwdriver Set"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryId = 7,
+                            Description = "Build with confidence using our sturdy hammer kit. Crafted for durability, this kit includes a variety of hammers for different applications.",
+                            ImageUrl = "ProductsImages/hammerkit.jpg",
+                            Price = 140,
+                            ProductName = "Sturdy Hammer Kit"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CategoryId = 1,
+                            Description = "Protect your hands during any project with our durable work gloves. Comfortable and reliable, these gloves are essential for every handyman.",
+                            ImageUrl = "ProductsImages/workgloves.jpg",
+                            Price = 30,
+                            ProductName = "Durable Work Gloves"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CategoryId = 3,
+                            Description = "Accurate measurements made easy with our precision measuring tape. Ideal for carpentry and other tasks where precision is key.",
+                            ImageUrl = "ProductsImages/workgloves.jpg",
+                            Price = 35,
+                            ProductName = "Precision Measuring Tape"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CategoryId = 2,
+                            Description = "Stay organized and have your tools at your fingertips with our professional tool belt. Adjustable and durable, it's a must-have for any handyman.",
+                            ImageUrl = "ProductsImages/workgloves.jpg",
+                            Price = 90,
+                            ProductName = "Professional Tool Belt"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CategoryId = 3,
+                            Description = "Secure your projects with our heavy-duty nails assortment. Various sizes for different applications, ensuring a strong and reliable hold.",
+                            ImageUrl = "ProductsImages/workgloves.jpg",
+                            Price = 20,
+                            ProductName = "Heavy-Duty Nails Assortment"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CategoryId = 9,
+                            Description = "Organize your tools with our professional tool chest. Sturdy and spacious, it's perfect for storing and transporting your tools with ease.",
+                            ImageUrl = "ProductsImages/workgloves.jpg",
+                            Price = 180,
+                            ProductName = "Professional Tool Chest"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CategoryId = 1,
+                            Description = "Fix, repair, and create with our versatile duct tape set. A handy addition to any toolbox, this tape is durable and easy to use.",
+                            ImageUrl = "ProductsImages/screwdriverset.jpg",
+                            Price = 55,
+                            ProductName = "Versatile Duct Tape Set"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CategoryId = 2,
+                            Description = "Keep your feet protected with our heavy-duty work boots. Designed for comfort and safety, these boots are essential for any construction project.",
+                            ImageUrl = "ProductsImages/workboots.jpg",
+                            Price = 110,
+                            ProductName = "Heavy-Duty Work Boots"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CategoryId = 3,
+                            Description = "Tighten and loosen with precision using our adjustable wrench set. Versatile and durable, these wrenches are a must-have in any toolkit.",
+                            ImageUrl = "ProductsImages/workgloves.jpg",
+                            Price = 30,
+                            ProductName = "Adjustable Wrench Set"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CategoryId = 4,
+                            Description = "Drill through any material with ease using our high-quality drill bits. Designed for durability and precision, these bits deliver reliable performance.",
+                            ImageUrl = "ProductsImages/screwdriverset.jpg",
+                            Price = 80,
+                            ProductName = "High-Quality Drill Bits"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            CategoryId = 5,
+                            Description = "Protect your eyes during projects with our safety goggles set. Comfortable and effective, these goggles provide clear vision and safety.",
+                            ImageUrl = "ProductsImages/workboots.jpg",
+                            Price = 25,
+                            ProductName = "Safety Goggles Set"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            CategoryId = 6,
+                            Description = "Keep your toolbox neat and organized with our toolbox organization kit. Includes compartments and accessories for efficient tool storage.",
+                            ImageUrl = "ProductsImages/workboots.jpg",
+                            Price = 40,
+                            ProductName = "Toolbox Organization Kit"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            CategoryId = 7,
+                            Description = "Achieve a flawless finish with our professional paint sprayer. Ideal for DIY painting projects, this sprayer ensures even and smooth coverage.",
+                            ImageUrl = "ProductsImages/hammerkit.jpg",
+                            Price = 170,
+                            ProductName = "Professional Paint Sprayer"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            CategoryId = 8,
+                            Description = "Protect your knees during tasks with our ultra-comfort knee pads. Designed for comfort and durability, these knee pads provide reliable support.",
+                            ImageUrl = "ProductsImages/screwdriverset.jpg",
+                            Price = 20,
+                            ProductName = "Ultra-Comfort Knee Pads"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            CategoryId = 9,
+                            Description = "Have the right screw for every task with our precision screw assortment. Various sizes and types to meet the needs of different projects.",
+                            ImageUrl = "ProductsImages/workboots.jpg",
+                            Price = 220,
+                            ProductName = "Precision Screw Assortment"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            CategoryId = 1,
+                            Description = "Stay comfortable during projects with our heavy-duty work shirt. Durable and breathable, it's the perfect shirt for a day of hard work.",
+                            ImageUrl = "ProductsImages/workgloves.jpg",
+                            Price = 50,
+                            ProductName = "Heavy-Duty Work Shirt"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            CategoryId = 2,
+                            Description = "Keep your tools safe from the elements with our weatherproof tool bag. Designed for durability, it's perfect for on-the-go professionals.",
+                            ImageUrl = "ProductsImages/screwdriverset.jpg",
+                            Price = 90,
+                            ProductName = "Weatherproof Tool Bag"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            CategoryId = 3,
+                            Description = "Power your tools with our flexible extension cord. Durable and versatile, this extension cord is an essential accessory for any workshop.",
+                            ImageUrl = "ProductsImages/screwdriverset.jpg",
+                            Price = 30,
+                            ProductName = "Flexible Extension Cord"
+                        });
                 });
 
             modelBuilder.Entity("Manero.Models.Entities.ReviewEntity", b =>
